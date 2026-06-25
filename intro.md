@@ -1,6 +1,6 @@
 # Preface
 
-Welcome to **Applied Data Science in Production**, the book edition of **OPIM 5512** at the University of Connecticut.
+Welcome to **Applied Data Science**, the book edition of **OPIM 5512** at the University of Connecticut.
 
 Most data-science courses stop at "the model works in my notebook." This one doesn't. The throughline of this book is **production**: you'll build models you can *trust* and *explain*, deploy them to the cloud where they run on a schedule and update themselves, and apply them to the messy data types the real world actually hands you — imbalanced tables, time series, and unstructured text. The voice is casual; the engineering is real; everything is code-first and runs.
 

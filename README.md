@@ -1,4 +1,4 @@
-# OPIM 5512 — *Applied Data Science in Production* (textbook)
+# OPIM 5512 — *Applied Data Science* (textbook)
 
 A casual-but-rigorous, code-first **applied data-science textbook** built from Dr. Wanik's OPIM 5512
 lecture transcripts and course notebooks.
