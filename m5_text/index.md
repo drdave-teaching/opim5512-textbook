@@ -1,5 +1,15 @@
 # Chapter 5 — Text Analytics
 
+:::{admonition} 🔗 Notebooks for this chapter
+:class: seealso dropdown
+Open in Colab and **Runtime → Run all** — data loads from a stable link, nothing to upload.
+
+- **NLP Pandas Hugging Face (2)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/NLP_Pandas_HuggingFace%20(2).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/NLP_Pandas_HuggingFace%20(2).ipynb)
+- **Text Analytics Storms ML** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/Text_Analytics_Storms_ML.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/Text_Analytics_Storms_ML.ipynb)
+- **Topic Modeling (1)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/TopicModeling%20(1).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/TopicModeling%20(1).ipynb)
+:::
+
+
 The last frontier is **unstructured text** — the reviews, tickets, and documents that don't fit in a spreadsheet. This chapter takes you from classic NLP pipelines you can build by hand to state-of-the-art **pretrained transformers** you can run in a few lines, and finishes with **embeddings** that reveal hidden structure in a pile of documents.
 
 ## 5.1 From text to numbers

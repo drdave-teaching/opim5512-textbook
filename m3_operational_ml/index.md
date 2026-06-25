@@ -1,5 +1,18 @@
 # Chapter 3 — Webscraping & Operational ML
 
+:::{admonition} 🔗 Notebooks for this chapter
+:class: seealso dropdown
+Open in Colab and **Runtime → Run all** — data loads from a stable link, nothing to upload.
+
+- **FINAL GCP Guide Dec8 2025** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/FINAL_GCP_Guide_Dec8_2025.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/FINAL_GCP_Guide_Dec8_2025.ipynb)
+- **M3 2 Beautiful Soup Model Updates** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_2_BeautifulSoup_ModelUpdates.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_2_BeautifulSoup_ModelUpdates.ipynb)
+- **M3 3 Gen AI ETL** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_3_GenAI_ETL.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_3_GenAI_ETL.ipynb)
+- **My1st Agent Write LPs** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My1stAgent_WriteLPs.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My1stAgent_WriteLPs.ipynb)
+- **My2nd Agent Brute Force** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My2ndAgent_BruteForce.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My2ndAgent_BruteForce.ipynb)
+- **Scraping Craigs List For Cars** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/ScrapingCraigsList_ForCars.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/ScrapingCraigsList_ForCars.ipynb)
+:::
+
+
 This is the chapter that turns "a model in a notebook" into something that **looks and behaves like a production system** — automated, cloud-based, and continuously updating. You'll collect data at scale, transform messy raw text into clean features (two ways — old-school and AI), train a model that **runs on a schedule in the cloud**, and sync its outputs back to GitHub. By the end you'll have built an end-to-end pipeline, not a proof-of-concept.
 
 The running project: scrape used-car listings, extract structured fields (make, model, year, mileage, price), and predict price — a deliberately "numeric-ish boring" dataset, because boring is what production usually looks like.

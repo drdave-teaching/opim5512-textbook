@@ -1,5 +1,18 @@
 # Chapter 1 — Tool Time
 
+:::{admonition} 🔗 Notebooks for this chapter
+:class: seealso dropdown
+Open in Colab and **Runtime → Run all** — data loads from a stable link, nothing to upload.
+
+- **DTC RFC GBC Boston Housing** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTC_RFC_GBC_BostonHousing.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTC_RFC_GBC_BostonHousing.ipynb)
+- **DTR RFR GBR Boston Housing** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTR_RFR_GBR_BostonHousing.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTR_RFR_GBR_BostonHousing.ipynb)
+- **Setting Up Tech Enviro** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/SettingUpTechEnviro.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/SettingUpTechEnviro.ipynb)
+- **Shell (Bash) commands** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb)
+- **Week2 1 NN Classification (2)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb)
+- **Week2 1 NN Regression (2)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb)
+:::
+
+
 Before we model anything in production, we set up the workshop. This chapter is about the tools real data scientists use every day — **GitHub** and a proper **development environment** — plus a fast refresher on the machine learning we'll build on. The framing matters: your GitHub is your **face to the technical world**. Employers want to hire you because they can *see how good your code is*.
 
 ## 1.1 GitHub — your professional home

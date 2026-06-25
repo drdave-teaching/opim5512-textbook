@@ -1,5 +1,16 @@
 # Chapter 4 — Time Series Modeling
 
+:::{admonition} 🔗 Notebooks for this chapter
+:class: seealso dropdown
+Open in Colab and **Runtime → Run all** — data loads from a stable link, nothing to upload.
+
+- **EDA Time Series Financial** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/EDA_TimeSeries_Financial.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/EDA_TimeSeries_Financial.ipynb)
+- **Missing Data Weather** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/Missing_Data_Weather.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/Missing_Data_Weather.ipynb)
+- **TSFresh Example BDLFive Years (3)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TSFresh_Example_BDLFiveYears%20(3).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TSFresh_Example_BDLFiveYears%20(3).ipynb)
+- **The Window Method Lags** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TheWindowMethod_Lags.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TheWindowMethod_Lags.ipynb)
+:::
+
+
 Time series is data where **order matters** and **yesterday helps predict today** — hourly temperature, daily prices, sensor streams. This chapter turns raw temporal data into reliable, interpretable, production-ready models, using ordinary ML (not deep learning) plus a powerful automated feature-engineering library.
 
 ## 4.1 Cleaning and resampling
