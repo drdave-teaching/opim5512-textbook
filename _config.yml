@@ -1,0 +1,16 @@
+title: "Applied Data Science in Production — Python"
+author: "Dr. Dave Wanik · University of Connecticut (OPIM 5512)"
+only_build_toc_files: true
+execute:
+  execute_notebooks: "off"
+html:
+  use_repository_button: true
+  home_page_in_navbar: true
+repository:
+  url: https://github.com/drdave-teaching/opim5512-textbook
+  branch: main
+parse:
+  myst_enable_extensions: [amsmath, dollarmath, colon_fence, deflist]
+sphinx:
+  config:
+    html_show_copyright: false

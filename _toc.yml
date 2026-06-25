@@ -1,0 +1,8 @@
+format: jb-book
+root: intro
+chapters:
+  - file: m1_tooltime/index
+  - file: m2_tuning_xai/index
+  - file: m3_operational_ml/index
+  - file: m4_timeseries/index
+  - file: m5_text/index
