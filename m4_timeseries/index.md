@@ -58,3 +58,92 @@ Not every time-series task is forecasting. **Anomaly detection** asks *which poi
 - **TSFresh** auto-extracts hundreds of features from `id`/`time`-shaped sequences (great for robot-failure-style problems).
 - **Anomaly detection** reframes the task to "what's abnormal," with the same prep discipline.
 ```
+
+
+---
+
+## 📌 Lecture key points
+
+*Distilled takeaways from the video lectures behind this chapter — click each to expand.*
+
+
+:::{admonition} Introduction to EDA for Time Series Data
+:class: note dropdown
+- Time series = order matters; **yesterday helps predict today**.
+- EDA: plot the series, inspect trends/seasonality/gaps.
+- Prepare data as sequences (id + time column).
+- Watch for missing/irregular timestamps.
+- Foundation for A09.
+:::
+
+:::{admonition} Grouping Data and Subplots
+:class: note dropdown
+- **`groupby`** + subplots to compare series/segments.
+- Visualize multiple variables together.
+- Spot patterns across groups.
+- Clean plotting habits.
+- EDA craft for temporal data.
+:::
+
+:::{admonition} Moving Averages and Momentum Trading
+:class: note dropdown
+- **Moving averages** smooth noise and capture momentum.
+- Define your own vs built-in rolling functions.
+- Evaluate with MAE/RMSE (RMSE sensitive to outliers).
+- Momentum-trading framing (9- & 21-day averages).
+- Rolling features feed models.
+:::
+
+:::{admonition} Missing/Dirty Weather Data EDA — Pt 1 & 2
+:class: note dropdown
+- Real weather data is **missing and dirty**.
+- Compare **imputation strategies** (ffill, bfill, interpolation) for time series.
+- Imputation choice is a modeling decision (can invent patterns).
+- Clean before feature engineering.
+- Resample to a consistent grid.
+:::
+
+:::{admonition} Resampling to different time horizons
+:class: note dropdown
+- **Resample** to hourly/daily/monthly resolution (`df.resample(...)`).
+- Aggregate (mean/sum) to the target horizon.
+- Fill gaps after resampling.
+- Match resolution to the prediction task.
+- Consistent grid = honest features.
+:::
+
+:::{admonition} Intro to the Window Method
+:class: note dropdown
+- **Window method**: previous *k* values become features (lags) for the next value.
+- Flattens the series → **any** ML model works.
+- Slide the window across the series.
+- Tune the look-back length.
+- The simplest way to model sequences.
+:::
+
+:::{admonition} Interpretability xAI and the Window Method
+:class: note dropdown
+- Apply **permutation importance / PDPs** to window-method models.
+- Understand which lags/features drive predictions.
+- xAI carries over from Module 2.
+- Interpret time-dependent features.
+- Trust + explain temporal models.
+:::
+
+:::{admonition} Intro TSFresh and Robot Failures
+:class: note dropdown
+- **TSFresh** auto-extracts **hundreds of physics-inspired features** from sequences.
+- Needs data shaped as sequences with an **`id`** and a **`time`** column.
+- Great for **robot-failure** detection (obscure signal stats matter).
+- Replaces manual lag/rolling engineering.
+- Then select features to avoid bloat.
+:::
+
+:::{admonition} TSFresh in Action — Pt 1 (create features) & Pt 2 (don't leak!)
+:class: note dropdown
+- Pt 1: `extract_features(df, column_id, column_sort)`.
+- Pt 2: respect the **feature-selection / don't-leak** step.
+- Never let features peek at the future.
+- Split **chronologically**.
+- Combine TSFresh features with any model.
+:::

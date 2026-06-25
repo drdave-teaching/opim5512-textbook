@@ -53,3 +53,101 @@ A neural network is, at heart, **gradient descent with backpropagation**: it mak
 - The ML methodology never changes: **read → split → scale-on-train → fit → evaluate**.
 - **`MLPRegressor`/`MLPClassifier`** bring neural nets into scikit-learn; their knobs are Chapter 2's tuning targets.
 ```
+
+
+---
+
+## 📌 Lecture key points
+
+*Distilled takeaways from the video lectures behind this chapter — click each to expand.*
+
+
+:::{admonition} ML Regression Refresher
+:class: note dropdown
+- The fixed methodology: read → split → **scale (fit on train)** → fit → evaluate.
+- Regression metrics: **R², MAE, RMSE** (RMSE punishes big misses).
+- Baseline (linear) + tree models; fitting is ~3 lines.
+- Evaluate quantitatively **and** visually (predicted-vs-actual).
+- Reused as the A01/A02 prep.
+:::
+
+:::{admonition} ML Classification Refresher
+:class: note dropdown
+- Same workflow; the **evaluation** differs.
+- Metrics from the **confusion matrix**: accuracy, precision, recall, F1.
+- Baseline = **logistic regression**.
+- Mind class balance for honest metrics.
+- Bridges into neural-net classification.
+:::
+
+:::{admonition} Intro to NNs for regression with sklearn
+:class: note dropdown
+- Neural nets are available in **scikit-learn** (`MLPRegressor`) — no TensorFlow needed to start.
+- An NN is a nonlinear, flexible "super-model."
+- Pay attention to the **hyperparameters/keyword arguments**.
+- Same fit/predict API as any sklearn model.
+- Primary engine for the **A02 Ping-Pong** assignment.
+:::
+
+:::{admonition} Gradient descent and backpropagation
+:class: note dropdown
+- A network **predicts, measures error, and nudges weights** to do better next time.
+- **Backpropagation** propagates the error to update each weight.
+- Learning rate controls step size (overshoot vs crawl).
+- The theory behind every `MLP` fit.
+- Iterated over epochs/batches.
+:::
+
+:::{admonition} Fit a NN (MLPRegressor) with sklearn
+:class: note dropdown
+- Build with `hidden_layer_sizes`, `activation`, `early_stopping`.
+- Fit/predict like any estimator.
+- Watch for overfitting; use early stopping.
+- Tune the same knobs you grid-search in Module 2.
+- California-housing style regression target.
+:::
+
+:::{admonition} MLPClassifier
+:class: note dropdown
+- `MLPClassifier` for classification targets.
+- Output handles binary/multiclass; evaluate with confusion-matrix metrics.
+- Same hyperparameters as the regressor.
+- Limited vs TensorFlow/PyTorch but perfect for theory + implementation.
+- Completes the sklearn-NN toolkit.
+:::
+
+:::{admonition} Best practices for NN regression
+:class: note dropdown
+- "How many layers / hidden units?" → it's a **grid search**.
+- Several architecture strategies (units = #features, 2×features, deeper/wider).
+- Different architectures can reach similar fits (random init).
+- Start simple, then tune.
+- Don't over-engineer the first model.
+:::
+
+:::{admonition} A nice intro to A01 (making your first repos)
+:class: note dropdown
+- The **"hello world"** of GitHub: make your first repos.
+- Core GitHub functions: repositories, commits, branches, pull requests.
+- Set up the **tech stack** (GitHub/GitHub Desktop, VS Code).
+- Refresh ML fundamentals, then try it yourself.
+- Preps the A01 individual assignment + M1 quiz.
+:::
+
+:::{admonition} A02 "Ping Pong" demo (Dave & Rohit)
+:class: note dropdown
+- The pro **collaboration loop**: branch → commit → **pull request** → review/approve → merge → delete branch.
+- Add a **collaborator**; set **branch protection** (require a PR + 1 review).
+- Live debugging: a branch-protection misconfig blocked the commit (real-world lesson).
+- Fit a neural net on **California housing**; add a `requirements.txt` for reproducibility.
+- Do it **≥ 5 times** back-and-forth; the **network graph** shows the loop.
+:::
+
+:::{admonition} Hi from Dr. Dave
+:class: note dropdown
+- Course welcome/orientation.
+- Framing: GitHub is your **face to the tech world** (employers see your code).
+- Sets expectations and tone.
+- Points to the tools and workflow ahead.
+- Motivation for the production focus.
+:::

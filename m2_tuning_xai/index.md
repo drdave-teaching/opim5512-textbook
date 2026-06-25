@@ -77,3 +77,164 @@ Finally, **autoML** (e.g., **TPOT**) automates the whole search — preprocessin
 - Open the black box with **permutation importance** (shuffle a feature, watch performance) and **PDPs** (averaged ICE curves).
 - **autoML/TPOT** automates the search — a strong benchmark, with the same discipline.
 ```
+
+
+---
+
+## 📌 Lecture key points
+
+*Distilled takeaways from the video lectures behind this chapter — click each to expand.*
+
+
+:::{admonition} Majority Undersampling
+:class: note dropdown
+- Imbalanced data breaks accuracy (greedy model predicts the majority).
+- **Undersample** the majority class to balance.
+- Repeat sampling → report metrics as a **distribution** (mean/SD/95% CI).
+- Loses data but simple and fast.
+- A03 leverages this.
+:::
+
+:::{admonition} Oversample Minority
+:class: note dropdown
+- **Oversample** (duplicate) the minority class to balance.
+- Keeps all majority data.
+- Risk of overfitting duplicated points.
+- Compare against undersampling.
+- Part of the sampling toolkit.
+:::
+
+:::{admonition} SMOTE — Pt 1 & Pt 2 (numeric only)
+:class: note dropdown
+- **SMOTE** *synthesizes* new minority examples by interpolating between real ones.
+- Pt 2: numeric-only feature handling.
+- More principled than naive oversampling.
+- **Apply on the TRAINING partition only.**
+- Validation/test keep the original distribution.
+:::
+
+:::{admonition} SMOTENC
+:class: note dropdown
+- **SMOTENC** handles **mixed numeric + categorical** features.
+- Same train-only rule.
+- Choose the right SMOTE variant for your data types.
+- Avoids breaking categorical encodings.
+- Completes the synthetic-sampling options.
+:::
+
+:::{admonition} SMOTE with ML
+:class: note dropdown
+- Integrate SMOTE **inside** the ML workflow (within CV folds).
+- Prevents leakage from resampling the whole set.
+- Report error metrics as a distribution (CI).
+- "Accuracy was 88–94% (95% CI), mean 92, SD 2."
+- Sampling + modeling combined honestly.
+:::
+
+:::{admonition} CV Pt 1 (K-fold, repeated k-fold)
+:class: note dropdown
+- **k-fold CV**: rotate folds so every row is validated once.
+- **Repeated k-fold** adds shuffles for a richer score distribution.
+- Tune hyperparameters on the **CV training folds**, never the test set.
+- A single split is one roll of the dice.
+- Foundation for honest tuning.
+:::
+
+:::{admonition} CV Pt 2 (LOOCV, LOGOCV)
+:class: note dropdown
+- **LOOCV** (leave-one-out) for very small data.
+- **LOGOCV** (leave-one-group-out) for grouped data.
+- Extremes of the k-fold idea.
+- Choose CV scheme to match data structure.
+- Avoids group leakage.
+:::
+
+:::{admonition} Intro to "Spotcheck" Models and Pipelines
+:class: note dropdown
+- **Spot-check**: throw several default models to see if the data has **any** signal.
+- If nothing beats the baseline, tuning won't save you.
+- Introduces **`Pipeline`** (chain preprocessing + model).
+- Pipelines prevent leakage inside CV.
+- Sets up grid search.
+:::
+
+:::{admonition} Pipelines with preprocessing and LIGHT hyperparameter tuning
+:class: note dropdown
+- Wrap **scaler (+PCA) + model** in a `Pipeline`.
+- Pipeline refits preprocessing **inside each fold** (no leakage).
+- Start with light tuning to get a feel.
+- `clf__param` syntax for nested params.
+- Reproducible, leakage-safe tuning.
+:::
+
+:::{admonition} Ensemble Methods and Spotchecking, then GridSearchCV
+:class: note dropdown
+- Spot-check ensembles (RF, GBM) for signal.
+- **`GridSearchCV`** searches hyperparameter combos with CV.
+- Pick `best_params_`; score with a chosen metric.
+- Ensembles often strong baselines.
+- Grid search = exhaustive but honest.
+:::
+
+:::{admonition} Advanced Pipelines (pipelines + hyperparameters together)
+:class: note dropdown
+- Tune **preprocessing and model hyperparameters simultaneously**.
+- One pipeline object searched by GridSearchCV.
+- Cleaner, leakage-safe, reproducible.
+- Scales to many preprocessing choices.
+- The professional pattern.
+:::
+
+:::{admonition} Advanced Pipelines for Classification Models
+:class: note dropdown
+- Same advanced-pipeline pattern for classification.
+- Spot-check + grid search classifiers in pipelines.
+- Evaluate with confusion-matrix metrics.
+- Handle imbalance within the pipeline.
+- Reproducible classification tuning.
+:::
+
+:::{admonition} Introduction to Permutation Importance
+:class: note dropdown
+- **Shuffle one feature's column in the test set**, keep others, re-score.
+- Big drop in R² ⇒ that feature was **important**.
+- Model-agnostic interpretability.
+- `permutation_importance(..., n_repeats=...)`.
+- Ranks features by reliance.
+:::
+
+:::{admonition} Permutation importance as storytelling and variable selection
+:class: note dropdown
+- Use permutation importance to **explain** and to **select variables**.
+- Tell a clear story about what drives predictions.
+- Drop low-importance features to simplify.
+- Repeated permutation for stability.
+- Communicates model behavior to stakeholders.
+:::
+
+:::{admonition} Intro to Partial Dependence Plots (PDPs)
+:class: note dropdown
+- **PDP** = average of per-row **ICE** curves: sweep one feature, hold others fixed, re-predict.
+- Shows **how** the model responds to a feature (linear/nonlinear/flat/cliff).
+- Model-agnostic.
+- Complements permutation importance (which feature vs how it's used).
+- Built on the test partition.
+:::
+
+:::{admonition} Clunky PDPs and linear vs. nonlinear responses
+:class: note dropdown
+- PDPs reveal **nonlinear** feature responses a linear model would miss.
+- "Clunky" steps show discretized sweeps.
+- Interpret shapes for business insight.
+- Caveats when features are correlated.
+- Deepens xAI intuition.
+:::
+
+:::{admonition} TPOT and autoML
+:class: note dropdown
+- **autoML (TPOT)** automates preprocessing + model choice + tuning into one pipeline.
+- Great for a strong **benchmark**.
+- Keep the train-only and explainability discipline.
+- Searches smarter than brute grid search.
+- A04 leverages this.
+:::

@@ -73,3 +73,119 @@ The payoff is a **map of your corpus** — clusters you can read as topics, outl
 - **Embeddings** place documents in a semantic space (similarity = **cosine**); **k-means** finds topics and **PCA/UMAP** visualize them.
 - The arc of the chapter: **counts → TF-IDF → pretrained transformers → embeddings** — simple representations evolving into semantic ones.
 ```
+
+
+---
+
+## 📌 Lecture key points
+
+*Distilled takeaways from the video lectures behind this chapter — click each to expand.*
+
+
+:::{admonition} Intro to Text Analytics for ML/DL models with NLTK
+:class: note dropdown
+- Text must become numbers; **NLTK** for classic NLP.
+- Leverage frequency/occurrence/co-occurrence of words.
+- BoW → TF-IDF progression.
+- Corpus vs document.
+- Foundation for A10.
+:::
+
+:::{admonition} Intro to the Hail DF + preprocessing + word cloud
+:class: note dropdown
+- Preprocess: **lowercase**, strip funky characters.
+- Make a **word cloud** for quick EDA.
+- Storm (hail) narratives as the corpus.
+- Reusable script (name things generically).
+- Set up for tokenizing/vectorizing.
+:::
+
+:::{admonition} Tokenizer (and the flood_df)
+:class: note dropdown
+- **Tokenize** text into indexed words.
+- Remove stop words; optional stemming (when too many words).
+- Reapply the same pipeline to a second dataset (flood_df).
+- Careful, consistent naming = reusable code.
+- Feeds BoW/TF-IDF.
+:::
+
+:::{admonition} Bag of Words
+:class: note dropdown
+- **BoW** counts word occurrences (order-free).
+- `CountVectorizer` builds the matrix.
+- Experiment with **unigrams/bigrams/trigrams**.
+- Larger n → bigger feature space (**dimensionality** risk: more columns than rows).
+- Strong, fast baseline (note: BoW taught **before** TF-IDF).
+:::
+
+:::{admonition} TF-IDF and wrapping up
+:class: note dropdown
+- **TF-IDF** up-weights distinctive words, down-weights ubiquitous ones.
+- Feed into any classifier; **fit on train only**.
+- n-grams add phrase context at a dimensionality cost.
+- Compare BoW vs TF-IDF.
+- Closes the classic-NLP thread.
+:::
+
+:::{admonition} Intro to HuggingFace and Summarization
+:class: note dropdown
+- **Hugging Face** pretrained transformers run **locally** (data-privacy win).
+- `pipeline("summarization")` summarizes documents in a few lines.
+- Encoder/decoder transformers = the sweet spot between regex and full LLMs.
+- Require input before generating.
+- State-of-the-art with minimal code.
+:::
+
+:::{admonition} Customizing the summarizer
+:class: note dropdown
+- Tune `max_length`/parameters for better summaries.
+- Pick the right pretrained model.
+- Evaluate summary quality.
+- Run on your dataset locally.
+- Practical inference tuning.
+:::
+
+:::{admonition} Zero-shot learning and sentiment analysis with HuggingFace
+:class: note dropdown
+- **Zero-shot classification** = labels you invent at inference time, **no training data**.
+- Hand the model candidate labels + text; it scores them.
+- Sentiment/emotion detection in a few lines.
+- Replaces a whole label-and-train project for many tasks.
+- Powerful for "sort these comments into buckets."
+:::
+
+:::{admonition} Intro on Topic Modeling and Embedding
+:class: note dropdown
+- **Embedding** = dense vector where **semantic similarity = geometric closeness**.
+- Topic modeling = **k-means cluster** the document vectors (unsupervised).
+- Discover themes nobody labeled.
+- Similarity via **cosine**.
+- Embeddings beat counts for meaning.
+:::
+
+:::{admonition} Creating Embeddings for Text Data
+:class: note dropdown
+- Use a pretrained model to map each document to a vector (e.g., **1×384**).
+- Documents about the same topic land near each other.
+- Even with no shared exact words.
+- Feed embeddings to clustering/classification.
+- The deepest text representation in the course.
+:::
+
+:::{admonition} Simple visualizations of 1×384 embeddings
+:class: note dropdown
+- Raw 384-D vectors can't be plotted directly.
+- Visualize structure/clusters qualitatively.
+- Motivates dimensionality reduction.
+- Inspect outliers and groupings.
+- Bridge to PCA/UMAP.
+:::
+
+:::{admonition} From 1×384 to 1×2 with PCA and UMAP
+:class: note dropdown
+- **PCA** (linear) and **UMAP** (nonlinear) project embeddings to **2-D** for plotting.
+- UMAP better preserves local neighborhoods.
+- Scatter colored by k-means label = a **map of your corpus**.
+- Reveal topics, outliers, structure without labels.
+- Counts → TF-IDF → transformers → embeddings: representations grow semantic.
+:::
