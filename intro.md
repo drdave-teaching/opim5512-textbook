@@ -1,5 +1,10 @@
 # Preface
 
+:::{admonition} ⚠️ Work in progress
+:class: warning
+These materials are a **living draft** — actively being written, revised, and expanded from my lecture transcripts and course notebooks. Expect rough edges, gaps, and changes between visits. This is a teaching companion, **not a final or official reference**. Spot something off? That's expected — it's a work in progress!
+:::
+
 Welcome to **Applied Data Science**, the book edition of **OPIM 5512** at the University of Connecticut.
 
 Most data-science courses stop at "the model works in my notebook." This one doesn't. The throughline of this book is **production**: you'll build models you can *trust* and *explain*, deploy them to the cloud where they run on a schedule and update themselves, and apply them to the messy data types the real world actually hands you — imbalanced tables, time series, and unstructured text. The voice is casual; the engineering is real; everything is code-first and runs.
