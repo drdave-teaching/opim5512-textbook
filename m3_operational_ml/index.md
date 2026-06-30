@@ -130,7 +130,7 @@ Cloud platforms, scraping targets, and the GCP→GitHub sync step evolve fast �
 
 :::{admonition} RegEx for PRICE_RE
 :class: note dropdown
-- Build a regex to capture **price** ($12,500 → 12500).
+- Build a regex to capture **price** (\$12,500 → 12500).
 - Patterns: `^`, `\s*` (flexible spaces), capture groups, optional separators.
 - `re.I` (case-insensitive), `re.M` (multiline).
 - Strip commas, cast to int.
