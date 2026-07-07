@@ -10,6 +10,7 @@ Open in Colab and **Runtime → Run all** — data loads from a stable link, not
 - **Shell (Bash) commands** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb)
 - **Week2 1 NN Classification (2)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb)
 - **Week2 1 NN Regression (2)** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb)
+- **M1 Tree Models CA Housing** &nbsp; [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/M1_TreeModels_CAHousing.ipynb) &nbsp; [GitHub](https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/M1_TreeModels_CAHousing.ipynb)
 :::
 
 
