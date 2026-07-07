@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3 — Webscraping &amp; Operational ML &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm3_operational_ml/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4 — Time Series Modeling" href="../m4_timeseries/index.html" />
+    <link rel="prev" title="Chapter 2 — Tuning Models &amp; Explainable AI" href="../m2_tuning_xai/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/m3_operational_ml/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3 — Webscraping & Operational ML</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-to-the-cloud-with-github-actions">3.1 Deploying to the cloud with GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-with-regular-expressions">3.2 ETL with regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-with-generative-ai">3.3 ETL with generative AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-the-loop">3.4 Closing the loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-webscraping-operational-ml">
+<h1>Chapter 3 — Webscraping &amp; Operational ML<a class="headerlink" href="#chapter-3-webscraping-operational-ml" title="Link to this heading">#</a></h1>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">🔗 Notebooks for this chapter</p>
+<p>Open in Colab and <strong>Runtime → Run all</strong> — data loads from a stable link, nothing to upload.</p>
+<ul class="simple">
+<li><p><strong>FINAL GCP Guide Dec8 2025</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/FINAL_GCP_Guide_Dec8_2025.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/FINAL_GCP_Guide_Dec8_2025.ipynb">GitHub</a></p></li>
+<li><p><strong>M3 2 Beautiful Soup Model Updates</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_2_BeautifulSoup_ModelUpdates.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_2_BeautifulSoup_ModelUpdates.ipynb">GitHub</a></p></li>
+<li><p><strong>M3 3 Gen AI ETL</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_3_GenAI_ETL.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/M3_3_GenAI_ETL.ipynb">GitHub</a></p></li>
+<li><p><strong>My1st Agent Write LPs</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My1stAgent_WriteLPs.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My1stAgent_WriteLPs.ipynb">GitHub</a></p></li>
+<li><p><strong>My2nd Agent Brute Force</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My2ndAgent_BruteForce.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/My2ndAgent_BruteForce.ipynb">GitHub</a></p></li>
+<li><p><strong>Scraping Craigs List For Cars</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/ScrapingCraigsList_ForCars.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module3/ScrapingCraigsList_ForCars.ipynb">GitHub</a></p></li>
+</ul>
+</div>
+<p>This is the chapter that turns “a model in a notebook” into something that <strong>looks and behaves like a production system</strong> — automated, cloud-based, and continuously updating. You’ll collect data at scale, transform messy raw text into clean features (two ways — old-school and AI), train a model that <strong>runs on a schedule in the cloud</strong>, and sync its outputs back to GitHub. By the end you’ll have built an end-to-end pipeline, not a proof-of-concept.</p>
+<p>The running project: scrape used-car listings, extract structured fields (make, model, year, mileage, price), and predict price — a deliberately “numeric-ish boring” dataset, because boring is what production usually looks like.</p>
+<section id="deploying-to-the-cloud-with-github-actions">
+<h2>3.1 Deploying to the cloud with GitHub Actions<a class="headerlink" href="#deploying-to-the-cloud-with-github-actions" title="Link to this heading">#</a></h2>
+<p>Your code shouldn’t run only on your laptop. <strong>GitHub Actions</strong> is a CI/CD service that runs your code automatically on <strong>Google Cloud Platform</strong> whenever you push — no manual intervention, fully reproducible. The course scaffold (the <code class="docutils literal notranslate"><span class="pre">myscrapers</span></code> repo) deploys a set of <strong>Cloud Functions</strong> and the milestone is getting <strong>five green check marks</strong>: five workflows that authenticate to GCP and deploy successfully.</p>
+<div class="warning admonition">
+<p class="admonition-title">The deployment gotchas everyone hits</p>
+<p>Two failures account for most lost hours: <strong>(1)</strong> a typo in a GitHub repository <strong>variable</strong> (e.g. <code class="docutils literal notranslate"><span class="pre">WORKLOAD_IDENTITY_PROVIDE</span></code> missing the trailing <code class="docutils literal notranslate"><span class="pre">R</span></code>) breaks authentication — double-check every variable name; <strong>(2)</strong> a strict bash setting (<code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">-euo</span> <span class="pre">pipefail</span></code>) makes the Cloud Shell <strong>close instantly</strong> when any command fails, so a small typo nukes your session. Build slowly, verify each step (<code class="docutils literal notranslate"><span class="pre">gcloud</span> <span class="pre">functions</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">gcloud</span> <span class="pre">scheduler</span> <span class="pre">jobs</span> <span class="pre">list</span></code>), and confirm your functions are <strong>ACTIVE</strong> before moving on.</p>
+</div>
+<p>Once deployed, <strong>Cloud Scheduler</strong> triggers the functions on a <strong>cron schedule</strong> (e.g. hourly), so the pipeline keeps running and the dataset keeps growing while you sleep. That’s the difference between a script and a <em>system</em>.</p>
+</section>
+<section id="etl-with-regular-expressions">
+<h2>3.2 ETL with regular expressions<a class="headerlink" href="#etl-with-regular-expressions" title="Link to this heading">#</a></h2>
+<p>The scraper dumps <strong>unstructured raw text</strong> — a car listing is free-form prose. <strong>ETL</strong> (extract, transform, load) turns it into a structured row, and the old-school tool is the <strong>regular expression (regex)</strong>: a pattern that finds and captures substrings. You write one pattern per field — price, year, make/model, mileage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="n">PRICE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\$\s*([0-9][0-9,]+)&#39;</span><span class="p">)</span>          <span class="c1"># $12,500 -&gt; 12500</span>
+<span class="n">YEAR_RE</span>  <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b(19|20)\d</span><span class="si">{2}</span><span class="s1">\b&#39;</span><span class="p">)</span>              <span class="c1"># a 4-digit year</span>
+<span class="c1"># parse a listing into a dict of fields</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_listing</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">PRICE_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">price</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="k">if</span> <span class="n">price</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s1">&#39;year&#39;</span><span class="p">:</span>  <span class="nb">int</span><span class="p">(</span><span class="n">YEAR_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="k">if</span> <span class="n">YEAR_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Regex is <strong>fast and deterministic</strong> — perfect for well-structured fields like price, mileage, and year. Its weakness is messy, inconsistent wording: “AWD,” “all wheel drive,” “4WD,” and “4x4” all mean the same thing, and a regex has to enumerate every variant. That’s exactly where the next tool shines.</p>
+</section>
+<section id="etl-with-generative-ai">
+<h2>3.3 ETL with generative AI<a class="headerlink" href="#etl-with-generative-ai" title="Link to this heading">#</a></h2>
+<p>Modern ETL hands the messy text to a <strong>large language model</strong>. The course uses <strong>Gemini (Vertex AI)</strong> with a defined <strong>schema</strong>: you tell the model exactly which fields to return (and <em>only</em> those), and it reads the listing the way a human would — inferring <code class="docutils literal notranslate"><span class="pre">transmission</span></code>, <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">condition</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, even when the wording is inconsistent. You deploy a separate <code class="docutils literal notranslate"><span class="pre">materialize-llm</span></code> function so the GenAI pipeline runs <strong>alongside</strong> the regex one, and you compare them.</p>
+<div class="tip admonition">
+<p class="admonition-title">RegEx vs. GenAI — use both</p>
+<ul class="simple">
+<li><p><strong>RegEx</strong> wins on <strong>simple, predictable patterns</strong> (price, year, mileage): fast, cheap, deterministic, no API call.</p></li>
+<li><p><strong>GenAI</strong> wins on <strong>vague, description-heavy text</strong> (condition, free-text features, normalizing “AWD/4x4”): it uses context and returns far fewer missing values — at the cost of speed and an API bill.
+The professional move is a <strong>hybrid</strong>: regex the easy fields, LLM the hard ones. <strong>Prompt engineering</strong> — tightening the schema and instructions so the model returns clean, consistent JSON — is the new feature-engineering.</p></li>
+</ul>
+</div>
+</section>
+<section id="closing-the-loop">
+<h2>3.4 Closing the loop<a class="headerlink" href="#closing-the-loop" title="Link to this heading">#</a></h2>
+<p>Finally, the model fits on a schedule in the cloud and its outputs — predictions, plots, a growing CSV — get <strong>synced back to GitHub</strong> so the results are visible to the world. The capstone is a <strong>model-trending</strong> notebook: clone the repo, read the accumulated results, and chart how the model’s <strong>error and interpretability change over time</strong> as new data arrives. Companies want to know you can <em>productionize and trend</em> a model — and now you can.</p>
+<div class="note admonition">
+<p class="admonition-title">A note on what’s current</p>
+<p>Cloud platforms, scraping targets, and the GCP→GitHub sync step evolve fast — and some get blocked or deprecated. The <strong>architecture</strong> in this chapter is the durable lesson (scrape → ETL → schedule → sync → trend); expect to swap individual components (the scraper, the sync mechanism) as the tooling changes.</p>
+</div>
+</section>
+<section id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Key takeaways</p>
+<ul class="simple">
+<li><p><strong>GitHub Actions</strong> deploys code to <strong>GCP</strong> automatically; <strong>Cloud Scheduler</strong> runs it on a cron so the pipeline self-updates.</p></li>
+<li><p><strong>ETL</strong> turns scraped raw text into structured rows; <strong>regex</strong> is fast/deterministic for clean fields.</p></li>
+<li><p><strong>GenAI (Gemini) ETL</strong> with a tight <strong>schema + prompt engineering</strong> handles messy, description-heavy fields — use a <strong>hybrid</strong> of both.</p></li>
+<li><p>Close the loop: <strong>schedule</strong> the model, <strong>sync</strong> outputs to GitHub, and <strong>trend</strong> error/interpretability over time — that’s a production system.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lecture-key-points">
+<h2>📌 Lecture key points<a class="headerlink" href="#lecture-key-points" title="Link to this heading">#</a></h2>
+<p><em>Distilled takeaways from the video lectures behind this chapter — click each to expand.</em></p>
+<div class="note dropdown admonition">
+<p class="admonition-title">GCP Pt 1 — Overview</p>
+<ul class="simple">
+<li><p>Goal: deploy code to <strong>Google Cloud Platform</strong> so it runs without your laptop.</p></li>
+<li><p><strong>GitHub Actions</strong> drives deployment automatically on push.</p></li>
+<li><p>Anchored on the <strong><code class="docutils literal notranslate"><span class="pre">myscrapers</span></code></strong> starter repo.</p></li>
+<li><p>The milestone is <strong>five green check marks</strong> (five workflows deploy).</p></li>
+<li><p>Sets up an automated, cloud-based pipeline.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">GCP Pt 2 — Setting up GCP for our project</p>
+<ul class="simple">
+<li><p>Configure GCP project, service accounts, and <strong>GitHub Actions variables</strong>.</p></li>
+<li><p>Variables must be set for <strong>YOUR</strong> repo, not Dave’s.</p></li>
+<li><p>Stay close to the guide; permissions are exacting.</p></li>
+<li><p>Authenticate via workload identity.</p></li>
+<li><p>Foundation for deployment.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">GCP Pt 3 — Green check marks!</p>
+<ul class="simple">
+<li><p>Success = <strong>5 green checks</strong> in GitHub Actions (workflows authenticate + deploy).</p></li>
+<li><p>Common bug: a <strong>typo in a variable name</strong> (e.g., missing <code class="docutils literal notranslate"><span class="pre">R</span></code> in <code class="docutils literal notranslate"><span class="pre">WORKLOAD_IDENTITY_PROVIDER</span></code>).</p></li>
+<li><p>Verify with <code class="docutils literal notranslate"><span class="pre">gcloud</span> <span class="pre">functions</span> <span class="pre">list</span></code> (functions ACTIVE).</p></li>
+<li><p>Share successes/failures on the discussion board.</p></li>
+<li><p>Proof your code is live on GCP.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">GCP Pt 4 — Testing your functions</p>
+<ul class="simple">
+<li><p><strong>Cloud Scheduler</strong> triggers functions on an <strong>hourly cron</strong>.</p></li>
+<li><p>Test endpoints with <code class="docutils literal notranslate"><span class="pre">curl</span></code>; confirm <code class="docutils literal notranslate"><span class="pre">&quot;status&quot;:&quot;ok&quot;</span></code>.</p></li>
+<li><p>Strict bash (<code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">-euo</span> <span class="pre">pipefail</span></code>) closes the shell on any error — build carefully.</p></li>
+<li><p>Functions: scraper, extractor-per-listing, extractor-llm-poc, materialize, train.</p></li>
+<li><p>The pipeline self-updates while you sleep.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to ETL with RegEx</p>
+<ul class="simple">
+<li><p><strong>ETL</strong> = turn scraped <strong>unstructured text</strong> into structured rows.</p></li>
+<li><p><strong>Regular expressions</strong> find and capture substrings.</p></li>
+<li><p>Extract make/model/year/mileage/price from car listings.</p></li>
+<li><p>Fast and <strong>deterministic</strong>.</p></li>
+<li><p>Foundation for the RegEx ETL videos.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">RegEx for PRICE_RE</p>
+<ul class="simple">
+<li><p>Build a regex to capture <strong>price</strong> ($12,500 → 12500).</p></li>
+<li><p>Patterns: <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">\s*</span></code> (flexible spaces), capture groups, optional separators.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">re.I</span></code> (case-insensitive), <code class="docutils literal notranslate"><span class="pre">re.M</span></code> (multiline).</p></li>
+<li><p>Strip commas, cast to int.</p></li>
+<li><p>Store the field in the parsed dict.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">YEAR_RE and MAKE_MODEL_RE</p>
+<ul class="simple">
+<li><p>Capture <strong>year</strong> (4-digit) and <strong>make/model</strong>.</p></li>
+<li><p>Exclude false matches (e.g., “Contact Information” ≠ make/model).</p></li>
+<li><p>Anchor patterns to where the field appears.</p></li>
+<li><p>Consistent dictionary keys feed downstream materialization.</p></li>
+<li><p>Regex shines on predictable fields.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Three flavors of mileage</p>
+<ul class="simple">
+<li><p>Mileage appears in <strong>multiple formats</strong> — write patterns for each.</p></li>
+<li><p>Normalize variants to one clean field.</p></li>
+<li><p>Demonstrates regex flexibility and its limits.</p></li>
+<li><p>Test against real messy listings.</p></li>
+<li><p>Capture-and-normalize pattern.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">How to improve the ETL RegEx starter code</p>
+<ul class="simple">
+<li><p>Customize the starter <code class="docutils literal notranslate"><span class="pre">parse_listings()</span></code> with <strong>new fields</strong> (color, condition, transmission, fuel).</p></li>
+<li><p>Deploy a <strong>versioned <code class="docutils literal notranslate"><span class="pre">materialize-v2</span></code></strong> so the schema can evolve safely.</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">.yml</span></code> workflows + output directories so new fields flow through.</p></li>
+<li><p>Don’t break the running pipeline as you extend it.</p></li>
+<li><p>Document what you built and why (A06).</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Push yourself — customize outputs / review the DT model</p>
+<ul class="simple">
+<li><p>The pipeline fits a <strong>decision-tree</strong> model on a schedule.</p></li>
+<li><p>Customize outputs (predictions, plots, CSV).</p></li>
+<li><p>Review the model and iterate.</p></li>
+<li><p>Connect ETL → modeling → outputs.</p></li>
+<li><p>Operational ML end-to-end.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to GenAI (Vertex) and GCP</p>
+<ul class="simple">
+<li><p>Use <strong>Gemini (Vertex AI)</strong> to extract features from messy text.</p></li>
+<li><p>Define a <strong>schema</strong> so the model returns <strong>only</strong> required fields.</p></li>
+<li><p>LLM reads context like a human (infers transmission/color/condition).</p></li>
+<li><p>Deploy alongside the regex pipeline.</p></li>
+<li><p>The modern ETL approach.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Overview / Interesting aspects of the extractor-llm-poc</p>
+<ul class="simple">
+<li><p>Walk the <strong>extractor-llm-poc</strong> Cloud Function (LLM extraction proof-of-concept).</p></li>
+<li><p>Compares LLM JSON output to the raw text.</p></li>
+<li><p>Improves extraction when raw text is too messy for regex.</p></li>
+<li><p>Returns strict JSON via the response schema.</p></li>
+<li><p>The GenAI half of the hybrid pipeline.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Three cool ways to enhance/update the extractor-LLM-POC</p>
+<ul class="simple">
+<li><p>Add features (color/city/state/zip) by <strong>expanding the schema</strong>.</p></li>
+<li><p><strong>Prompt engineering</strong> = tighten instructions for cleaner, consistent JSON.</p></li>
+<li><p>Normalize messy variants (“AWD/4WD/4x4”).</p></li>
+<li><p>GenAI returns <strong>fewer missing values</strong> than regex on vague fields.</p></li>
+<li><p>Iterate on prompts like feature engineering.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Updating the extractor-llm-poc to predict transmission / materialize to CSV</p>
+<ul class="simple">
+<li><p>Add <strong>transmission</strong> to the schema; deploy a separate <strong><code class="docutils literal notranslate"><span class="pre">materialize-master-llm</span></code></strong>.</p></li>
+<li><p>Materialize JSONL → one <strong>CSV</strong> that keeps updating.</p></li>
+<li><p>Run LLM pipeline <strong>alongside</strong> the regex one and compare.</p></li>
+<li><p>Update functions + workflows together (or new fields won’t appear).</p></li>
+<li><p>A07 deliverable.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Materialize the LLM jsonl data (add a jsonl column)</p>
+<ul class="simple">
+<li><p><strong>Materialization</strong> aggregates per-listing JSONL into a master CSV.</p></li>
+<li><p>Add a column for the jsonl/LLM fields.</p></li>
+<li><p>Scheduled materialize function in Cloud Run.</p></li>
+<li><p>Proof: CSV grows with new listings.</p></li>
+<li><p>Connects extraction to a usable dataset.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Diffs and wrapping up / Got stuck / Oops forgot transmission</p>
+<ul class="simple">
+<li><p><strong>Diffs</strong>: review what changed between versions.</p></li>
+<li><p><strong>Got stuck / oops</strong>: real debugging (forgot to wire transmission through end-to-end).</p></li>
+<li><p>Updating one function often requires updating downstream ones.</p></li>
+<li><p>Output directories must change or old listings keep empty new fields.</p></li>
+<li><p>Honest look at iterative pipeline development.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Sync-data with GitHub Actions</p>
+<ul class="simple">
+<li><p>Push private <strong>GCP/Cloud Storage outputs</strong> to GitHub via a <strong>GitHub Actions cron</strong> (no GCP needed).</p></li>
+<li><p>Fires ~45+ min past the hour (2–15 min late) — “good enough” academically.</p></li>
+<li><p>Makes results shareable with the world.</p></li>
+<li><p>Feeds the <strong>A08 model-trending</strong> notebook.</p></li>
+<li><p><em>(Status: this sync step is no longer taught — architecture is the durable lesson.)</em></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./m3_operational_ml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../m2_tuning_xai/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 2 — Tuning Models &amp; Explainable AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../m4_timeseries/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 — Time Series Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying-to-the-cloud-with-github-actions">3.1 Deploying to the cloud with GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-with-regular-expressions">3.2 ETL with regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etl-with-generative-ai">3.3 ETL with generative AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-the-loop">3.4 Closing the loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

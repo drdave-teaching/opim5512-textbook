@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 2 — Tuning Models &amp; Explainable AI &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm2_tuning_xai/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 3 — Webscraping &amp; Operational ML" href="../m3_operational_ml/index.html" />
+    <link rel="prev" title="Chapter 1 — Tool Time" href="../m1_tooltime/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/m2_tuning_xai/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 2 — Tuning Models & Explainable AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data-and-sampling">2.1 Imbalanced data and sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">2.2 Cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-checking-pipelines-and-grid-search">2.3 Spot-checking, pipelines, and grid search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-ai">2.4 Explainable AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-tuning-models-explainable-ai">
+<h1>Chapter 2 — Tuning Models &amp; Explainable AI<a class="headerlink" href="#chapter-2-tuning-models-explainable-ai" title="Link to this heading">#</a></h1>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">🔗 Notebooks for this chapter</p>
+<p>Open in Colab and <strong>Runtime → Run all</strong> — data loads from a stable link, nothing to upload.</p>
+<ul class="simple">
+<li><p><strong>Permutation Importance Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0_PermutationImportance_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0_PermutationImportance_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>a Undersampling</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0a_Undersampling.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0a_Undersampling.ipynb">GitHub</a></p></li>
+<li><p><strong>b Oversampling</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0b_Oversampling.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0b_Oversampling.ipynb">GitHub</a></p></li>
+<li><p><strong>c SMOTE (numeric features only)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0c_SMOTE%20(numeric%20features%20only).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0c_SMOTE%20(numeric%20features%20only).ipynb">GitHub</a></p></li>
+<li><p><strong>d SMOTE (numeric and categorical features)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0d_SMOTE%20(numeric%20and%20categorical%20features).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0d_SMOTE%20(numeric%20and%20categorical%20features).ipynb">GitHub</a></p></li>
+<li><p><strong>e SMOTE with ML implementation</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0e_SMOTE%20with%20ML%20implementation.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/0e_SMOTE%20with%20ML%20implementation.ipynb">GitHub</a></p></li>
+<li><p><strong>Cross Validation</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_CrossValidation.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_CrossValidation.ipynb">GitHub</a></p></li>
+<li><p><strong>Partial Dependence Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_PartialDependence_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_PartialDependence_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>SHAP From Scratch Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2a_SHAP_FromScratch_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2a_SHAP_FromScratch_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>LIME From Scratch Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2b_LIME_FromScratch_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2b_LIME_FromScratch_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>Regression Spot Check</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_Regression_SpotCheck.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1_Regression_SpotCheck.ipynb">GitHub</a></p></li>
+<li><p><strong>a Advanced Pipelines Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1a_AdvancedPipelines_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/1a_AdvancedPipelines_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>Classification Spot Check and Pipelines</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2_Classification_SpotCheck_and_Pipelines.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2_Classification_SpotCheck_and_Pipelines.ipynb">GitHub</a></p></li>
+<li><p><strong>General Modeling Framework Advanced</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2_General%20Modeling%20Framework_Advanced.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2_General%20Modeling%20Framework_Advanced.ipynb">GitHub</a></p></li>
+<li><p><strong>a Pipelines Grid Search Classification</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2a_Pipelines_GridSearch_Classification.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/2a_Pipelines_GridSearch_Classification.ipynb">GitHub</a></p></li>
+<li><p><strong>Hyperparameter Tuning Widgets</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/3_HyperparameterTuning_Widgets.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/3_HyperparameterTuning_Widgets.ipynb">GitHub</a></p></li>
+<li><p><strong>auto ML and TPOT updated</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/3_autoML%20and%20TPOT_updated.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/3_autoML%20and%20TPOT_updated.ipynb">GitHub</a></p></li>
+<li><p><strong>Optuna NNs</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/Optuna_NNs.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/Optuna_NNs.ipynb">GitHub</a></p></li>
+<li><p><strong>scripts 1 Regression Spot Check</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__1_Regression_SpotCheck.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__1_Regression_SpotCheck.ipynb">GitHub</a></p></li>
+<li><p><strong>scripts 1a Advanced Pipelines Regression</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__1a_AdvancedPipelines_Regression.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__1a_AdvancedPipelines_Regression.ipynb">GitHub</a></p></li>
+<li><p><strong>scripts 2 Classification Spot Check and Pipelines</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__2_Classification_SpotCheck_and_Pipelines.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__2_Classification_SpotCheck_and_Pipelines.ipynb">GitHub</a></p></li>
+<li><p><strong>scripts 2a Pipelines Grid Search Classification</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__2a_Pipelines_GridSearch_Classification.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__2a_Pipelines_GridSearch_Classification.ipynb">GitHub</a></p></li>
+<li><p><strong>scripts 3 Hyperparameter Tuning Widgets</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__3_HyperparameterTuning_Widgets.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module2/scripts__3_HyperparameterTuning_Widgets.ipynb">GitHub</a></p></li>
+</ul>
+</div>
+<p>This chapter is about building models you can <strong>trust</strong> and <strong>explain</strong>. First we deal with the data problems that quietly wreck models (imbalance), then we tune hyperparameters <em>honestly</em> with cross-validation and pipelines, and finally we crack the black box open with model-agnostic interpretability.</p>
+<section id="imbalanced-data-and-sampling">
+<h2>2.1 Imbalanced data and sampling<a class="headerlink" href="#imbalanced-data-and-sampling" title="Link to this heading">#</a></h2>
+<p>Real classification targets are often <strong>imbalanced</strong> — far more zeros than ones (sensor failures, fraud, rare disease). A greedy model just predicts the majority class and scores 90% accuracy while being <strong>useless</strong> (it can’t beat predicting “everything is normal”). The fix is <strong>sampling</strong> to balance the classes:</p>
+<ul class="simple">
+<li><p><strong>Undersample</strong> the majority (throw away some zeros).</p></li>
+<li><p><strong>Oversample</strong> the minority (duplicate the ones).</p></li>
+<li><p><strong>SMOTE</strong> — <em>synthesize</em> new minority examples by interpolating between real ones; <strong>SMOTENC</strong> handles mixed numeric/categorical data.</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Resample the TRAINING partition ONLY</p>
+<p>SMOTE and over/under-sampling touch the <strong>training</strong> data only. The <strong>validation and test</strong> sets must keep the <strong>original, real-world class distribution</strong> — otherwise you’re scoring your model on synthetic data, which tells you nothing about reality. This is the single most common way students invalidate their own results.</p>
+</div>
+<p>And don’t report one accuracy number — <strong>repeat</strong> the sampling-and-fitting many times and report the <strong>distribution</strong>: mean, standard deviation, and a confidence interval (“accuracy was 88–94% (95% CI), mean 92%, SD 2%”). A range is an honest answer; a single number is a lucky one.</p>
+</section>
+<section id="cross-validation">
+<h2>2.2 Cross-validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h2>
+<p>A single train/test split is one roll of the dice. <strong>k-fold cross-validation</strong> splits the training data into <em>k</em> folds, trains on <span class="math notranslate nohighlight">\(k-1\)</span> and validates on the held-out fold, rotating through all <em>k</em> — so every row gets a turn as validation. <strong>Repeated k-fold</strong> does this several times with different shuffles; <strong>LOOCV</strong> (leave-one-out) and <strong>LOGOCV</strong> (leave-one-<em>group</em>-out) are extremes for small or grouped data. CV gives you that <em>distribution</em> of scores, and — crucially — you tune hyperparameters <strong>on the cross-validated training folds</strong>, never on the test set.</p>
+</section>
+<section id="spot-checking-pipelines-and-grid-search">
+<h2>2.3 Spot-checking, pipelines, and grid search<a class="headerlink" href="#spot-checking-pipelines-and-grid-search" title="Link to this heading">#</a></h2>
+<p>Before tuning anything, <strong>spot-check</strong>: throw a handful of default models at the problem to see whether the data has <em>any</em> signal worth modeling. If nothing beats the baseline, no amount of tuning will save you.</p>
+<p>Then tune properly — and tune <strong>inside a pipeline</strong> so every preprocessing step is refit within each CV fold (no leakage). A <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong> chains preprocessing and model into one object; <strong><code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code></strong> searches hyperparameter combinations with cross-validation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scl&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+                 <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)),</span>                      <span class="c1"># optional dimensionality reduction</span>
+                 <span class="p">(</span><span class="s1">&#39;clf&#39;</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))])</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span>
+                    <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;clf__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+                                <span class="s1">&#39;clf__max_depth&#39;</span><span class="p">:</span>   <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span>
+                    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>          <span class="c1"># scaler+PCA refit inside every fold — no leakage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Why a pipeline, not just a script?</p>
+<p>A pipeline guarantees the <strong>scaler is fit on the training folds only</strong> during cross-validation — do it by hand and you’ll eventually leak test information into your scaling and never know. As datasets grow, beyond grid search you can use <strong>Optuna</strong> or <strong>autoML</strong> to search smarter; but the pipeline is the non-negotiable foundation that keeps the search honest.</p>
+</div>
+</section>
+<section id="explainable-ai">
+<h2>2.4 Explainable AI<a class="headerlink" href="#explainable-ai" title="Link to this heading">#</a></h2>
+<p>A tuned model that nobody understands is a liability. Two <strong>model-agnostic</strong> tools open any black box:</p>
+<p><strong>Permutation importance.</strong> Shuffle one feature’s column in the <strong>test</strong> set, leave the rest intact, and re-score. If shuffling crime rate tanks the <span class="math notranslate nohighlight">\(R^2\)</span>, crime was important; if nothing changes, it wasn’t. It directly measures <em>how much the model relies on each feature</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutation_importance</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># r.importances_mean ranks features by how much shuffling each one hurts performance</span>
+</pre></div>
+</div>
+<p><strong>Partial dependence plots (PDPs).</strong> Take a feature (say crime), sweep it across its range while holding the other features fixed, and re-predict — repeat for every row to get hundreds of <strong>individual conditional expectation (ICE)</strong> curves, then <strong>average</strong> them. The result shows <em>how the model’s prediction responds</em> to that feature: linear, nonlinear, flat, a cliff.</p>
+<p>Permutation importance and PDPs are <strong>global</strong> — one story for the whole dataset. The next two tools go <strong>local</strong>: they explain a <em>single</em> prediction.</p>
+<p><strong>SHAP — fair credit from game theory.</strong> For one prediction, how much did <em>each</em> feature push it above or below the baseline <span class="math notranslate nohighlight">\(E[f(x)]\)</span>? SHAP borrows the <strong>Shapley value</strong> (Nobel-winning cooperative game theory): a feature’s contribution is its <strong>average marginal contribution across every coalition</strong> of the other features. It is the <em>only</em> attribution that satisfies <strong>local accuracy</strong> (the contributions sum exactly to prediction − baseline), <strong>symmetry</strong>, <strong>dummy</strong>, and <strong>additivity</strong> all at once. We build it <strong>from scratch</strong> — enumerating coalitions and weighting marginal contributions by hand — before checking it against the <code class="docutils literal notranslate"><span class="pre">shap</span></code> library. Average the absolute SHAP values over many rows and you recover a permutation-importance-style ranking; scatter them and you recover a PDP. SHAP <em>unifies</em> the chapter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SHAP from scratch: average marginal contribution over all coalitions S</span>
+<span class="n">phi_i</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span> <span class="n">weight</span><span class="p">(</span><span class="o">|</span><span class="n">S</span><span class="o">|</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span><span class="p">(</span><span class="n">S</span> <span class="o">|</span> <span class="p">{</span><span class="n">i</span><span class="p">})</span> <span class="o">-</span> <span class="n">v</span><span class="p">(</span><span class="n">S</span><span class="p">))</span> <span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">subsets_without</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">)</span>
+<span class="c1"># where v(S) marginalizes &quot;absent&quot; features over a background sample, and</span>
+<span class="c1"># weight(s, p) = s! (p - s - 1)! / p!  -&gt;  the fraction of orderings with S before i</span>
+</pre></div>
+</div>
+<p><strong>LIME — a local linear surrogate.</strong> Any curvy model, viewed up close, looks almost straight. LIME <strong>perturbs</strong> the row you want to explain, asks the black box for predictions on that cloud of nearby points, <strong>weights</strong> them by closeness (a kernel of width <span class="math notranslate nohighlight">\(\sigma\)</span>), and fits a <strong>weighted linear regression</strong>. Its coefficients <em>are</em> the local explanation — on a 1-D curve they literally recover the <strong>derivative</strong>. It’s fast and intuitive, but the <strong>kernel width</strong> is a real knob: too wide and the “local” story drifts global, so always report it and check the surrogate’s local <span class="math notranslate nohighlight">\(R^2\)</span>. SHAP and LIME answer the same question differently — when they <strong>agree on direction</strong>, trust the story.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># LIME from scratch</span>
+<span class="n">Z</span>  <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">noise</span>                          <span class="c1"># 1) perturb into a neighborhood</span>
+<span class="n">yz</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>                    <span class="c1"># 2) query the black box</span>
+<span class="n">w</span>  <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dist</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 3) weight by closeness</span>
+<span class="n">coefs</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">yz</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">coef_</span>   <span class="c1"># 4) local importances</span>
+</pre></div>
+</div>
+<p>Finally, <strong>autoML</strong> (e.g., <strong>TPOT</strong>) automates the whole search — preprocessing, model choice, and tuning — into one pipeline. It’s a great way to set a strong benchmark, as long as you keep the train-only and explainability discipline from this chapter.</p>
+</section>
+<section id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Key takeaways</p>
+<ul class="simple">
+<li><p><strong>Imbalanced data</strong> breaks accuracy; rebalance with <strong>under/over-sampling or SMOTE</strong> — on <strong>train only</strong> — and report a <strong>distribution</strong> (mean/SD/CI), not one number.</p></li>
+<li><p><strong>Cross-validation</strong> (k-fold, repeated, LOOCV/LOGOCV) gives honest, distributional scores and is where you tune.</p></li>
+<li><p><strong>Spot-check</strong> for signal, then tune inside a <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong> with <strong><code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code></strong> (or Optuna/autoML) to prevent leakage.</p></li>
+<li><p>Open the black box with <strong>permutation importance</strong> (shuffle a feature, watch performance) and <strong>PDPs</strong> (averaged ICE curves) — both <strong>global</strong>.</p></li>
+<li><p>Explain a <strong>single</strong> prediction with <strong>SHAP</strong> (fair, additive credit from game theory; built from scratch over coalitions) and <strong>LIME</strong> (a weighted local linear surrogate; mind the kernel width). When they <strong>agree</strong>, trust the story.</p></li>
+<li><p><strong>autoML/TPOT</strong> automates the search — a strong benchmark, with the same discipline.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lecture-key-points">
+<h2>📌 Lecture key points<a class="headerlink" href="#lecture-key-points" title="Link to this heading">#</a></h2>
+<p><em>Distilled takeaways from the video lectures behind this chapter — click each to expand.</em></p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Majority Undersampling</p>
+<ul class="simple">
+<li><p>Imbalanced data breaks accuracy (greedy model predicts the majority).</p></li>
+<li><p><strong>Undersample</strong> the majority class to balance.</p></li>
+<li><p>Repeat sampling → report metrics as a <strong>distribution</strong> (mean/SD/95% CI).</p></li>
+<li><p>Loses data but simple and fast.</p></li>
+<li><p>A03 leverages this.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Oversample Minority</p>
+<ul class="simple">
+<li><p><strong>Oversample</strong> (duplicate) the minority class to balance.</p></li>
+<li><p>Keeps all majority data.</p></li>
+<li><p>Risk of overfitting duplicated points.</p></li>
+<li><p>Compare against undersampling.</p></li>
+<li><p>Part of the sampling toolkit.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">SMOTE — Pt 1 &amp; Pt 2 (numeric only)</p>
+<ul class="simple">
+<li><p><strong>SMOTE</strong> <em>synthesizes</em> new minority examples by interpolating between real ones.</p></li>
+<li><p>Pt 2: numeric-only feature handling.</p></li>
+<li><p>More principled than naive oversampling.</p></li>
+<li><p><strong>Apply on the TRAINING partition only.</strong></p></li>
+<li><p>Validation/test keep the original distribution.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">SMOTENC</p>
+<ul class="simple">
+<li><p><strong>SMOTENC</strong> handles <strong>mixed numeric + categorical</strong> features.</p></li>
+<li><p>Same train-only rule.</p></li>
+<li><p>Choose the right SMOTE variant for your data types.</p></li>
+<li><p>Avoids breaking categorical encodings.</p></li>
+<li><p>Completes the synthetic-sampling options.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">SMOTE with ML</p>
+<ul class="simple">
+<li><p>Integrate SMOTE <strong>inside</strong> the ML workflow (within CV folds).</p></li>
+<li><p>Prevents leakage from resampling the whole set.</p></li>
+<li><p>Report error metrics as a distribution (CI).</p></li>
+<li><p>“Accuracy was 88–94% (95% CI), mean 92, SD 2.”</p></li>
+<li><p>Sampling + modeling combined honestly.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">CV Pt 1 (K-fold, repeated k-fold)</p>
+<ul class="simple">
+<li><p><strong>k-fold CV</strong>: rotate folds so every row is validated once.</p></li>
+<li><p><strong>Repeated k-fold</strong> adds shuffles for a richer score distribution.</p></li>
+<li><p>Tune hyperparameters on the <strong>CV training folds</strong>, never the test set.</p></li>
+<li><p>A single split is one roll of the dice.</p></li>
+<li><p>Foundation for honest tuning.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">CV Pt 2 (LOOCV, LOGOCV)</p>
+<ul class="simple">
+<li><p><strong>LOOCV</strong> (leave-one-out) for very small data.</p></li>
+<li><p><strong>LOGOCV</strong> (leave-one-group-out) for grouped data.</p></li>
+<li><p>Extremes of the k-fold idea.</p></li>
+<li><p>Choose CV scheme to match data structure.</p></li>
+<li><p>Avoids group leakage.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to “Spotcheck” Models and Pipelines</p>
+<ul class="simple">
+<li><p><strong>Spot-check</strong>: throw several default models to see if the data has <strong>any</strong> signal.</p></li>
+<li><p>If nothing beats the baseline, tuning won’t save you.</p></li>
+<li><p>Introduces <strong><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></strong> (chain preprocessing + model).</p></li>
+<li><p>Pipelines prevent leakage inside CV.</p></li>
+<li><p>Sets up grid search.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Pipelines with preprocessing and LIGHT hyperparameter tuning</p>
+<ul class="simple">
+<li><p>Wrap <strong>scaler (+PCA) + model</strong> in a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>.</p></li>
+<li><p>Pipeline refits preprocessing <strong>inside each fold</strong> (no leakage).</p></li>
+<li><p>Start with light tuning to get a feel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clf__param</span></code> syntax for nested params.</p></li>
+<li><p>Reproducible, leakage-safe tuning.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Ensemble Methods and Spotchecking, then GridSearchCV</p>
+<ul class="simple">
+<li><p>Spot-check ensembles (RF, GBM) for signal.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code></strong> searches hyperparameter combos with CV.</p></li>
+<li><p>Pick <code class="docutils literal notranslate"><span class="pre">best_params_</span></code>; score with a chosen metric.</p></li>
+<li><p>Ensembles often strong baselines.</p></li>
+<li><p>Grid search = exhaustive but honest.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Advanced Pipelines (pipelines + hyperparameters together)</p>
+<ul class="simple">
+<li><p>Tune <strong>preprocessing and model hyperparameters simultaneously</strong>.</p></li>
+<li><p>One pipeline object searched by GridSearchCV.</p></li>
+<li><p>Cleaner, leakage-safe, reproducible.</p></li>
+<li><p>Scales to many preprocessing choices.</p></li>
+<li><p>The professional pattern.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Advanced Pipelines for Classification Models</p>
+<ul class="simple">
+<li><p>Same advanced-pipeline pattern for classification.</p></li>
+<li><p>Spot-check + grid search classifiers in pipelines.</p></li>
+<li><p>Evaluate with confusion-matrix metrics.</p></li>
+<li><p>Handle imbalance within the pipeline.</p></li>
+<li><p>Reproducible classification tuning.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Introduction to Permutation Importance</p>
+<ul class="simple">
+<li><p><strong>Shuffle one feature’s column in the test set</strong>, keep others, re-score.</p></li>
+<li><p>Big drop in R² ⇒ that feature was <strong>important</strong>.</p></li>
+<li><p>Model-agnostic interpretability.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">permutation_importance(...,</span> <span class="pre">n_repeats=...)</span></code>.</p></li>
+<li><p>Ranks features by reliance.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Permutation importance as storytelling and variable selection</p>
+<ul class="simple">
+<li><p>Use permutation importance to <strong>explain</strong> and to <strong>select variables</strong>.</p></li>
+<li><p>Tell a clear story about what drives predictions.</p></li>
+<li><p>Drop low-importance features to simplify.</p></li>
+<li><p>Repeated permutation for stability.</p></li>
+<li><p>Communicates model behavior to stakeholders.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to Partial Dependence Plots (PDPs)</p>
+<ul class="simple">
+<li><p><strong>PDP</strong> = average of per-row <strong>ICE</strong> curves: sweep one feature, hold others fixed, re-predict.</p></li>
+<li><p>Shows <strong>how</strong> the model responds to a feature (linear/nonlinear/flat/cliff).</p></li>
+<li><p>Model-agnostic.</p></li>
+<li><p>Complements permutation importance (which feature vs how it’s used).</p></li>
+<li><p>Built on the test partition.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Clunky PDPs and linear vs. nonlinear responses</p>
+<ul class="simple">
+<li><p>PDPs reveal <strong>nonlinear</strong> feature responses a linear model would miss.</p></li>
+<li><p>“Clunky” steps show discretized sweeps.</p></li>
+<li><p>Interpret shapes for business insight.</p></li>
+<li><p>Caveats when features are correlated.</p></li>
+<li><p>Deepens xAI intuition.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">SHAP values from scratch</p>
+<ul class="simple">
+<li><p><strong>SHAP</strong> explains <strong>one</strong> prediction: each feature’s push above/below the baseline <span class="math notranslate nohighlight">\(E[f(x)]\)</span>.</p></li>
+<li><p>Rooted in <strong>game theory</strong> — a feature’s value is its <strong>average marginal contribution over all coalitions</strong>.</p></li>
+<li><p><strong>Local accuracy</strong>: baseline + Σ SHAP = the prediction, exactly (plus symmetry, dummy, additivity).</p></li>
+<li><p>Built <strong>from scratch</strong> by enumerating coalitions; absent features marginalized over a background sample.</p></li>
+<li><p>mean|SHAP| recovers permutation importance; a SHAP dependence plot recovers the PDP.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">LIME from scratch</p>
+<ul class="simple">
+<li><p><strong>LIME</strong> fits a simple <strong>local linear surrogate</strong> to the black box around one prediction.</p></li>
+<li><p>Recipe: <strong>perturb → predict → weight by closeness → fit a weighted line → read coefficients</strong>.</p></li>
+<li><p>On a 1-D curve it recovers the <strong>local slope (derivative)</strong> — verified by hand.</p></li>
+<li><p>The <strong>kernel width</strong> is the master knob; check the local <span class="math notranslate nohighlight">\(R^2\)</span> for fidelity.</p></li>
+<li><p>Fast and intuitive vs SHAP’s fairness guarantees — when they agree on direction, trust the story.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">TPOT and autoML</p>
+<ul class="simple">
+<li><p><strong>autoML (TPOT)</strong> automates preprocessing + model choice + tuning into one pipeline.</p></li>
+<li><p>Great for a strong <strong>benchmark</strong>.</p></li>
+<li><p>Keep the train-only and explainability discipline.</p></li>
+<li><p>Searches smarter than brute grid search.</p></li>
+<li><p>A04 leverages this.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./m2_tuning_xai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../m1_tooltime/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1 — Tool Time</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../m3_operational_ml/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3 — Webscraping &amp; Operational ML</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imbalanced-data-and-sampling">2.1 Imbalanced data and sampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">2.2 Cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spot-checking-pipelines-and-grid-search">2.3 Spot-checking, pipelines, and grid search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explainable-ai">2.4 Explainable AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

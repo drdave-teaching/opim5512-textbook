@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 — Text Analytics &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm5_text/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Chapter 4 — Time Series Modeling" href="../m4_timeseries/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/m5_text/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 — Text Analytics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-text-to-numbers">5.1 From text to numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretrained-transformers-with-hugging-face">5.2 Pretrained transformers with Hugging Face</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-topic-modeling">5.3 Embeddings and topic modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-text-analytics">
+<h1>Chapter 5 — Text Analytics<a class="headerlink" href="#chapter-5-text-analytics" title="Link to this heading">#</a></h1>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">🔗 Notebooks for this chapter</p>
+<p>Open in Colab and <strong>Runtime → Run all</strong> — data loads from a stable link, nothing to upload.</p>
+<ul class="simple">
+<li><p><strong>NLP Pandas Hugging Face (2)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/NLP_Pandas_HuggingFace%20(2).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/NLP_Pandas_HuggingFace%20(2).ipynb">GitHub</a></p></li>
+<li><p><strong>Text Analytics Storms ML</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/Text_Analytics_Storms_ML.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/Text_Analytics_Storms_ML.ipynb">GitHub</a></p></li>
+<li><p><strong>Topic Modeling (1)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/TopicModeling%20(1).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module5/TopicModeling%20(1).ipynb">GitHub</a></p></li>
+</ul>
+</div>
+<p>The last frontier is <strong>unstructured text</strong> — the reviews, tickets, and documents that don’t fit in a spreadsheet. This chapter takes you from classic NLP pipelines you can build by hand to state-of-the-art <strong>pretrained transformers</strong> you can run in a few lines, and finishes with <strong>embeddings</strong> that reveal hidden structure in a pile of documents.</p>
+<section id="from-text-to-numbers">
+<h2>5.1 From text to numbers<a class="headerlink" href="#from-text-to-numbers" title="Link to this heading">#</a></h2>
+<p>A model can’t read words, only numbers, so we <strong>preprocess</strong> first — lowercase, strip punctuation and non-letters, remove stop words, optionally <strong>stem/tokenize</strong>. Then we vectorize. The simplest representation is <strong>bag-of-words</strong> (count each word), and its smarter cousin is <strong>TF-IDF</strong>, which up-weights words that are distinctive to a document and down-weights words common to all of them:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{tfidf}(t,d) = \text{tf}(t,d)\,\times\,\log\frac{N}{1+\text{df}(t)}
+\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_text</span><span class="p">)</span>     <span class="c1"># fit on TRAIN only (the rule never changes)</span>
+</pre></div>
+</div>
+<p><strong>n-grams</strong> (<code class="docutils literal notranslate"><span class="pre">ngram_range</span></code>) capture short phrases — “not good” is very different from “good” — but every added gram multiplies the columns, so watch the <strong>dimensionality</strong> (you can end up with more columns than rows). A TF-IDF matrix feeds straight into any classifier from Chapter 1; it’s a strong, cheap baseline.</p>
+</section>
+<section id="pretrained-transformers-with-hugging-face">
+<h2>5.2 Pretrained transformers with Hugging Face<a class="headerlink" href="#pretrained-transformers-with-hugging-face" title="Link to this heading">#</a></h2>
+<p>Between brittle regex and a full LLM API sits a sweet spot: the <strong>encoder/decoder transformer</strong>, downloadable from <strong>Hugging Face</strong> and run <strong>locally</strong> — a big win for <strong>data privacy</strong> (your text never leaves your machine). With a few lines you get capabilities that used to be research projects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="n">summarizer</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;summarization&quot;</span><span class="p">)</span>
+<span class="n">summarizer</span><span class="p">(</span><span class="n">long_document</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>                      <span class="c1"># document summarization</span>
+
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;zero-shot-classification&quot;</span><span class="p">)</span>             <span class="c1"># no training data needed!</span>
+<span class="n">classifier</span><span class="p">(</span><span class="s2">&quot;The flight was delayed three hours.&quot;</span><span class="p">,</span>
+           <span class="n">candidate_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;complaint&quot;</span><span class="p">,</span> <span class="s2">&quot;praise&quot;</span><span class="p">,</span> <span class="s2">&quot;question&quot;</span><span class="p">])</span>
+
+<span class="n">emotion</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;text-classification&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;...emotion...&quot;</span><span class="p">)</span>
+<span class="n">emotion</span><span class="p">(</span><span class="s2">&quot;I can&#39;t believe how great this was!&quot;</span><span class="p">)</span>               <span class="c1"># emotion detection</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Zero-shot is the magic word</p>
+<p><strong>Zero-shot classification</strong> labels text into categories you invent <strong>at inference time</strong>, with <strong>no training examples</strong>. Hand the model your candidate labels and a sentence, and it scores them. For a huge class of “just sort these comments into buckets” problems, this replaces an entire labeling-and-training project with three lines.</p>
+</div>
+</section>
+<section id="embeddings-and-topic-modeling">
+<h2>5.3 Embeddings and topic modeling<a class="headerlink" href="#embeddings-and-topic-modeling" title="Link to this heading">#</a></h2>
+<p>The deepest representation is the <strong>embedding</strong>: a pretrained model maps each document to a dense vector (e.g. <strong>1×384</strong>) where <strong>semantic similarity = geometric closeness</strong>. Documents about the same topic land near each other, even if they share no exact words. Similarity is the <strong>cosine</strong> of the angle between vectors:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{sim}(\mathbf{a},\mathbf{b}) = \frac{\mathbf{a}\cdot\mathbf{b}}{\lVert\mathbf{a}\rVert\,\lVert\mathbf{b}\rVert}
+\]</div>
+<p>With embeddings you can do <strong>unsupervised topic modeling</strong>: cluster the document vectors with <strong>k-means</strong> to discover themes nobody labeled, then <strong>reduce dimensions</strong> for visualization. A 384-dimensional vector is impossible to plot, so project it to 2-D with <strong>PCA</strong> (linear) or <strong>UMAP</strong> (nonlinear, better at preserving local neighborhoods):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">umap</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>   <span class="c1"># topics</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>                    <span class="c1"># or umap.UMAP()</span>
+<span class="c1"># scatter coords, colored by label -&gt; a map of your document collection</span>
+</pre></div>
+</div>
+<p>The payoff is a <strong>map of your corpus</strong> — clusters you can read as topics, outliers you can investigate, structure you never had to label. Simple word counts have evolved into genuinely semantic models, and you can now point them at real problems.</p>
+</section>
+<section id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Key takeaways</p>
+<ul class="simple">
+<li><p>Preprocess text, then vectorize with <strong>bag-of-words / TF-IDF</strong>; <strong>n-grams</strong> add phrase context but inflate dimensionality.</p></li>
+<li><p><strong>Hugging Face</strong> transformers run <strong>locally</strong> (privacy) and do <strong>summarization, zero-shot classification, and emotion detection</strong> in a few lines.</p></li>
+<li><p><strong>Zero-shot</strong> classifies into labels you invent at inference time — no training data.</p></li>
+<li><p><strong>Embeddings</strong> place documents in a semantic space (similarity = <strong>cosine</strong>); <strong>k-means</strong> finds topics and <strong>PCA/UMAP</strong> visualize them.</p></li>
+<li><p>The arc of the chapter: <strong>counts → TF-IDF → pretrained transformers → embeddings</strong> — simple representations evolving into semantic ones.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lecture-key-points">
+<h2>📌 Lecture key points<a class="headerlink" href="#lecture-key-points" title="Link to this heading">#</a></h2>
+<p><em>Distilled takeaways from the video lectures behind this chapter — click each to expand.</em></p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to Text Analytics for ML/DL models with NLTK</p>
+<ul class="simple">
+<li><p>Text must become numbers; <strong>NLTK</strong> for classic NLP.</p></li>
+<li><p>Leverage frequency/occurrence/co-occurrence of words.</p></li>
+<li><p>BoW → TF-IDF progression.</p></li>
+<li><p>Corpus vs document.</p></li>
+<li><p>Foundation for A10.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to the Hail DF + preprocessing + word cloud</p>
+<ul class="simple">
+<li><p>Preprocess: <strong>lowercase</strong>, strip funky characters.</p></li>
+<li><p>Make a <strong>word cloud</strong> for quick EDA.</p></li>
+<li><p>Storm (hail) narratives as the corpus.</p></li>
+<li><p>Reusable script (name things generically).</p></li>
+<li><p>Set up for tokenizing/vectorizing.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Tokenizer (and the flood_df)</p>
+<ul class="simple">
+<li><p><strong>Tokenize</strong> text into indexed words.</p></li>
+<li><p>Remove stop words; optional stemming (when too many words).</p></li>
+<li><p>Reapply the same pipeline to a second dataset (flood_df).</p></li>
+<li><p>Careful, consistent naming = reusable code.</p></li>
+<li><p>Feeds BoW/TF-IDF.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Bag of Words</p>
+<ul class="simple">
+<li><p><strong>BoW</strong> counts word occurrences (order-free).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> builds the matrix.</p></li>
+<li><p>Experiment with <strong>unigrams/bigrams/trigrams</strong>.</p></li>
+<li><p>Larger n → bigger feature space (<strong>dimensionality</strong> risk: more columns than rows).</p></li>
+<li><p>Strong, fast baseline (note: BoW taught <strong>before</strong> TF-IDF).</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">TF-IDF and wrapping up</p>
+<ul class="simple">
+<li><p><strong>TF-IDF</strong> up-weights distinctive words, down-weights ubiquitous ones.</p></li>
+<li><p>Feed into any classifier; <strong>fit on train only</strong>.</p></li>
+<li><p>n-grams add phrase context at a dimensionality cost.</p></li>
+<li><p>Compare BoW vs TF-IDF.</p></li>
+<li><p>Closes the classic-NLP thread.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to HuggingFace and Summarization</p>
+<ul class="simple">
+<li><p><strong>Hugging Face</strong> pretrained transformers run <strong>locally</strong> (data-privacy win).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pipeline(&quot;summarization&quot;)</span></code> summarizes documents in a few lines.</p></li>
+<li><p>Encoder/decoder transformers = the sweet spot between regex and full LLMs.</p></li>
+<li><p>Require input before generating.</p></li>
+<li><p>State-of-the-art with minimal code.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Customizing the summarizer</p>
+<ul class="simple">
+<li><p>Tune <code class="docutils literal notranslate"><span class="pre">max_length</span></code>/parameters for better summaries.</p></li>
+<li><p>Pick the right pretrained model.</p></li>
+<li><p>Evaluate summary quality.</p></li>
+<li><p>Run on your dataset locally.</p></li>
+<li><p>Practical inference tuning.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Zero-shot learning and sentiment analysis with HuggingFace</p>
+<ul class="simple">
+<li><p><strong>Zero-shot classification</strong> = labels you invent at inference time, <strong>no training data</strong>.</p></li>
+<li><p>Hand the model candidate labels + text; it scores them.</p></li>
+<li><p>Sentiment/emotion detection in a few lines.</p></li>
+<li><p>Replaces a whole label-and-train project for many tasks.</p></li>
+<li><p>Powerful for “sort these comments into buckets.”</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro on Topic Modeling and Embedding</p>
+<ul class="simple">
+<li><p><strong>Embedding</strong> = dense vector where <strong>semantic similarity = geometric closeness</strong>.</p></li>
+<li><p>Topic modeling = <strong>k-means cluster</strong> the document vectors (unsupervised).</p></li>
+<li><p>Discover themes nobody labeled.</p></li>
+<li><p>Similarity via <strong>cosine</strong>.</p></li>
+<li><p>Embeddings beat counts for meaning.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Creating Embeddings for Text Data</p>
+<ul class="simple">
+<li><p>Use a pretrained model to map each document to a vector (e.g., <strong>1×384</strong>).</p></li>
+<li><p>Documents about the same topic land near each other.</p></li>
+<li><p>Even with no shared exact words.</p></li>
+<li><p>Feed embeddings to clustering/classification.</p></li>
+<li><p>The deepest text representation in the course.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Simple visualizations of 1×384 embeddings</p>
+<ul class="simple">
+<li><p>Raw 384-D vectors can’t be plotted directly.</p></li>
+<li><p>Visualize structure/clusters qualitatively.</p></li>
+<li><p>Motivates dimensionality reduction.</p></li>
+<li><p>Inspect outliers and groupings.</p></li>
+<li><p>Bridge to PCA/UMAP.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">From 1×384 to 1×2 with PCA and UMAP</p>
+<ul class="simple">
+<li><p><strong>PCA</strong> (linear) and <strong>UMAP</strong> (nonlinear) project embeddings to <strong>2-D</strong> for plotting.</p></li>
+<li><p>UMAP better preserves local neighborhoods.</p></li>
+<li><p>Scatter colored by k-means label = a <strong>map of your corpus</strong>.</p></li>
+<li><p>Reveal topics, outliers, structure without labels.</p></li>
+<li><p>Counts → TF-IDF → transformers → embeddings: representations grow semantic.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./m5_text"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../m4_timeseries/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 — Time Series Modeling</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-text-to-numbers">5.1 From text to numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pretrained-transformers-with-hugging-face">5.2 Pretrained transformers with Hugging Face</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-topic-modeling">5.3 Embeddings and topic modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

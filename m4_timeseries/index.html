@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 — Time Series Modeling &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm4_timeseries/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5 — Text Analytics" href="../m5_text/index.html" />
+    <link rel="prev" title="Chapter 3 — Webscraping &amp; Operational ML" href="../m3_operational_ml/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/m4_timeseries/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 — Time Series Modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-and-resampling">4.1 Cleaning and resampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering-for-sequences">4.2 Feature engineering for sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-features-with-tsfresh">4.3 Automated features with TSFresh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-detection">4.4 Anomaly detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-time-series-modeling">
+<h1>Chapter 4 — Time Series Modeling<a class="headerlink" href="#chapter-4-time-series-modeling" title="Link to this heading">#</a></h1>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">🔗 Notebooks for this chapter</p>
+<p>Open in Colab and <strong>Runtime → Run all</strong> — data loads from a stable link, nothing to upload.</p>
+<ul class="simple">
+<li><p><strong>EDA Time Series Financial</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/EDA_TimeSeries_Financial.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/EDA_TimeSeries_Financial.ipynb">GitHub</a></p></li>
+<li><p><strong>Missing Data Weather</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/Missing_Data_Weather.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/Missing_Data_Weather.ipynb">GitHub</a></p></li>
+<li><p><strong>TSFresh Example BDLFive Years (3)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TSFresh_Example_BDLFiveYears%20(3).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TSFresh_Example_BDLFiveYears%20(3).ipynb">GitHub</a></p></li>
+<li><p><strong>The Window Method Lags</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TheWindowMethod_Lags.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module4/TheWindowMethod_Lags.ipynb">GitHub</a></p></li>
+</ul>
+</div>
+<p>Time series is data where <strong>order matters</strong> and <strong>yesterday helps predict today</strong> — hourly temperature, daily prices, sensor streams. This chapter turns raw temporal data into reliable, interpretable, production-ready models, using ordinary ML (not deep learning) plus a powerful automated feature-engineering library.</p>
+<section id="cleaning-and-resampling">
+<h2>4.1 Cleaning and resampling<a class="headerlink" href="#cleaning-and-resampling" title="Link to this heading">#</a></h2>
+<p>Real time series are missing observations and arrive at irregular timestamps. First <strong>resample</strong> to a consistent resolution (hourly, daily, monthly) and <strong>fill the gaps</strong> thoughtfully:</p>
+<ul class="simple">
+<li><p><strong>Forward fill</strong> (<code class="docutils literal notranslate"><span class="pre">ffill</span></code>) — carry the last known value forward (sensible for slow-moving readings).</p></li>
+<li><p><strong>Back fill</strong> (<code class="docutils literal notranslate"><span class="pre">bfill</span></code>) — pull the next value backward.</p></li>
+<li><p><strong>Linear interpolation</strong> — draw a straight line across the gap.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">hourly</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;1H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>            <span class="c1"># consistent hourly grid</span>
+<span class="n">hourly</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hourly</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>   <span class="c1"># fill gaps</span>
+</pre></div>
+</div>
+<p>The choice of imputation is a modeling decision — compare strategies and see which preserves the signal, because a careless fill can invent patterns that aren’t there.</p>
+</section>
+<section id="feature-engineering-for-sequences">
+<h2>4.2 Feature engineering for sequences<a class="headerlink" href="#feature-engineering-for-sequences" title="Link to this heading">#</a></h2>
+<p>To let an ordinary ML model “see” time, you engineer <strong>time-aware features</strong>:</p>
+<ul class="simple">
+<li><p><strong>Lags</strong> — the value 1, 2, … <em>k</em> steps ago (<code class="docutils literal notranslate"><span class="pre">df['value'].shift(k)</span></code>).</p></li>
+<li><p><strong>Rolling statistics</strong> — moving average / std over a window (<code class="docutils literal notranslate"><span class="pre">df['value'].rolling(24).mean()</span></code>), which smooth noise and capture momentum.</p></li>
+<li><p><strong>Seasonal indicators</strong> — hour-of-day, day-of-week, month, to capture cycles.</p></li>
+</ul>
+<p>This is the <strong>window method</strong>: slide a window of length <em>k</em> across the series so each row’s features are the previous <em>k</em> values, and the target is the next value. Once it’s a flat table, <strong>any</strong> model works — random forest, gradient boosting, an <code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code> from Chapter 1.</p>
+<div class="warning admonition">
+<p class="admonition-title">The cardinal sin: leakage across time</p>
+<p>A time series must be split <strong>chronologically</strong> — train on the past, test on the future. <strong>Never</strong> shuffle a time series before splitting, and never compute a rolling feature that peeks at future rows. If a feature could only be known <em>after</em> the moment you’re predicting, it’s leakage, and your gorgeous test score is a fantasy. In production you only ever have the past.</p>
+</div>
+</section>
+<section id="automated-features-with-tsfresh">
+<h2>4.3 Automated features with TSFresh<a class="headerlink" href="#automated-features-with-tsfresh" title="Link to this heading">#</a></h2>
+<p>Hand-crafting lags and rolling stats is fine, but <strong>TSFresh</strong> automates it — extracting <em>hundreds</em> of physics-inspired features (autocorrelation, spectral statistics, entropy, peak counts…) from each sequence. The one requirement is shaping your data as <strong>sequences with an <code class="docutils literal notranslate"><span class="pre">id</span></code> per sequence and a <code class="docutils literal notranslate"><span class="pre">time</span></code> column</strong> to sort by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tsfresh</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_features</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">long_df</span><span class="p">,</span> <span class="n">column_id</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">column_sort</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>TSFresh shines on problems like <strong>robot-failure detection</strong>, where the right discriminating feature is some obscure signal statistic you’d never think to compute by hand. (And it has a strict select-features step so you <strong>don’t leak</strong> — respect it.)</p>
+</section>
+<section id="anomaly-detection">
+<h2>4.4 Anomaly detection<a class="headerlink" href="#anomaly-detection" title="Link to this heading">#</a></h2>
+<p>Not every time-series task is forecasting. <strong>Anomaly detection</strong> asks <em>which points are weird</em> — a fraud spike, a failing sensor, an outage. ML approaches learn what “normal” looks like and flag departures from it (distance from a moving baseline, isolation-based models, reconstruction error). It’s the same data-prep discipline — clean, resample, respect chronology — pointed at a different question.</p>
+</section>
+<section id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Key takeaways</p>
+<ul class="simple">
+<li><p>Time series have <strong>order</strong>; <strong>resample</strong> to a consistent grid and fill gaps (<strong>ffill/bfill/interpolate</strong>) deliberately.</p></li>
+<li><p>Engineer <strong>lags, rolling stats, and seasonal indicators</strong>; the <strong>window method</strong> flattens the series so any ML model works.</p></li>
+<li><p><strong>Split chronologically</strong> and never let a feature peek at the future — <strong>leakage</strong> is the cardinal sin.</p></li>
+<li><p><strong>TSFresh</strong> auto-extracts hundreds of features from <code class="docutils literal notranslate"><span class="pre">id</span></code>/<code class="docutils literal notranslate"><span class="pre">time</span></code>-shaped sequences (great for robot-failure-style problems).</p></li>
+<li><p><strong>Anomaly detection</strong> reframes the task to “what’s abnormal,” with the same prep discipline.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lecture-key-points">
+<h2>📌 Lecture key points<a class="headerlink" href="#lecture-key-points" title="Link to this heading">#</a></h2>
+<p><em>Distilled takeaways from the video lectures behind this chapter — click each to expand.</em></p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Introduction to EDA for Time Series Data</p>
+<ul class="simple">
+<li><p>Time series = order matters; <strong>yesterday helps predict today</strong>.</p></li>
+<li><p>EDA: plot the series, inspect trends/seasonality/gaps.</p></li>
+<li><p>Prepare data as sequences (id + time column).</p></li>
+<li><p>Watch for missing/irregular timestamps.</p></li>
+<li><p>Foundation for A09.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Grouping Data and Subplots</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">groupby</span></code></strong> + subplots to compare series/segments.</p></li>
+<li><p>Visualize multiple variables together.</p></li>
+<li><p>Spot patterns across groups.</p></li>
+<li><p>Clean plotting habits.</p></li>
+<li><p>EDA craft for temporal data.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Moving Averages and Momentum Trading</p>
+<ul class="simple">
+<li><p><strong>Moving averages</strong> smooth noise and capture momentum.</p></li>
+<li><p>Define your own vs built-in rolling functions.</p></li>
+<li><p>Evaluate with MAE/RMSE (RMSE sensitive to outliers).</p></li>
+<li><p>Momentum-trading framing (9- &amp; 21-day averages).</p></li>
+<li><p>Rolling features feed models.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Missing/Dirty Weather Data EDA — Pt 1 &amp; 2</p>
+<ul class="simple">
+<li><p>Real weather data is <strong>missing and dirty</strong>.</p></li>
+<li><p>Compare <strong>imputation strategies</strong> (ffill, bfill, interpolation) for time series.</p></li>
+<li><p>Imputation choice is a modeling decision (can invent patterns).</p></li>
+<li><p>Clean before feature engineering.</p></li>
+<li><p>Resample to a consistent grid.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Resampling to different time horizons</p>
+<ul class="simple">
+<li><p><strong>Resample</strong> to hourly/daily/monthly resolution (<code class="docutils literal notranslate"><span class="pre">df.resample(...)</span></code>).</p></li>
+<li><p>Aggregate (mean/sum) to the target horizon.</p></li>
+<li><p>Fill gaps after resampling.</p></li>
+<li><p>Match resolution to the prediction task.</p></li>
+<li><p>Consistent grid = honest features.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to the Window Method</p>
+<ul class="simple">
+<li><p><strong>Window method</strong>: previous <em>k</em> values become features (lags) for the next value.</p></li>
+<li><p>Flattens the series → <strong>any</strong> ML model works.</p></li>
+<li><p>Slide the window across the series.</p></li>
+<li><p>Tune the look-back length.</p></li>
+<li><p>The simplest way to model sequences.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Interpretability xAI and the Window Method</p>
+<ul class="simple">
+<li><p>Apply <strong>permutation importance / PDPs</strong> to window-method models.</p></li>
+<li><p>Understand which lags/features drive predictions.</p></li>
+<li><p>xAI carries over from Module 2.</p></li>
+<li><p>Interpret time-dependent features.</p></li>
+<li><p>Trust + explain temporal models.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro TSFresh and Robot Failures</p>
+<ul class="simple">
+<li><p><strong>TSFresh</strong> auto-extracts <strong>hundreds of physics-inspired features</strong> from sequences.</p></li>
+<li><p>Needs data shaped as sequences with an <strong><code class="docutils literal notranslate"><span class="pre">id</span></code></strong> and a <strong><code class="docutils literal notranslate"><span class="pre">time</span></code></strong> column.</p></li>
+<li><p>Great for <strong>robot-failure</strong> detection (obscure signal stats matter).</p></li>
+<li><p>Replaces manual lag/rolling engineering.</p></li>
+<li><p>Then select features to avoid bloat.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">TSFresh in Action — Pt 1 (create features) &amp; Pt 2 (don’t leak!)</p>
+<ul class="simple">
+<li><p>Pt 1: <code class="docutils literal notranslate"><span class="pre">extract_features(df,</span> <span class="pre">column_id,</span> <span class="pre">column_sort)</span></code>.</p></li>
+<li><p>Pt 2: respect the <strong>feature-selection / don’t-leak</strong> step.</p></li>
+<li><p>Never let features peek at the future.</p></li>
+<li><p>Split <strong>chronologically</strong>.</p></li>
+<li><p>Combine TSFresh features with any model.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./m4_timeseries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../m3_operational_ml/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3 — Webscraping &amp; Operational ML</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../m5_text/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5 — Text Analytics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-and-resampling">4.1 Cleaning and resampling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering-for-sequences">4.2 Feature engineering for sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-features-with-tsfresh">4.3 Automated features with TSFresh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-detection">4.4 Anomaly detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

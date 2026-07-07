@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 1 — Tool Time &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'm1_tooltime/index';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 — Tuning Models &amp; Explainable AI" href="../m2_tuning_xai/index.html" />
+    <link rel="prev" title="Preface" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/m1_tooltime/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1 — Tool Time</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-your-professional-home">1.1 GitHub — your professional home</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-development-environment">1.2 The development environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-refresher-regression-and-classification">1.3 ML refresher — regression and classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-in-scikit-learn">1.4 Neural networks in scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-tool-time">
+<h1>Chapter 1 — Tool Time<a class="headerlink" href="#chapter-1-tool-time" title="Link to this heading">#</a></h1>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">🔗 Notebooks for this chapter</p>
+<p>Open in Colab and <strong>Runtime → Run all</strong> — data loads from a stable link, nothing to upload.</p>
+<ul class="simple">
+<li><p><strong>DTC RFC GBC Boston Housing</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTC_RFC_GBC_BostonHousing.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTC_RFC_GBC_BostonHousing.ipynb">GitHub</a></p></li>
+<li><p><strong>DTR RFR GBR Boston Housing</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTR_RFR_GBR_BostonHousing.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/DTR_RFR_GBR_BostonHousing.ipynb">GitHub</a></p></li>
+<li><p><strong>Setting Up Tech Enviro</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/SettingUpTechEnviro.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/SettingUpTechEnviro.ipynb">GitHub</a></p></li>
+<li><p><strong>Shell (Bash) commands</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Shell_(Bash)_commands.ipynb">GitHub</a></p></li>
+<li><p><strong>Week2 1 NN Classification (2)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Classification%20(2).ipynb">GitHub</a></p></li>
+<li><p><strong>Week2 1 NN Regression (2)</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/Week2_1_NN_Regression%20(2).ipynb">GitHub</a></p></li>
+<li><p><strong>M1 Tree Models CA Housing</strong>   <a class="reference external" href="https://colab.research.google.com/github/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/M1_TreeModels_CAHousing.ipynb"><img alt="Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>   <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks/blob/main/Module1/M1_TreeModels_CAHousing.ipynb">GitHub</a></p></li>
+</ul>
+</div>
+<p>Before we model anything in production, we set up the workshop. This chapter is about the tools real data scientists use every day — <strong>GitHub</strong> and a proper <strong>development environment</strong> — plus a fast refresher on the machine learning we’ll build on. The framing matters: your GitHub is your <strong>face to the technical world</strong>. Employers want to hire you because they can <em>see how good your code is</em>.</p>
+<section id="github-your-professional-home">
+<h2>1.1 GitHub — your professional home<a class="headerlink" href="#github-your-professional-home" title="Link to this heading">#</a></h2>
+<p>Four concepts cover 90% of daily Git:</p>
+<ul class="simple">
+<li><p><strong>Repository</strong> — a project folder under version control.</p></li>
+<li><p><strong>Commit</strong> — a saved snapshot with a message; your project’s history.</p></li>
+<li><p><strong>Branch</strong> — a parallel line of work you can develop and discard safely.</p></li>
+<li><p><strong>Pull request (PR)</strong> — propose merging a branch, get it <strong>reviewed</strong>, then merge.</p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">The “Ping-Pong” workflow — how industry actually collaborates</p>
+<p>The professional loop, practiced until it’s reflex: create a repo and add a collaborator → make a <strong>branch</strong> → edit and <strong>commit</strong> → open a <strong>pull request</strong> with your partner as <strong>reviewer</strong> → they review, approve, and <strong>merge</strong>, then <strong>delete the branch</strong>. Then you swap roles and they send <em>you</em> a PR. Back and forth — ping-pong — and the <strong>network graph</strong> shows the loop. Branch protection (require a PR + one approval before merging <code class="docutils literal notranslate"><span class="pre">main</span></code>) enforces that nobody pushes straight to <code class="docutils literal notranslate"><span class="pre">main</span></code>. This is the single most employable skill in the chapter.</p>
+</div>
+</section>
+<section id="the-development-environment">
+<h2>1.2 The development environment<a class="headerlink" href="#the-development-environment" title="Link to this heading">#</a></h2>
+<p>We graduate from notebooks-only to a real stack: <strong>VS Code</strong> (editor), <strong>Git/GitHub Desktop</strong> (version control), <strong>Google Cloud Platform</strong> (where models will run), and <strong>OpenAI</strong> (for the GenAI work later). Set it up once, organize your repo with a <code class="docutils literal notranslate"><span class="pre">source/</span></code> folder, a <code class="docutils literal notranslate"><span class="pre">figures/</span></code> folder, a <code class="docutils literal notranslate"><span class="pre">README</span></code>, and — critically — a <strong><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></strong> so anyone (including a cloud runner) can reproduce your environment. Reproducibility isn’t bureaucracy; it’s what makes a model <em>deployable</em>.</p>
+</section>
+<section id="ml-refresher-regression-and-classification">
+<h2>1.3 ML refresher — regression and classification<a class="headerlink" href="#ml-refresher-regression-and-classification" title="Link to this heading">#</a></h2>
+<p>The methodology is fixed regardless of model: <strong>read → split → scale (fit on train only) → fit → evaluate</strong>. Regression uses <span class="math notranslate nohighlight">\(R^2\)</span>/MAE/RMSE; classification uses the confusion-matrix family (accuracy, precision, recall, F1). Keep one habit sacred:</p>
+<div class="warning admonition">
+<p class="admonition-title">Fit transforms on TRAIN only</p>
+<p>Scalers, encoders, vectorizers — <strong>fit on the training partition, then <code class="docutils literal notranslate"><span class="pre">transform</span></code> validation and test.</strong> Fitting on the full dataset leaks information and inflates your scores. Everything in this book — pipelines, cross-validation, deployment — is built to protect this boundary.</p>
+</div>
+</section>
+<section id="neural-networks-in-scikit-learn">
+<h2>1.4 Neural networks in scikit-learn<a class="headerlink" href="#neural-networks-in-scikit-learn" title="Link to this heading">#</a></h2>
+<p>You don’t need TensorFlow to start with neural nets. scikit-learn’s <strong><code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code></strong> and <strong><code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code></strong> (multi-layer perceptrons) are perfect for learning the theory and the knobs without leaving the sklearn world:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+<span class="n">nn</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>   <span class="c1"># two hidden layers of 64 units</span>
+                  <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+                  <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A neural network is, at heart, <strong>gradient descent with backpropagation</strong>: it makes a prediction, measures the error, and nudges its weights to do better next time. The hyperparameters that matter — <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes</span></code>, <code class="docutils literal notranslate"><span class="pre">activation</span></code>, learning rate, early stopping — are exactly the ones you’ll tune systematically in Chapter 2. (The course capstone for this material is the <strong>“Ping-Pong” assignment</strong>: collaborate via PRs while fitting an <code class="docutils literal notranslate"><span class="pre">MLP</span></code> on California housing — tools and modeling in one exercise.)</p>
+</section>
+<section id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Key takeaways</p>
+<ul class="simple">
+<li><p><strong>GitHub</strong> = repos, commits, branches, PRs; the <strong>ping-pong</strong> PR/review loop is how teams really work — and your most employable skill.</p></li>
+<li><p>Build a real <strong>environment</strong> (VS Code, Git, GCP, OpenAI) and always ship a <strong><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></strong> for reproducibility.</p></li>
+<li><p>The ML methodology never changes: <strong>read → split → scale-on-train → fit → evaluate</strong>.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code>/<code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code></strong> bring neural nets into scikit-learn; their knobs are Chapter 2’s tuning targets.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lecture-key-points">
+<h2>📌 Lecture key points<a class="headerlink" href="#lecture-key-points" title="Link to this heading">#</a></h2>
+<p><em>Distilled takeaways from the video lectures behind this chapter — click each to expand.</em></p>
+<div class="note dropdown admonition">
+<p class="admonition-title">ML Regression Refresher</p>
+<ul class="simple">
+<li><p>The fixed methodology: read → split → <strong>scale (fit on train)</strong> → fit → evaluate.</p></li>
+<li><p>Regression metrics: <strong>R², MAE, RMSE</strong> (RMSE punishes big misses).</p></li>
+<li><p>Baseline (linear) + tree models; fitting is ~3 lines.</p></li>
+<li><p>Evaluate quantitatively <strong>and</strong> visually (predicted-vs-actual).</p></li>
+<li><p>Reused as the A01/A02 prep.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">ML Classification Refresher</p>
+<ul class="simple">
+<li><p>Same workflow; the <strong>evaluation</strong> differs.</p></li>
+<li><p>Metrics from the <strong>confusion matrix</strong>: accuracy, precision, recall, F1.</p></li>
+<li><p>Baseline = <strong>logistic regression</strong>.</p></li>
+<li><p>Mind class balance for honest metrics.</p></li>
+<li><p>Bridges into neural-net classification.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Intro to NNs for regression with sklearn</p>
+<ul class="simple">
+<li><p>Neural nets are available in <strong>scikit-learn</strong> (<code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code>) — no TensorFlow needed to start.</p></li>
+<li><p>An NN is a nonlinear, flexible “super-model.”</p></li>
+<li><p>Pay attention to the <strong>hyperparameters/keyword arguments</strong>.</p></li>
+<li><p>Same fit/predict API as any sklearn model.</p></li>
+<li><p>Primary engine for the <strong>A02 Ping-Pong</strong> assignment.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Gradient descent and backpropagation</p>
+<ul class="simple">
+<li><p>A network <strong>predicts, measures error, and nudges weights</strong> to do better next time.</p></li>
+<li><p><strong>Backpropagation</strong> propagates the error to update each weight.</p></li>
+<li><p>Learning rate controls step size (overshoot vs crawl).</p></li>
+<li><p>The theory behind every <code class="docutils literal notranslate"><span class="pre">MLP</span></code> fit.</p></li>
+<li><p>Iterated over epochs/batches.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Fit a NN (MLPRegressor) with sklearn</p>
+<ul class="simple">
+<li><p>Build with <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes</span></code>, <code class="docutils literal notranslate"><span class="pre">activation</span></code>, <code class="docutils literal notranslate"><span class="pre">early_stopping</span></code>.</p></li>
+<li><p>Fit/predict like any estimator.</p></li>
+<li><p>Watch for overfitting; use early stopping.</p></li>
+<li><p>Tune the same knobs you grid-search in Module 2.</p></li>
+<li><p>California-housing style regression target.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">MLPClassifier</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> for classification targets.</p></li>
+<li><p>Output handles binary/multiclass; evaluate with confusion-matrix metrics.</p></li>
+<li><p>Same hyperparameters as the regressor.</p></li>
+<li><p>Limited vs TensorFlow/PyTorch but perfect for theory + implementation.</p></li>
+<li><p>Completes the sklearn-NN toolkit.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Best practices for NN regression</p>
+<ul class="simple">
+<li><p>“How many layers / hidden units?” → it’s a <strong>grid search</strong>.</p></li>
+<li><p>Several architecture strategies (units = #features, 2×features, deeper/wider).</p></li>
+<li><p>Different architectures can reach similar fits (random init).</p></li>
+<li><p>Start simple, then tune.</p></li>
+<li><p>Don’t over-engineer the first model.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">A nice intro to A01 (making your first repos)</p>
+<ul class="simple">
+<li><p>The <strong>“hello world”</strong> of GitHub: make your first repos.</p></li>
+<li><p>Core GitHub functions: repositories, commits, branches, pull requests.</p></li>
+<li><p>Set up the <strong>tech stack</strong> (GitHub/GitHub Desktop, VS Code).</p></li>
+<li><p>Refresh ML fundamentals, then try it yourself.</p></li>
+<li><p>Preps the A01 individual assignment + M1 quiz.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">A02 “Ping Pong” demo (Dave &amp; Rohit)</p>
+<ul class="simple">
+<li><p>The pro <strong>collaboration loop</strong>: branch → commit → <strong>pull request</strong> → review/approve → merge → delete branch.</p></li>
+<li><p>Add a <strong>collaborator</strong>; set <strong>branch protection</strong> (require a PR + 1 review).</p></li>
+<li><p>Live debugging: a branch-protection misconfig blocked the commit (real-world lesson).</p></li>
+<li><p>Fit a neural net on <strong>California housing</strong>; add a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> for reproducibility.</p></li>
+<li><p>Do it <strong>≥ 5 times</strong> back-and-forth; the <strong>network graph</strong> shows the loop.</p></li>
+</ul>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Hi from Dr. Dave</p>
+<ul class="simple">
+<li><p>Course welcome/orientation.</p></li>
+<li><p>Framing: GitHub is your <strong>face to the tech world</strong> (employers see your code).</p></li>
+<li><p>Sets expectations and tone.</p></li>
+<li><p>Points to the tools and workflow ahead.</p></li>
+<li><p>Motivation for the production focus.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./m1_tooltime"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Preface</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../m2_tuning_xai/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 — Tuning Models &amp; Explainable AI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-your-professional-home">1.1 GitHub — your professional home</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-development-environment">1.2 The development environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-refresher-regression-and-classification">1.3 ML refresher — regression and classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-networks-in-scikit-learn">1.4 Neural networks in scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">Wrap-up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-key-points">📌 Lecture key points</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
