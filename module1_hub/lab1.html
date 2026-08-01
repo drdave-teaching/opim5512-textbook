@@ -1,0 +1,631 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 1 — Data ER + First Commit &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module1_hub/lab1';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 1 — Tool Time" href="../m1_tooltime/index.html" />
+    <link rel="prev" title="Module 1 Talking Points — The Theory You Should Be Able to Explain" href="talking_points.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 1 — Data ER + First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module1_hub/lab1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 1 — Data ER + First Commit</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-re-doing">What we’re doing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-0-triage-the-stack-20-min">Part 0 · Triage the stack (~20 min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-data-er-45-min-pairs">Part 1 · Data ER (~45 min, pairs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-first-commit-45-min-same-pairs">Part 2 · First Commit (~45 min, same pairs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-rounds-10-min">Part 3 · Rounds (~10 min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-by-hand-check">The by-hand check</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-data-er-first-commit">
+<h1>Lab 1 — Data ER + First Commit<a class="headerlink" href="#lab-1-data-er-first-commit" title="Link to this heading">#</a></h1>
+<p><strong>Hartford: Wed Sep 2 · Stamford: Wed Sep 9 · 5:30-7:30 PM</strong></p>
+<p>The in-person half of Module 1. The async carried the mechanics; the lab is where you apply them to a dataset nobody pre-chewed for you, and then push the result through a <strong>reviewed pull request</strong> - the loop you’ll use for everything else this semester.</p>
+<p>Bring a laptop with <strong>Colab</strong> working and <strong>VS Code + GitHub Desktop</strong> installed. If your stack isn’t running yet, come anyway - the first twenty minutes exist for exactly that.</p>
+<hr class="docutils" />
+<section id="what-we-re-doing">
+<h2>What we’re doing<a class="headerlink" href="#what-we-re-doing" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Part</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Working</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><strong>Triage the stack</strong></p></td>
+<td><p>~20 min</p></td>
+<td><p>solo, with help</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><strong>Data ER</strong></p></td>
+<td><p>~45 min</p></td>
+<td><p>pairs</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><strong>First Commit</strong></p></td>
+<td><p>~45 min</p></td>
+<td><p>same pairs</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><strong>Rounds</strong></p></td>
+<td><p>~10 min</p></td>
+<td><p>everyone</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="part-0-triage-the-stack-20-min">
+<h2>Part 0 · Triage the stack (~20 min)<a class="headerlink" href="#part-0-triage-the-stack-20-min" title="Link to this heading">#</a></h2>
+<p>Everyone runs the same three checks in a terminal and gets a green light before we start:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+python<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Then clone any repo with GitHub Desktop, open it in VS Code, and make one commit. If all three work, help the person next to you - that’s the fastest way to a room where everybody’s environment is running. If you’re stuck, flag me.</p>
+</section>
+<section id="part-1-data-er-45-min-pairs">
+<h2>Part 1 · Data ER (~45 min, pairs)<a class="headerlink" href="#part-1-data-er-45-min-pairs" title="Link to this heading">#</a></h2>
+<p>A messy dataset just rolled into your emergency room. Unlike the notebooks, <strong>nobody tells you what’s broken</strong>. Your job is triage, treatment, and a discharge report.</p>
+<p><strong>Triage</strong> - before you fix anything, write down what’s wrong. <code class="docutils literal notranslate"><span class="pre">.shape</span></code>, <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>, <code class="docutils literal notranslate"><span class="pre">.isna().sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.dtypes</span></code> are your vitals. Look for numbers stored as strings, rows that aren’t observations (summary rows, totals, blanks), impossible values, and duplicated records.</p>
+<p><strong>Treat</strong> - fix what you diagnosed, and <em>comment why</em> for each fix. A fix you can’t justify is a fix I’ll ask you about.</p>
+<p><strong>Discharge report</strong> - three plots and <strong>one insight</strong>: a single sentence, backed by a number, that a smart non-technical person would care about. Association only. If your sentence contains the word “causes,” rewrite it.</p>
+<div class="warning admonition">
+<p class="admonition-title">Caution: check the vitals before and after</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> <strong>before</strong> you delete anything and <strong>after</strong>. If a summary row was hiding in your data, that comparison is where you’ll see how badly it was skewing your statistics - and it’s the number that makes your discharge report convincing.</p>
+</div>
+<p><em>Starter notebook and the patient dataset: to be posted in <code class="docutils literal notranslate"><span class="pre">OPIM5512-notebooks/Labs/Lab1_DataER/</span></code> before the first session.</em></p>
+</section>
+<section id="part-2-first-commit-45-min-same-pairs">
+<h2>Part 2 · First Commit (~45 min, same pairs)<a class="headerlink" href="#part-2-first-commit-45-min-same-pairs" title="Link to this heading">#</a></h2>
+<p>Now the part that makes it count. Take your cleaned data and get it into a repo <strong>through the loop</strong>.</p>
+<ol class="arabic simple">
+<li><p>One of you creates a repo for the pair. Add your partner as a <strong>collaborator</strong> (Settings → Collaborators).</p></li>
+<li><p>Set the <strong>branch protection ruleset</strong>: require a pull request before merging, required approvals = 1, scoped to the <strong>default branch only</strong>.</p></li>
+<li><p>Lay it out properly: <code class="docutils literal notranslate"><span class="pre">source/</span></code>, <code class="docutils literal notranslate"><span class="pre">figures/</span></code>, <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
+<li><p>Each of you makes your own branch. One takes the cleaning code, one takes the plots and the baseline model.</p></li>
+<li><p>Fit a <strong>baseline model</strong> on the cleaned data - a linear regression or a decision tree, split properly, scaled on train only. It does not need to be good. It needs to be honest: report train <em>and</em> test.</p></li>
+<li><p>Commit, push, open a <strong>pull request</strong> with your partner as reviewer. They open <strong>Files changed</strong>, review it for real, approve, merge, and delete the branch.</p></li>
+<li><p>Swap. Do it again the other direction.</p></li>
+</ol>
+<p><strong>You’re done when the network graph shows the loop going both ways</strong> and <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/your_script.py</span></code> runs from a clean terminal after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>.</p>
+<div class="important admonition">
+<p class="admonition-title">Remember: the deliverable is the repo, not the notebook</p>
+<p>A cleaned dataframe living in a Colab tab is worth nothing on Thursday morning. A repo your partner reviewed, merged, and can re-run is worth something for the rest of your career. This is the whole point of the lab.</p>
+</div>
+</section>
+<section id="part-3-rounds-10-min">
+<h2>Part 3 · Rounds (~10 min)<a class="headerlink" href="#part-3-rounds-10-min" title="Link to this heading">#</a></h2>
+<p>Two or three pairs share screens: the <em>before</em> and <em>after</em> <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>, the one-sentence insight, and the network graph. We’ll talk about what everybody found that nobody else did.</p>
+</section>
+<hr class="docutils" />
+<section id="the-by-hand-check">
+<h2>The by-hand check<a class="headerlink" href="#the-by-hand-check" title="Link to this heading">#</a></h2>
+<p>Short, on paper, from the week’s core skill. The practice bank with fully-worked keys lives in <a class="reference external" href="https://github.com/drdave-teaching/opim-math/tree/main/OPIM5512">opim-math/OPIM5512</a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/drdave-teaching/opim-math/blob/main/OPIM5512/worksheets/ConfusionMatrix_ByHand_worksheet.pdf">Confusion matrix by hand</a> - build the four cells, then compute precision, recall, and F1 without a library (<a class="reference external" href="https://github.com/drdave-teaching/opim-math/blob/main/OPIM5512/worksheets/ConfusionMatrix_ByHand_key.pdf">key</a>)</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">On your own</p>
+<p>Rerun your baseline model, but this time call <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> on the <strong>whole</strong> dataset before splitting. Record the test score. Then do it correctly - fit on train only - and record it again. The gap between those two numbers is data leakage, measured in your own data. Put both numbers in your README.</p>
+</div>
+<hr class="docutils" />
+<p><em>The hook into Module 2: you just tuned nothing and defended everything by hand. Next module we replace the hand with a search - pipelines, cross-validation, and grid search - so the leakage boundary you just measured is enforced by the code instead of your memory.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module1_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="talking_points.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 1 Talking Points — The Theory You Should Be Able to Explain</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../m1_tooltime/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 1 — Tool Time</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-re-doing">What we’re doing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-0-triage-the-stack-20-min">Part 0 · Triage the stack (~20 min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-data-er-45-min-pairs">Part 1 · Data ER (~45 min, pairs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-first-commit-45-min-same-pairs">Part 2 · First Commit (~45 min, same pairs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-rounds-10-min">Part 3 · Rounds (~10 min)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-by-hand-check">The by-hand check</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

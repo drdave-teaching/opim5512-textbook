@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Working in this Course — Colab, GitHub, VS Code &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module1_hub/working_in_course';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 1 Video Guide — What Each Video Covers" href="videos.html" />
+    <link rel="prev" title="Module 1 Hub — Tool Time (Fall 2026)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1 — Data ER + First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module1_hub/working_in_course.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working in this Course — Colab, GitHub, VS Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-everything-lives">1 · Where everything lives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-different-tools-two-different-jobs">2 · Two different tools, two different jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-lecture-notebook-10-seconds">3 · Running a lecture notebook (10 seconds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-repos-for-this-course">4 · Your repos for this course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-loop-do-it-until-it-s-reflex">5 · The loop - do it until it’s reflex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-your-work-reproducible">6 · Making your work reproducible</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rhythm-of-the-course">7 · The rhythm of the course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-something-breaks">8 · When something breaks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="working-in-this-course-colab-github-vs-code">
+<h1>Working in this Course — Colab, GitHub, VS Code<a class="headerlink" href="#working-in-this-course-colab-github-vs-code" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Read this before Module 1’s first assignment. 5512 is a <strong>GitHub-first</strong> course - the notebooks are how you learn, but the repo is how you’re graded, and it’s the thing you show an employer. Here’s the whole workflow.</p>
+<hr class="docutils" />
+<section id="where-everything-lives">
+<h2>1 · Where everything lives<a class="headerlink" href="#where-everything-lives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Notebooks:</strong> <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-notebooks">github.com/drdave-teaching/OPIM5512-notebooks</a> - every lecture notebook, organized by module folder. Public, no account needed just to <em>view</em>.</p></li>
+<li><p><strong>Labs and scripts:</strong> <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-labs">github.com/drdave-teaching/OPIM5512-labs</a> - the production <code class="docutils literal notranslate"><span class="pre">.py</span></code> versions, week READMEs, slide decks.</p></li>
+<li><p><strong>This ebook:</strong> <a class="reference external" href="https://drdave-teaching.github.io/opim5512-textbook/">drdave-teaching.github.io/opim5512-textbook</a> - chapter prose, key points, and links back to the notebooks.</p></li>
+<li><p><strong>By-hand worksheets:</strong> <a class="reference external" href="https://github.com/drdave-teaching/opim-math/tree/main/OPIM5512">opim-math/OPIM5512</a> - confusion matrix, k-fold cross-validation, TF-IDF, each with a fully-worked key.</p></li>
+<li><p><strong>HuskyCT:</strong> the videos, announcements, gradebook, and due dates. When in doubt, start there.</p></li>
+</ul>
+</section>
+<section id="two-different-tools-two-different-jobs">
+<h2>2 · Two different tools, two different jobs<a class="headerlink" href="#two-different-tools-two-different-jobs" title="Link to this heading">#</a></h2>
+<p>This trips people up in week one, so let’s be blunt about it.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Google Colab</strong></p></th>
+<th class="head"><p><strong>VS Code + GitHub Desktop</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Use it for</p></td>
+<td><p>watching along with lectures, exploring, trying things</p></td>
+<td><p>assignments, labs, anything you submit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Why</p></td>
+<td><p>zero setup, runs in the browser, free GPU later</p></td>
+<td><p>this is what the job looks like - files, folders, terminals, version control</p></td>
+</tr>
+<tr class="row-even"><td><p>Where your work lands</p></td>
+<td><p>your Drive or your GitHub, <strong>if you save a copy</strong></p></td>
+<td><p>your repo, on every commit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You’ll live in both. Don’t pick a side.</p>
+</section>
+<section id="running-a-lecture-notebook-10-seconds">
+<h2>3 · Running a lecture notebook (10 seconds)<a class="headerlink" href="#running-a-lecture-notebook-10-seconds" title="Link to this heading">#</a></h2>
+<p>Every notebook has an <strong>Open in Colab</strong> badge. Click it and the notebook opens against the live version in the class repo - all you need is a free Google account, no installs ever. The first run shows <strong>“Warning: This notebook was not authored by Google.”</strong> That’s expected, it’s loaded from our GitHub. Click <strong>Run anyway</strong>, then <strong>Runtime → Run all</strong>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Caution: the class copy is read-only</p>
+<p>The notebook you just opened is running against <strong>my</strong> repo. Edit and run all you like - but close the tab and your changes are gone. Before you do real work: <strong>File → Save a copy in Drive</strong> (fine for following along) or <strong>File → Save a copy in GitHub</strong> (do this - it’s the habit that pays).</p>
+</div>
+</section>
+<section id="your-repos-for-this-course">
+<h2>4 · Your repos for this course<a class="headerlink" href="#your-repos-for-this-course" title="Link to this heading">#</a></h2>
+<p>You’ll create three kinds of repo, and each has a purpose:</p>
+<ol class="arabic simple">
+<li><p><strong>Your profile repo</strong> - named exactly after your GitHub username. This is the special one that renders on your account landing page. Make it good; it’s your face to the technical world, and employers read it.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">A01</span></code></strong> (add your NetID if you like) - the individual assignment repo. Structure it properly: <code class="docutils literal notranslate"><span class="pre">source/</span></code> for code, <code class="docutils literal notranslate"><span class="pre">figures/</span></code> for output, a <code class="docutils literal notranslate"><span class="pre">README.md</span></code>, and a <strong><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></strong>.</p></li>
+<li><p><strong>The Ping Pong repo (A02)</strong> - shared with a classmate, with them added as a <strong>collaborator</strong> and a <strong>branch protection rule</strong> requiring a pull request plus one approval before anything reaches <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+</ol>
+</section>
+<section id="the-loop-do-it-until-it-s-reflex">
+<h2>5 · The loop - do it until it’s reflex<a class="headerlink" href="#the-loop-do-it-until-it-s-reflex" title="Link to this heading">#</a></h2>
+<p>This is the single most employable thing in Module 1. Every assignment, every lab, same six steps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. branch (in GitHub Desktop: Current Branch -&gt; New Branch)</span>
+<span class="c1"># 2. edit in VS Code, save</span>
+<span class="c1"># 3. commit with a real message</span>
+<span class="c1"># 4. publish / push the branch</span>
+<span class="c1"># 5. open a pull request, assign your reviewer</span>
+<span class="c1"># 6. they approve -&gt; merge -&gt; DELETE the branch</span>
+</pre></div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Remember: never push straight to <code class="docutils literal notranslate"><span class="pre">main</span></code></p>
+<p>Everybody has done it. Nobody should. Branches exist so work can be reviewed before it becomes real, and they should live <strong>days, not months</strong> - do the work, merge it, delete the branch. A repo full of stale branches is a repo nobody trusts.</p>
+</div>
+</section>
+<section id="making-your-work-reproducible">
+<h2>6 · Making your work reproducible<a class="headerlink" href="#making-your-work-reproducible" title="Link to this heading">#</a></h2>
+<p>A repo that only runs on your laptop isn’t a deliverable. Two rules:</p>
+<ul class="simple">
+<li><p><strong>Everything you import at the top of a script must be in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</strong> No exceptions. That file is what lets a teammate - or a cloud runner, in Module 3 - reproduce your environment.</p></li>
+<li><p><strong>Save figures to <code class="docutils literal notranslate"><span class="pre">figures/</span></code>, keep code in <code class="docutils literal notranslate"><span class="pre">source/</span></code>.</strong> When you create a new file in VS Code, click the README (at the repo root) <em>first</em>, or your new file will nest inside whatever folder was last selected.</p></li>
+</ul>
+<p>Run your script the way a professional does, from a terminal in the repo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python<span class="w"> </span>source/DS_pipeline.py
+</pre></div>
+</div>
+</section>
+<section id="the-rhythm-of-the-course">
+<h2>7 · The rhythm of the course<a class="headerlink" href="#the-rhythm-of-the-course" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Async weeks:</strong> watch the module’s videos, run the notebooks alongside, and push what you built to your repo. The lab assumes you’ve watched.</p></li>
+<li><p><strong>In-person lab weeks:</strong> bring a laptop that opens Colab <em>and</em> has VS Code and GitHub Desktop working. We build on the async - I facilitate, you code.</p></li>
+<li><p><strong>By-hand checks:</strong> short, on paper, drawn from the week’s core skill (a confusion matrix, a k-fold split, TF-IDF). The practice bank with worked keys is in <a class="reference external" href="https://github.com/drdave-teaching/opim-math/tree/main/OPIM5512">opim-math/OPIM5512</a>.</p></li>
+</ul>
+</section>
+<section id="when-something-breaks">
+<h2>8 · When something breaks<a class="headerlink" href="#when-something-breaks" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>“Not authored by Google” warning</p></td>
+<td><p>Expected. <strong>Run anyway.</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Runtime disconnected / variables gone</p></td>
+<td><p>Colab idles out. <strong>Runtime → Run all</strong> again.</p></td>
+</tr>
+<tr class="row-even"><td><p>My Colab edits disappeared</p></td>
+<td><p>You edited the class copy without saving. See §3 - save a copy FIRST, then work.</p></td>
+</tr>
+<tr class="row-odd"><td><p>The commit button is grayed out</p></td>
+<td><p>Usually branch protection scoped too widely (it happens to me on camera in video 3) - check <strong>Settings → Rules</strong> and target the default branch only. Also check that you’ve ticked the changed files.</p></td>
+</tr>
+<tr class="row-even"><td><p>I pushed but GitHub shows nothing</p></td>
+<td><p>You committed but didn’t push, or pushed but didn’t open the PR. Refresh the repo and check the branch dropdown.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> when running my script</p></td>
+<td><p>The import isn’t in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, or you didn’t <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span></code> it.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cell order confusion (<code class="docutils literal notranslate"><span class="pre">NameError</span></code>)</p></td>
+<td><p>You ran cells out of order. <strong>Runtime → Restart and run all.</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>My new file nested inside the wrong folder</p></td>
+<td><p>Click the README at the repo root before creating the file, then create it.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">On your own</p>
+<p>After A01, open the notebook and the matching <code class="docutils literal notranslate"><span class="pre">.py</span></code> script in <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-labs/tree/main/Module1">OPIM5512-labs</a> side by side. List every difference you can find - functions, no <code class="docutils literal notranslate"><span class="pre">drive.mount()</span></code>, no narration, imports at the top. That list <em>is</em> the difference between analysis code and production code, and it’s most of what this course is about.</p>
+</div>
+<p><em>Pssst - you also have Claude, ChatGPT, or Gemini at your side. Use them to explain code and debug, then make sure YOU can explain what the code does. The understanding is the deliverable; the tools are the accelerant.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module1_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 1 Hub — Tool Time (Fall 2026)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="videos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 1 Video Guide — What Each Video Covers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-everything-lives">1 · Where everything lives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-different-tools-two-different-jobs">2 · Two different tools, two different jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-lecture-notebook-10-seconds">3 · Running a lecture notebook (10 seconds)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-repos-for-this-course">4 · Your repos for this course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-loop-do-it-until-it-s-reflex">5 · The loop - do it until it’s reflex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-your-work-reproducible">6 · Making your work reproducible</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rhythm-of-the-course">7 · The rhythm of the course</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-something-breaks">8 · When something breaks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

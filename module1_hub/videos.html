@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 1 Video Guide — What Each Video Covers &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module1_hub/videos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 1 Skills Sheet — What You Can Do Now" href="skills.html" />
+    <link rel="prev" title="Working in this Course — Colab, GitHub, VS Code" href="working_in_course.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1.html">Lab 1 — Data ER + First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module1_hub/videos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 1 Video Guide — What Each Video Covers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-setting-up-the-shop">Block 1 · Setting up the shop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-the-ml-refresher">Block 2 · The ML refresher</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-neural-networks-in-scikit-learn">Block 3 · Neural networks in scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-ordering">A note on ordering</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-1-video-guide-what-each-video-covers">
+<h1>Module 1 Video Guide — What Each Video Covers<a class="headerlink" href="#module-1-video-guide-what-each-video-covers" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Ten videos, about 1 hour 35 minutes total, in three blocks: set up the shop, refresh the modeling methodology, then build your first neural network. Watch in order - each video drives one stretch of its notebook.</p>
+<hr class="docutils" />
+<section id="block-1-setting-up-the-shop">
+<h2>Block 1 · Setting up the shop<a class="headerlink" href="#block-1-setting-up-the-shop" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> GitHub as your professional face · the four concepts that cover 90% of daily Git (repo, commit, branch, pull request) · the repo layout that makes work reproducible (<code class="docutils literal notranslate"><span class="pre">source/</span></code>, <code class="docutils literal notranslate"><span class="pre">figures/</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>) · the industry review loop - branch → commit → PR → review → merge → delete · branch protection · running a script from a terminal.</p>
+<p><strong>Video 1 — Hi from Dr. Dave</strong> <em>(0:36)</em>
+The hello. Dave Wanik - engineer by training, came to the business school in fall 2019, now associate professor in residence in Operations and Information Management, data scientist, and guitar nut (hence the guitars in every background). Thirty-six seconds, and then we’re working.</p>
+<p><strong>Video 2 — A nice intro to A01, making your first repos</strong> <em>(11:16) · drives <code class="docutils literal notranslate"><span class="pre">SettingUpTechEnviro.ipynb</span></code></em>
+The A01 assignment, done live. Start with the <strong>special repo named after yourself</strong> - the one that renders on your account landing page. That’s your face to the world; make it fancy. Then install <strong>GitHub Desktop</strong>, create the <strong>A01</strong> repo (public, with a README), and clone it. Notice Dave is on <code class="docutils literal notranslate"><span class="pre">main</span></code> and calls it out: <em>that’s a little bit of a no-no in modern data science workflows</em> - so he makes a <strong><code class="docutils literal notranslate"><span class="pre">dev</span></code></strong> branch and works there. In VS Code he builds the file structure (<code class="docutils literal notranslate"><span class="pre">source/</span></code> for code, <code class="docutils literal notranslate"><span class="pre">figs/</span></code> for output - and shows the misclick where a folder nests inside another, plus how to avoid it by clicking the README first), writes <strong><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></strong>, and drops in the starter <code class="docutils literal notranslate"><span class="pre">boxplot.py</span></code> that pulls the California housing dataset. Watch the <strong>color coding</strong> in VS Code: green means brand new, yellow means edited. Then the loop - publish the branch, discover it didn’t push because he forgot to <strong>commit</strong> first, commit with a real message, push, open the <strong>pull request</strong>, confirm the merge, and <strong>delete the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch</strong> (<em>my computer science friends tell me branches shouldn’t live that long</em>). It closes with running the script from the VS Code terminal after <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>.</p>
+<p><strong>Video 3 — A02 “Ping Pong” live demo, with Rohit</strong> <em>(29:33) · WebEx recording · drives <code class="docutils literal notranslate"><span class="pre">Week2_1_NN_Regression</span></code></em>
+The collaboration assignment, start to finish, with research scholar <strong>Rohit</strong> on the other side of the ping-pong table. Dave creates the repo, adds Rohit under <strong>Settings → Collaborators</strong>, and sets a <strong>branch ruleset</strong>: require a pull request before merging, required approvals = 1. He clones in GitHub Desktop, makes branch <code class="docutils literal notranslate"><span class="pre">dev-DW</span></code>, builds <code class="docutils literal notranslate"><span class="pre">source/</span></code> and <code class="docutils literal notranslate"><span class="pre">figures/</span></code>, updates the README, and writes <code class="docutils literal notranslate"><span class="pre">DS_pipeline.py</span></code> to read California housing from scikit-learn.</p>
+<p>Then the best part of the video: <strong>the commit that wouldn’t commit.</strong> The commit button is grayed out. They check file boxes, consider fetching origin, wonder about the co-author field, even screenshot it for ChatGPT. The real culprit - Dave protected <strong>all</strong> branches instead of just <code class="docutils literal notranslate"><span class="pre">main</span></code>, so his own branch was blocked. He rescopes the rule to the default branch and it commits. <em>This is normal, and knowing how to fix it is the skill.</em></p>
+<p>Then the loop, twice. Dave opens a PR with Rohit as reviewer - <strong>pending review, blocked, cannot merge</strong>. Rohit reviews in <strong>Files changed</strong>, chooses between <em>Request changes</em>, <em>Comment</em>, and <em>Approve</em>, approves, merges, deletes the branch. Then they flip: Rohit branches, edits, pushes, opens his own PR with Dave reviewing. (Aside: Dave removes <strong>Copilot</strong> as a reviewer - <em>I want the students doing the reviews</em>; with Copilot you’d need <code class="docutils literal notranslate"><span class="pre">reviewers</span> <span class="pre">=</span> <span class="pre">2</span></code>.) Dave then makes the repo actually runnable - <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> with scikit-learn, a box plot of <strong>MedHouseVal</strong> saved into <code class="docutils literal notranslate"><span class="pre">figures/</span></code>, and a terminal run of <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">source/DS_pipeline.py</span></code>, with the rule stated plainly: <strong>everything you import at the top of your script must be in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</strong> The payoff is the <strong>network graph</strong> - two contributors, branches out and back. The ask: do this back-and-forth <strong>at least five times</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="block-2-the-ml-refresher">
+<h2>Block 2 · The ML refresher<a class="headerlink" href="#block-2-the-ml-refresher" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> the fixed methodology - read → split → scale on train → fit → evaluate · the leakage rule (<code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> on train, <code class="docutils literal notranslate"><span class="pre">transform</span></code> on test) · why scaling buys interpretability, not just performance · the four regression models and the four classification models · train-versus-test as the honest comparison · how Dave wants results <em>told</em>, not just computed.</p>
+<p><strong>Video 4 — ML Regression Refresher</strong> <em>(9:14) · drives <code class="docutils literal notranslate"><span class="pre">DTR_RFR_GBR_BostonHousing.ipynb</span></code></em>
+End-to-end regression, Dave’s way. The imports (pandas, NumPy, matplotlib, seaborn, <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code>, four models, the metrics), then a note on style: <em>bomb the script with information</em> when you’re doing an analysis, and dial the comments way back when you put something into production. The data: 506 rows, 14 columns, predicting <strong>MEDV</strong>, <code class="docutils literal notranslate"><span class="pre">.info()</span></code> clean. Split X and y, confirm the shapes every time (13 + 1 = 14), 80/20 train/test.</p>
+<p>Then the two ideas worth pausing on. First, <strong>why scale</strong>: it matters more for neural nets than trees, but min-max scaling also buys you <em>interpretability</em> - a 0.9 means 90% of observations sit below that value, which a raw number can’t tell you unless you’re an expert with the data. Second, <strong>the leakage rule</strong>: <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> on the whole dataframe leaks extreme values from the future into your model. Fit on train, transform the test partition. (Notice the scaled arrays are NumPy, not pandas - the column names are gone, and a test value slightly above 1.0 just means train had the larger maximum.)</p>
+<p>Four models get fit vanilla - linear regression, decision tree (which will overfit, because the default minimum leaf size is one; <code class="docutils literal notranslate"><span class="pre">min_samples_split=15</span></code> calms it down), random forest, gradient boosting - each with a suffix so beginners can copy-paste-modify. Evaluation is R², MAE, MSE for <strong>both</strong> partitions, plus <strong>bias</strong> (the mean of the errors - does the model systematically over- or under-predict), plus predicted-versus-actual <strong>scatter plots with a 45-degree line</strong> for train and test side by side. The warning that matters: if your scatter comes back a flat line, your model is predicting the mean and learned nothing - <em>it drives me bananas when students send me that</em>.</p>
+<p><strong>Video 5 — ML Classification Refresher</strong> <em>(5:39) · drives <code class="docutils literal notranslate"><span class="pre">DTC_RFC_GBC_BostonHousing.ipynb</span></code></em>
+The same workflow, one dataset, different target. Dave recodes median house price into 1 (above the median) / 0 (below) on purpose - <em>so you focus on the technique and not the dataset</em>. Split, scale the X partitions, fit logistic regression (the statistical baseline) plus decision tree, random forest, and gradient boosting classifiers.</p>
+<p>Then the part he’s particular about: <strong>evaluation</strong>. Two things are required from every classification model in this course - a <strong>confusion matrix</strong> for train <em>and</em> test (true negatives, true positives, false positives, false negatives; you want the mass on the top-left-to-bottom-right diagonal), and the <strong>classification report</strong>. The decision tree overfits as promised and the test partition tells a different story. Gradient boosting wins, and Dave reads it the way he wants you to: best confusion matrix, strongest precision and recall, therefore the best <strong>weighted F1</strong> - 0.88 against 0.85, 0.85, 0.85. <em>So I’m right; of course I’m right.</em></p>
+</section>
+<hr class="docutils" />
+<section id="block-3-neural-networks-in-scikit-learn">
+<h2>Block 3 · Neural networks in scikit-learn<a class="headerlink" href="#block-3-neural-networks-in-scikit-learn" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> a neural network is a nonlinear weighted sum · forward propagation, feedback signal, backpropagation · the three flavors of gradient descent and what an epoch actually is · where the nonlinearity comes from (activation functions between layers) · why scaling is non-negotiable here · <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> and early stopping · regressor versus classifier is one activation on the output node · architecture rules of thumb.</p>
+<p><strong>Video 6 — Intro to NNs for regression with sklearn</strong> <em>(6:33) · drives <code class="docutils literal notranslate"><span class="pre">Week2_1_NN_Regression</span></code></em>
+The anatomy, with no math required. Eight California-housing inputs (x1 … x8) go in, one prediction comes out. In between: multiply the 1×8 input row by a learned weight matrix to get a 1×10 hidden layer, multiply that by another to get 1×5, multiply that by a third to get the 1×1 output. <em>A neural network is simply a weighted sum.</em> Dave prints the actual shapes of all three weight matrices so you can see the rectangles. Weights start random and get better as the model hums along. Once the forward pass reaches the output you compute a <strong>feedback signal</strong> - actual minus predicted - and its sign tells the network which way to move: negative residual means the weights were too small, positive means the model is overestimating.</p>
+<p><strong>Video 7 — Gradient descent and backpropagation</strong> <em>(5:08)</em>
+How the update actually happens. Forward propagation carries information input → hidden → hidden → output; then <strong>backpropagation</strong> carries the error back to adjust every weight. First a warning: without nonlinearity, all of this collapses into linear regression (<em>in fact, you can do linear regression with a neural network - I leave that here as an exercise</em>). Then the three flavors of gradient descent, defined by <strong>how many rows flow through before a weight update</strong>: <strong>stochastic</strong> (one row at a time - very jumpy, 10,000 updates for 10,000 rows), <strong>full</strong> (the whole dataset, one averaged update per pass - fastest per epoch, heavily smoothed), and <strong>batch</strong> (10, 20, 50, 100 rows at a time - the middle ground, and what most people do). Along the way, the definition that trips everyone up: an <strong>epoch</strong> is one weight-update pass across the dataset, however you chunk it.</p>
+<p><strong>Video 8 — Fit a NN (MLPRegressor) with sklearn</strong> <em>(8:55) · drives <code class="docutils literal notranslate"><span class="pre">Week2_1_NN_Regression</span></code></em>
+Showtime - the first fit. Open the <code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code> documentation and be excited rather than overwhelmed by the keyword arguments. <strong>Where the nonlinearity lives:</strong> activation functions sit <em>between</em> layers. ReLU - Rectified Linear Unit - is positive in, positive out; negative in, zero out. Look at the learned weights: plenty are large negatives, which is fine - it’s the <em>product</em> of input and weight that gets clipped to zero in the hidden layer. Without ReLU you’d have a linear regression.</p>
+<p><strong>Why scaling is critical here</strong> (not merely nice, as with trees): unscaled columns overwhelm the network, the weight updates jump around, and the model never settles. Standard scaler or min-max, it doesn’t matter much - do one. Then the knobs: <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes</span></code> (he swaps 10-and-5 for 3 and reruns to show the shapes change), <code class="docutils literal notranslate"><span class="pre">activation</span></code> (ReLU is the default choice - <em>honestly they fit the same, and I always just use ReLU</em>), <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> (the epoch count - 200 by default, which can be slow and can overfit), and <strong>early stopping</strong>, which holds out 20% <em>of the training data</em> as a feedback signal and stops when the model quits generalizing. Note carefully: <code class="docutils literal notranslate"><span class="pre">X_val_scaled</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code> are never involved in fitting - the network has no idea they exist. Finally, a caveat about scikit-learn: you get the <strong>training</strong> loss curve only, not the separate train/validation curves you’d see in Keras or PyTorch - so treat it like any other estimator and judge it on metrics and scatter plots.</p>
+<p><strong>Video 9 — MLPClassifier</strong> <em>(9:36) · drives <code class="docutils literal notranslate"><span class="pre">Week2_1_NN_Classification</span></code></em>
+Generalizing to classification. Recode the housing target - above the 75th percentile is 1 (about 5,000 expensive houses against 15,000 others), split train/test <em>and</em> train/val, and scale, because unscaled inputs cause <strong>divergence</strong> - the weight updates get so big the network never finds its optimum. Then the single structural difference between the two models: <strong>the activation on the output node.</strong> Classification squishes the output between 0 and 1 with a sigmoid (you’re predicting a probability); regression lets it run from negative to positive infinity (a linear activation). You can’t change it in scikit-learn - <em>they put the guardrails on to keep you safe.</em></p>
+<p>Read the loss curve: 200 iterations were requested, but the model learned what it needed by roughly epoch 50. What you want is a <strong>gentle downward curve</strong> - a curve that plunges at iteration one and then flattens means something is wrong with your architecture. Then evaluate it like any classifier: classification report, weighted F1, confusion matrix. Dave’s memory trick for the metrics - <em><strong>“R, row”</strong></em> - <strong>recall runs across a row</strong>, precision runs down a column. Worked live: recall for the 1 class is 385 / (385 + 131) ≈ 75%; precision is 385 / (385 + 73) ≈ 84%; recall for the 0 class is 1475 / (1475 + 73) ≈ 95%. The model is good at cheap houses and misses expensive ones. He then tunes batch size (1,000 → 100 → 10) and layer sizes live and <strong>fails to beat 0.90</strong> - <em>maybe that’s the upper limit of what I’m trying to predict here.</em> Honest modeling on camera.</p>
+<p><strong>Video 10 — Best practices for NN regression</strong> <em>(7:39)</em>
+The architecture advice, earned. Activations first: ReLU (0 to ∞), hyperbolic tangent (−1 to +1), logistic/sigmoid (0 to 1), identity (which is just a linear regression) - go Google the shapes. Then <strong>batch size, timed live</strong>: <code class="docutils literal notranslate"><span class="pre">batch_size=10</span></code> takes 20 seconds, <code class="docutils literal notranslate"><span class="pre">batch_size=1000</span></code> takes 3 - and the predictions are still good, because <em>when the model hits a bottleneck, it self-corrects during training.</em></p>
+<p>Then the rules of thumb for tabular data like California housing:</p>
+<ul class="simple">
+<li><p><strong>Don’t use more than three hidden layers.</strong> One might be enough. Start there.</p></li>
+<li><p><strong>Don’t go bananas on hidden units.</strong> People fire off 64, 128, 10 million because it’s fun. But if you have eight inputs, how do you justify 200 learned intermediate features? One to two times the input size is plenty. (And remember: every input feeds every hidden unit, but random initialization means each unit becomes a <em>different</em> nonlinear combination.)</p></li>
+<li><p><strong>Treat the network as an information funnel.</strong> The first hidden layer can be wide, then hold steady or narrow. Eight inputs → 10 → 20 → 1 is nonsensical design.</p></li>
+<li><p><strong>One hidden layer needs the trailing comma</strong> in <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes=(10,)</span></code>, <em>or it’ll freak out</em>.</p></li>
+</ul>
+<p>It closes by handing off to the classifier: the only scikit-learn difference is <code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code> versus <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code>, which changes the output node. Everything about training loss carries over - you just swap scatter plots for confusion matrices and RMSE for an entropy loss.</p>
+</section>
+<hr class="docutils" />
+<section id="a-note-on-ordering">
+<h2>A note on ordering<a class="headerlink" href="#a-note-on-ordering" title="Link to this heading">#</a></h2>
+<p>The recording dates on these videos are jumbled relative to the course order - the welcome video was recorded <em>last</em>, on December 22. The order above is the <strong>teaching</strong> order, and it’s the order to watch them in. Videos 4 and 5 (the refreshers) were recorded alongside the Module 2 material and use the Boston Housing dataset; the neural network videos use California housing. Same methodology either way - that’s the point.</p>
+<hr class="docutils" />
+<p><em>Companions: <a class="reference internal" href="skills.html"><span class="std std-doc">Skills sheet</span></a> (what you can do now) · <a class="reference internal" href="talking_points.html"><span class="std std-doc">Talking points</span></a> (the theory you should be able to explain) · <a class="reference internal" href="working_in_course.html"><span class="std std-doc">Working in this course</span></a> (how to run and save your work).</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module1_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="working_in_course.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working in this Course — Colab, GitHub, VS Code</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skills.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 1 Skills Sheet — What You Can Do Now</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-setting-up-the-shop">Block 1 · Setting up the shop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-the-ml-refresher">Block 2 · The ML refresher</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-neural-networks-in-scikit-learn">Block 3 · Neural networks in scikit-learn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-ordering">A note on ordering</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
