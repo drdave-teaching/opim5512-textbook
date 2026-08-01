@@ -1,6 +1,13 @@
 format: jb-book
 root: intro
 chapters:
+  - file: module1_hub/index
+    sections:
+      - file: module1_hub/working_in_course
+      - file: module1_hub/videos
+      - file: module1_hub/skills
+      - file: module1_hub/talking_points
+      - file: module1_hub/lab1
   - file: m1_tooltime/index
   - file: m2_tuning_xai/index
   - file: m3_operational_ml/index
