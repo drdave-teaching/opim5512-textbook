@@ -8,6 +8,22 @@ chapters:
       - file: module1_hub/skills
       - file: module1_hub/talking_points
       - file: module1_hub/lab1
+  - file: module2_hub/index
+    sections:
+      - file: module2_hub/videos
+      - file: module2_hub/skills
+  - file: module3_hub/index
+    sections:
+      - file: module3_hub/videos
+      - file: module3_hub/skills
+  - file: module4_hub/index
+    sections:
+      - file: module4_hub/videos
+      - file: module4_hub/skills
+  - file: module5_hub/index
+    sections:
+      - file: module5_hub/videos
+      - file: module5_hub/skills
   - file: m1_tooltime/index
   - file: m2_tuning_xai/index
   - file: m3_operational_ml/index
