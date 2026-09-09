@@ -120,9 +120,9 @@ Finally, **autoML** (e.g., **TPOT**) automates the whole search — preprocessin
 
 ## 2.5 SHAP in practice — the `shap` library (Lab 2)
 
-:::{admonition} Draft — updating after the live run
+:::{admonition} Draft — figures from a validation run
 :class: warning
-This section will be refined (with figures from the class run) after we run **Lab 2** in person. The code and ideas are final; the plots below are described rather than embedded for now.
+The figures below come from a **validation run** of the Lab 2 model; we'll refresh them (and tighten the wording) with plots from the in-person class run. The code and ideas are final.
 :::
 
 Building SHAP from scratch (§2.4) is how you *trust* it — you watched the contributions sum exactly to the prediction. In practice you don't enumerate coalitions yourself: the **`shap`** library does it fast, and for tree models (random forests, gradient boosting) **exactly**. **Lab 2** puts this on a real model — a random forest that predicts **New England electricity demand** ($R^2 \approx 0.90$) from weather and time.
@@ -139,7 +139,21 @@ shap_values = explainer(X)                 # one push, in MW, per feature, per r
 
 **Global — the beeswarm.** `shap.plots.beeswarm(shap_values)` draws one dot per row for each feature, placed by its push and colored by the feature's value. Read it top to bottom for *which features matter overall, and in which direction*. On the energy model, `hour_of_day`, `dewpoint_f`, and `temp_f` do the heavy lifting, and high (red) values push demand **up**. Averaging `|SHAP|` down each feature recovers a permutation-importance-style ranking — the same story §2.4 told, now with direction attached.
 
+```{figure} images/shap_beeswarm.png
+:name: fig-shap-beeswarm
+:width: 100%
+
+**Global (beeswarm).** Each dot is one hour; color is the feature's value (red = high, blue = low), position is its push on the prediction in MW. `hour_of_day`, `dewpoint_f`, and `temp_f` dominate, and their high values push demand up.
+```
+
 **Local — the waterfall.** `shap.plots.waterfall(shap_values[i])` explains **one** prediction: start at the average prediction $E[f(X)]$ and stack each feature's push until you land on that hour's exact prediction. This is the answer you hand a stakeholder — *"demand is high this hour **because** it's 6 PM, it's muggy, and it's hot."*
+
+```{figure} images/shap_waterfall.png
+:name: fig-shap-waterfall
+:width: 100%
+
+**Local (waterfall).** The peak-demand hour, explained: from the average prediction $E[f(X)] = 14{,}952$ MW, each feature's push (hour of day, dew point, temperature…) stacks up to the model's exact prediction, $f(x) = 23{,}082$ MW. The pushes sum to the prediction exactly — that's local accuracy.
+```
 
 ```python
 # the honesty check — local accuracy, in MW
