@@ -118,6 +118,44 @@ coefs = LinearRegression().fit(Z, yz, sample_weight=w).coef_   # 4) local import
 
 Finally, **autoML** (e.g., **TPOT**) automates the whole search — preprocessing, model choice, and tuning — into one pipeline. It's a great way to set a strong benchmark, as long as you keep the train-only and explainability discipline from this chapter.
 
+## 2.5 SHAP in practice — the `shap` library (Lab 2)
+
+:::{admonition} Draft — updating after the live run
+:class: warning
+This section will be refined (with figures from the class run) after we run **Lab 2** in person. The code and ideas are final; the plots below are described rather than embedded for now.
+:::
+
+Building SHAP from scratch (§2.4) is how you *trust* it — you watched the contributions sum exactly to the prediction. In practice you don't enumerate coalitions yourself: the **`shap`** library does it fast, and for tree models (random forests, gradient boosting) **exactly**. **Lab 2** puts this on a real model — a random forest that predicts **New England electricity demand** ($R^2 \approx 0.90$) from weather and time.
+
+The whole engine is three lines:
+
+```python
+import shap
+explainer   = shap.TreeExplainer(model)   # reads the trained forest
+shap_values = explainer(X)                 # one push, in MW, per feature, per row
+```
+
+`shap_values` is now a table the same shape as `X`, where every cell is a **push in the target's units** — here, megawatts. Every plot is just a different view of that one table.
+
+**Global — the beeswarm.** `shap.plots.beeswarm(shap_values)` draws one dot per row for each feature, placed by its push and colored by the feature's value. Read it top to bottom for *which features matter overall, and in which direction*. On the energy model, `hour_of_day`, `dewpoint_f`, and `temp_f` do the heavy lifting, and high (red) values push demand **up**. Averaging `|SHAP|` down each feature recovers a permutation-importance-style ranking — the same story §2.4 told, now with direction attached.
+
+**Local — the waterfall.** `shap.plots.waterfall(shap_values[i])` explains **one** prediction: start at the average prediction $E[f(X)]$ and stack each feature's push until you land on that hour's exact prediction. This is the answer you hand a stakeholder — *"demand is high this hour **because** it's 6 PM, it's muggy, and it's hot."*
+
+```python
+# the honesty check — local accuracy, in MW
+i = int(np.argmax(model.predict(X)))                  # the peak-demand hour
+shap.plots.beeswarm(shap_values)                      # global (Partner A)
+shap.plots.waterfall(shap_values[i])                  # local  (Partner B)
+# base value + sum(shap_values[i]) == model.predict(X)[i]   e.g. 14,952 + pushes = 23,082 MW
+```
+
+**Dependence.** `shap.plots.scatter(shap_values[:, "hour_of_day"], color=shap_values[:, "temp_f"])` plots a feature's push across its range, colored by a second feature — a PDP-like view that also exposes **interactions**.
+
+:::{admonition} This is Lab 2
+:class: seealso
+In [Lab 2 — Explaining a Model (SHAP)](../module2_hub/lab2.md), two partners split exactly this: **Partner A** ships the **beeswarm** (global), **Partner B** the **waterfall** (local), through the branch → PR → review → merge loop — and the report only closes when they say whether the global and local stories **agree**. The `TreeExplainer` line and `shap_values` are given; the students write one plotting line each.
+:::
+
 ## Wrap-up
 
 ```{admonition} Key takeaways
@@ -127,6 +165,7 @@ Finally, **autoML** (e.g., **TPOT**) automates the whole search — preprocessin
 - **Spot-check** for signal, then tune inside a **`Pipeline`** with **`GridSearchCV`** (or Optuna/autoML) to prevent leakage.
 - Open the black box with **permutation importance** (shuffle a feature, watch performance) and **PDPs** (averaged ICE curves) — both **global**.
 - Explain a **single** prediction with **SHAP** (fair, additive credit from game theory; built from scratch over coalitions) and **LIME** (a weighted local linear surrogate; mind the kernel width). When they **agree**, trust the story.
+- In practice, the **`shap` library** does the coalition work for you (exactly, for trees): `TreeExplainer` → `shap_values` → **beeswarm** (global) and **waterfall** (local). **Lab 2** ships both on the energy-demand model.
 - **autoML/TPOT** automates the search — a strong benchmark, with the same discipline.
 ```
 
@@ -289,6 +328,15 @@ Finally, **autoML** (e.g., **TPOT**) automates the whole search — preprocessin
 - **Local accuracy**: baseline + Σ SHAP = the prediction, exactly (plus symmetry, dummy, additivity).
 - Built **from scratch** by enumerating coalitions; absent features marginalized over a background sample.
 - mean|SHAP| recovers permutation importance; a SHAP dependence plot recovers the PDP.
+:::
+
+:::{admonition} SHAP with the `shap` library (Lab 2)
+:class: note dropdown
+- From-scratch SHAP builds trust; the **`shap` library** does the coalitions fast (exact for trees).
+- Engine: `explainer = shap.TreeExplainer(model)` → `shap_values = explainer(X)` — pushes in the target's units (MW).
+- **Global** = `shap.plots.beeswarm` (which features matter + direction); **local** = `shap.plots.waterfall` (one prediction's story).
+- Local accuracy holds numerically: base value + Σ SHAP = the exact prediction.
+- **Lab 2**: Partner A = beeswarm, Partner B = waterfall, on the energy random forest ($R^2\approx0.90$).
 :::
 
 :::{admonition} LIME from scratch
