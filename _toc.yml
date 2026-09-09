@@ -12,6 +12,7 @@ chapters:
     sections:
       - file: module2_hub/videos
       - file: module2_hub/skills
+      - file: module2_hub/lab2
   - file: module3_hub/index
     sections:
       - file: module3_hub/videos

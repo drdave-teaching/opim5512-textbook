@@ -17,6 +17,7 @@ Everything for Module 2 in one place. Module 1 taught you to fit a model. Module
 | ✅ **Skills sheet** | [what you can do now](skills.md) | check yourself off after the videos |
 | 📓 **The notebooks** | [Chapter 2](../m2_tuning_xai/index.md) | every video drives one of these |
 | ✍️ **By-hand checks** | [opim-math worksheets](https://github.com/drdave-teaching/opim-math/tree/main/OPIM5512) | confusion matrix and metrics by hand |
+| 🧪 **In-class lab** | [Lab 2 — Explaining a Model (SHAP)](lab2.md) | explain the trained model two ways (global + local), ship it through a reviewed PR |
 
 ## The three blocks
 
