@@ -26,9 +26,9 @@ The whole night is the collaboration loop: **branch → commit → push → pull
 
 ## Part 1 · Set up the shared repo (Partner A drives)
 
-Start from the class **template repo** — it already contains the data, both notebooks, an empty `images/` folder, a README with the data dictionary, and a `REPORT.md` skeleton. You build none of that.
+The point of tonight is your *first commit*, so Partner A **builds the repo from scratch** — no template. The folders, the notebook, the plots all get added later, through the workflow.
 
-1. Partner A: open the [Lab 1 template](https://github.com/drdave-teaching/opim5512-lab1-template) → green **Use this template → Create a new repository** → owner = you, name `opim5512-lab1-<netidA>-<netidB>`, **Public**.
+1. Partner A: on github.com, **➕ → New repository** → owner = you, name `opim5512-lab1-<netidA>-<netidB>`, **Public**, and check **Add a README** + **.gitignore → Python** → **Create repository**. *(Not "Use this template" — you build it.)*
 2. Partner A: **Settings → Collaborators** → add Partner B → Partner B **accepts** the invite.
 3. Partner A: **Settings → Rules → Rulesets** → a branch ruleset on `main`: **require a pull request + 1 approval**. This is the two-person gate — nobody merges their own work.
 4. Both: **clone once** in GitHub Desktop, then **Repository → Show in Explorer** to find the files on disk.
@@ -41,12 +41,12 @@ If GitHub Desktop says you're on **`main`**, stop and switch to your `dev-` bran
 
 ## Part 2 · Plot & ship (each partner, on your own branch)
 
-1. Open **your** notebook in Colab: **File → Open notebook → GitHub tab** → paste your repo URL → open `notebooks/Lab1_A_Weather` (A) or `Lab1_B_Demand` (B).
+1. Open the starter in Colab: **File → Open notebook → GitHub tab** → paste `drdave-teaching/OPIM5512-labs` → open `…/Lab1_FirstCommit/notebooks/Lab1_A_Weather.ipynb` (A) or `Lab1_B_Demand.ipynb` (B).
 2. Partner A sets the campus (`hartford` / `stamford`). **Runtime → Run all** — a **line plot** appears and saves itself as a PNG.
 3. In the **TODO** cell, write **one histogram** (the shape is given) — temperature (A) or demand (B). This is your only code tonight. Run it, look at it, title it with what a reader should notice.
-4. Run the **download** cell → your two PNGs land in Downloads.
-5. **File → Save** the notebook back to GitHub — your repo, your `dev-` branch, **same path**, with a real commit message. *(Plain **File → Save** — not Ctrl+S, which only autosaves to Drive.)*
-6. GitHub Desktop → **Show in Explorer** → drag both PNGs into **`images/`** → **Commit** (real message) → **Push**.
+4. Run the **download** cell → two PNGs land in Downloads. Then **File → Download → Download .ipynb**. *(Colab can save straight to GitHub, but we skip that tonight — you move the files in yourself so you see where they live.)*
+5. GitHub Desktop → **Show in Explorer** → make **`notebooks/`** + **`images/`** → drag your `.ipynb` into `notebooks/`, both PNGs into `images/`.
+6. Confirm the top bar says your `dev-` branch → **Commit** (real message) → **Push**.
 
 :::{admonition} 🚫 No AI in Lab 1
 :class: important
@@ -60,11 +60,11 @@ The histogram is three lines — type it. Git is muscle memory, and you can't ap
 3. **Merge** both PRs → **Delete branch**.
 4. Both: GitHub Desktop → `main` → **Fetch → Pull**. Open `images/`: **four PNGs**. Neither of you could have produced that alone.
 
-## Part 4 · The report (both, one screen)
+## Part 4 · Read-out & deliverable (both)
 
-Open `REPORT.md` → **Edit**. The four plots already render. Replace each **➜** line with one sentence — every number gets a unit (°F, MW, hours). Commit it on a `report` branch, PR it, the *other* partner approves, merge.
+Your deliverable is the **network graph**: **Insights → Network** shows the branches leaving `main` and coming back — proof you both authored *and* reviewed. **Screenshot it** and post it to **Lab 1 participation** on HuskyCT.
 
-**Ahead of schedule?** Run the joint notebook (both series joined on the hour), drag `temp_vs_load.png` into `images/`, and chase the question at the bottom — the surprise is that the **hottest hour is not the peak-demand hour** (thermal mass + 6 PM behavior + cumulative heat).
+**Ahead of schedule?** Add a short **`REPORT.md`** — your four plots, one sentence each (units on every number) — and merge it through its own PR. Then run the joint notebook, drag `temp_vs_load.png` into `images/`, and chase the surprise: the **hottest hour is not the peak-demand hour** (thermal mass + 6 PM behavior + cumulative heat).
 
 :::{admonition} The deliverable is the repo, not the notebook
 :class: important
@@ -75,7 +75,7 @@ A cleaned dataframe living in a Colab tab is worth nothing on Thursday morning. 
 
 ## Two editions
 
-- **Simple edition (Stamford, and the current default)** — the data comes **pre-cleaned** in the template repo, so you spend the night on the *workflow*. Everything you need is in the kit: [START HERE, instructions, the 20-step map, printable handouts, and the Colab starters](https://github.com/drdave-teaching/OPIM5512-labs/tree/master/Module1/Week1_TechStack/Lab1_FirstCommit/simple).
+- **Simple edition (Stamford, and the current default)** — the data comes **pre-cleaned**, so you **build the repo from scratch** and spend the night on the *workflow*. Everything you need is in the kit: [START HERE, instructions, the 20-step map, printable handouts, and the Colab starters](https://github.com/drdave-teaching/OPIM5512-labs/tree/master/Module1/Week1_TechStack/Lab1_FirstCommit/simple).
 - **Extended edition (Hartford's first run)** — you **clean the two datasets yourself** (METAR weather at `:51` past the hour with `M`/`T` flags; ISO-NE demand on *Hour Ending 1–24*) and stage a merge conflict on purpose. The [extended kit](https://github.com/drdave-teaching/OPIM5512-labs/tree/master/Module1/Week1_TechStack/Lab1_FirstCommit) is one folder up.
 
 :::{admonition} Online / solo students
@@ -87,10 +87,10 @@ Pair over Teams if you can — each on your own account, one owns the repo and a
 
 - [ ] Both partners are collaborators; branch protection on `main`
 - [ ] `images/` has four PNGs with the exact filenames (two per partner)
-- [ ] Both notebooks saved back with a histogram in each
-- [ ] `REPORT.md` — one real sentence under each plot, plus one honest "what this data can't tell us"
-- [ ] ≥3 merged pull requests, branches deleted, both of you authoring **and** reviewing
-- [ ] A network graph (Insights → Network) showing the loop going both ways
+- [ ] Both partners' notebooks committed (a histogram in each)
+- [ ] ≥2 merged pull requests, branches deleted, both of you authoring **and** reviewing
+- [ ] A **network-graph screenshot** posted to HuskyCT — the deliverable
+- [ ] *(bonus)* a short `REPORT.md` merged through its own PR
 
 ## The by-hand check
 
