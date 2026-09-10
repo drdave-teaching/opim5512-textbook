@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 2 Video Guide — What Each Video Covers &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module2_hub/videos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 2 Skills Sheet — What You Can Do Now" href="skills.html" />
+    <link rel="prev" title="Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module1_hub/index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/lab1.html">Lab 1 — First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 2 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 2 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2.html">Lab 2 — Explaining a Model (SHAP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3_hub/index.html">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/videos.html">Module 3 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/skills.html">Module 3 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4_hub/index.html">Module 4 Hub — Time Series Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/videos.html">Module 4 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/skills.html">Module 4 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5_hub/index.html">Module 5 Hub — Text Analytics Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/videos.html">Module 5 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/skills.html">Module 5 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module2_hub/videos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 2 Video Guide — What Each Video Covers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-imbalanced-data-sampling-and-cross-validation">Block 1 · Imbalanced data, sampling, and cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-spot-checking-pipelines-and-hyperparameter-tuning">Block 2 · Spot-checking, pipelines, and hyperparameter tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-explainable-ai">Block 3 · Explainable AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-2-video-guide-what-each-video-covers">
+<h1>Module 2 Video Guide — What Each Video Covers<a class="headerlink" href="#module-2-video-guide-what-each-video-covers" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Nineteen videos, about 2 hours 5 minutes total, in three blocks: fix the data problem that quietly wrecks classification models, tune your models <em>honestly</em>, then crack the black box open and explain what the model actually did. Watch in order — each block sets up the next, and the last one is the one your future boss will ask about.</p>
+<hr class="docutils" />
+<section id="block-1-imbalanced-data-sampling-and-cross-validation">
+<h2>Block 1 · Imbalanced data, sampling, and cross-validation<a class="headerlink" href="#block-1-imbalanced-data-sampling-and-cross-validation" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> why a 90%-accurate model can have zero skill · majority undersampling, minority oversampling, and SMOTE as three different answers to the same problem · SMOTE as <em>interpolation between neighbors</em>, done by hand before it’s done in code · SMOTENC for mixed numeric/categorical data · <strong>the leakage rule that governs the whole module — resample the training partition only</strong> · cross-validation as a way to get a <em>distribution</em> of error metrics instead of one lucky number.</p>
+<p><strong>Video 1 — Majority Undersampling</strong> <em>(5:17) · drives <code class="docutils literal notranslate"><span class="pre">0a_Undersampling.ipynb</span></code></em>
+The problem statement for the whole block. When you’re chasing a rare event — sensor failures, fraud, a power outage in a town — you have <em>a whole lot of nothing and just a little bit of signal</em>. Fit a model on that and it gets greedy: it calls everything a zero, it’s right 90% of the time, and it has <strong>no skill</strong>. The first fix is to balance the classes. Dave introduces <strong>imbalanced-learn (<code class="docutils literal notranslate"><span class="pre">imblearn</span></code>)</strong> — <em>like scikit-learn, but for imbalanced data</em> — then does it the honest way first: on the loan dataset (480 clean rows, 332 yes / 148 no), grab all 148 nos, sample 148 yeses <strong>without replacement</strong>, <code class="docutils literal notranslate"><span class="pre">concat</span></code> them, and you have 296 balanced rows. Only then the shortcut: <code class="docutils literal notranslate"><span class="pre">RandomUnderSampler</span></code> with <code class="docutils literal notranslate"><span class="pre">sampling_strategy=&quot;majority&quot;</span></code>, which fits <em>a lot like a linear regression from scikit-learn</em> — <code class="docutils literal notranslate"><span class="pre">fit_resample(X,</span> <span class="pre">y)</span></code> and you’re done.</p>
+<p><strong>Video 2 — Oversample Minority</strong> <em>(5:34) · drives <code class="docutils literal notranslate"><span class="pre">0b_Oversampling.ipynb</span></code></em>
+The mirror image: instead of throwing majority rows away, duplicate minority rows. By hand it’s the same <code class="docutils literal notranslate"><span class="pre">sample()</span></code> call with <strong><code class="docutils literal notranslate"><span class="pre">replace=True</span></code></strong> — and Dave makes you reason about why: <em>how can I make 332 rows out of 148?</em> You can’t, without replacement. Then <code class="docutils literal notranslate"><span class="pre">RandomOverSampler</span></code> with <code class="docutils literal notranslate"><span class="pre">sampling_strategy=&quot;minority&quot;</span></code>.</p>
+<p>This is also where the rule of the module lands, and it lands hard. Duplicate rows <strong>before</strong> you split and copies of the same row end up on both sides of the split — <em>you’ll leak information into the test partition, get artificially good results, and then your model fails spectacularly in production</em>. Whatever you do to train, the test partition keeps the <strong>original, real-world distribution</strong>: if the data was two-to-one, the holdout stays two-to-one.</p>
+<p><strong>Video 3 — SMOTE Pt. 1</strong> <em>(7:47) · drives <code class="docutils literal notranslate"><span class="pre">0c_SMOTE</span> <span class="pre">(numeric</span> <span class="pre">features</span> <span class="pre">only).ipynb</span></code></em>
+Is there something better than throwing information away or duplicating information you already have? Yes: <strong>SMOTE — Synthetic Minority Oversampling Technique</strong> — and <em>synthetic</em> is the operative word. Dave walks the algorithm by hand before any code, in the clearest four-line form you’ll find:</p>
+<blockquote>
+<div><p>Pick a row of interest — call it <strong>home</strong>. Find its five closest neighbors <em>within the same class</em>. Pick one — call it <strong>neighbor</strong>. Subtract the rows, column by column: <strong>diff</strong> = neighbor − home. Pick a random number between 0 and 1 — <strong>gap</strong>. Your new synthetic row is <strong>home + gap × diff</strong>.</p>
+</div></blockquote>
+<p>It’s a fake row that lies on the line between two real ones. He runs the k-nearest-neighbor search live so you can see the neighbors it picks are genuinely similar rows, and notes the variants that draw a different gap per column (here, gap is fixed — the original algorithm).</p>
+<p><strong>Video 4 — SMOTE Pt. 2 (numeric only)</strong> <em>(3:23) · drives <code class="docutils literal notranslate"><span class="pre">0c_SMOTE</span> <span class="pre">(numeric</span> <span class="pre">features</span> <span class="pre">only).ipynb</span></code></em>
+The <code class="docutils literal notranslate"><span class="pre">imblearn</span></code> implementation plus the picture that makes it click. Ten thousand synthetic points, imbalanced 99-to-1 (9,900 zeros, 100 ones), plotted in 2D and colored by class. Run SMOTE and watch it <strong>linearly interpolate between the orange minority points</strong> — and notice what it never touches: <em>the blue majority class isn’t used at all.</em> Then play with <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> to see the result shift. The constraint that matters: <strong>SMOTE is numeric-only</strong> — hand it red/green/blue and <em>it’ll freak out</em>.</p>
+<p><strong>Video 5 — SMOTENC</strong> <em>(3:51) · drives <code class="docutils literal notranslate"><span class="pre">0d_SMOTE</span> <span class="pre">(numeric</span> <span class="pre">and</span> <span class="pre">categorical</span> <span class="pre">features).ipynb</span></code></em>
+The fix for mixed data: <strong>NC = numeric and categorical</strong>, which handles a categorical column by taking the majority value among the neighbors. The practical problem is that <code class="docutils literal notranslate"><span class="pre">categorical_features</span></code> wants <strong>column indices</strong>, which is miserable to type by hand for a wide dataframe — so Dave does it the clunky way first (<em>get it right, then do it right</em>), then writes the helper that builds <code class="docutils literal notranslate"><span class="pre">cat_list</span></code> from dtypes automatically. Best moment: how to spot synthetic rows at the bottom of the dataframe — <em>look at all the decimal points</em>. Real loan amounts never ran to <code class="docutils literal notranslate"><span class="pre">$0.088432</span></code>. Quantitatively useful, real-world nonsense.</p>
+<p><strong>Video 6 — SMOTE with ML</strong> <em>(6:03) · drives <code class="docutils literal notranslate"><span class="pre">0e_SMOTE</span> <span class="pre">with</span> <span class="pre">ML</span> <span class="pre">implementation.ipynb</span></code></em>
+The whole thing end to end, done correctly. Split first (391 train / 98 test, both still ~2-to-1), SMOTE <strong>the training partition only</strong>, fit a decision tree with <code class="docutils literal notranslate"><span class="pre">min_samples_split=10</span></code>, and score against a test set that still carries the original distribution. The improvement is modest and Dave says so plainly: <em>sampling is never going to drastically change things, but it’s worth trying to bolster the signal.</em> Ends with the setup you should actually use in the real world — train / validation / independent test.</p>
+<p><strong>Video 7 — CV Pt. 1 (K-fold, repeated k-fold)</strong> <em>(9:20) · drives <code class="docutils literal notranslate"><span class="pre">1_CrossValidation.ipynb</span></code></em>
+Cross-validation from scratch, then with the API. A single 80/20 holdout is fine for a proof of concept — and Dave’s smile test for it is <strong>train and test error within about 10%</strong> of each other. But one split gives you one number. So: chop the 80% into five folds, hold out each in turn, and collect five MAEs. He codes the fold indices by hand with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop before showing <code class="docutils literal notranslate"><span class="pre">KFold</span></code>, then generalizes to <strong>10-times-repeated 5-fold</strong> — 50 error metrics, which is why people report a mean and a standard deviation instead of a single number.</p>
+<p>Two gotchas he flags: scikit-learn returns <strong>negative</strong> error metrics (it’s minimizing, so everything is negated — multiply by −1, the interpretation is unchanged), and its folds won’t match your hand-rolled ones because it shuffles first.</p>
+<p><strong>Video 8 — CV Pt 2 (LOOCV, LOGOCV)</strong> <em>(5:09) · drives <code class="docutils literal notranslate"><span class="pre">1_CrossValidation.ipynb</span></code></em>
+The two exotic flavors, and when each is a trap. <strong>Leave-one-out</strong> trains on all rows but one, 16,000 times — Dave literally had to kill the cell, <em>it was taking about 20 minutes</em>. It’s useful for rare-event classification, and it is <strong>invalid for time series</strong>: knowing what happened before <em>and after</em> a held-out point leaks information you’d never have in operation.</p>
+<p><strong>Leave-one-group-out</strong> is the one to remember, and it comes with the story from his own research. A decade of outage modeling for electric utilities: with about 30 storms they used a random 20% holdout, got beautiful test results, then <em>a new storm would come and we’d be way off</em>. The fix was to train on 29 storms and predict the 30th, thirty times over — <em>pretending we were running the model in operation, seeing each storm for the first time.</em> Here the grouping column is <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code>. If your data has natural groups — storms, patients, stores, campaigns — this is the honest evaluation.</p>
+</section>
+<hr class="docutils" />
+<section id="block-2-spot-checking-pipelines-and-hyperparameter-tuning">
+<h2>Block 2 · Spot-checking, pipelines, and hyperparameter tuning<a class="headerlink" href="#block-2-spot-checking-pipelines-and-hyperparameter-tuning" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> spot-checking as a horse race between cheap models · <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> (capital P) wraps preprocessing <em>and</em> model so the scaling happens inside each fold · ensembles as many weak learners voting · <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and how fast the model count multiplies · casting a wide net then searching a tighter grid.</p>
+<p><strong>Video 9 — Intro to “Spotcheck” Models and Pipelines</strong> <em>(7:02) · drives <code class="docutils literal notranslate"><span class="pre">1_Regression_SpotCheck.ipynb</span></code></em>
+Stop hand-tuning one model at a time. A <strong>spot-check model</strong> is one that’s cheap, fast, and decent — linear regression, lasso, elastic net, decision tree, KNN, and (slowly) SVM. Store them as <code class="docutils literal notranslate"><span class="pre">(nickname,</span> <span class="pre">model)</span></code> tuples, loop over them, run 10-fold CV on the training partition, and keep the mean and standard deviation of each. Instead of <code class="docutils literal notranslate"><span class="pre">dtr1</span></code>, <code class="docutils literal notranslate"><span class="pre">dtr2</span></code>, <code class="docutils literal notranslate"><span class="pre">dtr3</span></code> and four copies of <code class="docutils literal notranslate"><span class="pre">X_train</span></code> floating around, one loop evaluates them all.</p>
+<p>Before the modeling, the EDA he expects every time: histograms and box plots to <em>appreciate the shape of everything</em>, the <strong>scatterplot matrix</strong> (<em>I used to teach stats, and this was always my favorite plot</em>), and a rounded correlation matrix. The result is read off a <strong>box plot of the folds</strong> — closer to the top is better, and you want a tight box. Linear regression wins this round; SVR is slow and last.</p>
+<p><strong>Video 10 — Pipelines with some preprocessing and LIGHT hyperparameter tuning</strong> <em>(6:57) · drives <code class="docutils literal notranslate"><span class="pre">1a_AdvancedPipelines_Regression.ipynb</span></code></em>
+The memory device is his: <strong>capital P Pipelines, lowercase p preprocessing. P’s and p’s.</strong> Every entry in the list becomes a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> of scaler-then-model — <code class="docutils literal notranslate"><span class="pre">scaled</span> <span class="pre">LR</span></code>, <code class="docutils literal notranslate"><span class="pre">scaled</span> <span class="pre">LR</span> <span class="pre">MM</span></code> with min-max instead of standard, <code class="docutils literal notranslate"><span class="pre">scaled</span> <span class="pre">KNN</span></code>, <code class="docutils literal notranslate"><span class="pre">scaled</span> <span class="pre">CART</span></code> with <code class="docutils literal notranslate"><span class="pre">min_samples_split=15</span></code>, another at 30. Now one loop runs a whole experiment grid, and the CART at 30 beats both the CART at 15 and the linear regression. Then a first formal <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> on KNN — the param grid is a dictionary, printed so you can see it, and the winner (k=3) gets refit and taken to test. He leaves you an exercise: <strong>also store the test result per model as a distribution.</strong></p>
+<p><strong>Video 11 — Ensemble Methods and Spotchecking, then GridSearchCV for tuning</strong> <em>(5:55) · drives <code class="docutils literal notranslate"><span class="pre">1a_AdvancedPipelines_Regression.ipynb</span></code></em>
+What an ensemble actually is, in plain terms. A <strong>random forest</strong> is ~100 decision trees, each grown on a random subset of rows <em>and</em> columns; average them for a robust point estimate (and if you want a quasi-nonparametric confidence interval around each prediction, that’s a quantile forest). <strong>Gradient boosting</strong> he frames as curve fitting: small trees, each fit on the <strong>residuals of the previous tree</strong>, additive, and able to approximate any function if you let it run.</p>
+<p>Then the arithmetic that surprises everyone: a grid of 32 combinations under 10-fold CV is <strong>320 model fits</strong>, and the winner (depth 3, 200 estimators) still tests a little worse than it trained. <em>Test is always a little worse than train.</em></p>
+<p><strong>Video 12 — Advanced Pipelines (Pipelines and Hyperparameters at the same time)</strong> <em>(7:45) · drives <code class="docutils literal notranslate"><span class="pre">1a_AdvancedPipelines_Regression.ipynb</span></code></em>
+Why do the horse race and the tuning as two separate steps? The analogy is Dave’s: <em>see who the best horse is, then take that horse and give it some horseshoes or a new saddle.</em> Or do both at once — four pipelines (decision tree, decision tree + PCA, random forest, random forest + PCA), each with its own parameter grid, all looped through <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code>, tracking <code class="docutils literal notranslate"><span class="pre">best_error</span></code> and the winning pipeline name.</p>
+<p>Also the PCA argument you should know: <strong>an integer gives you that many components, a decimal gives you enough components to hit that share of variance</strong> (<code class="docutils literal notranslate"><span class="pre">PCA(0.95)</span></code> = 95% of the variance). And the honest warning about cost — 36 combinations × 10 folds = 360 fits for a humble decision tree, ~3,600 for a random forest, <em>which is why I say go get a cup of coffee</em>. Winner here: the vanilla random forest, no PCA.</p>
+<p><strong>Video 13 — Advanced Pipelines for Classification Models</strong> <em>(5:31) · drives <code class="docutils literal notranslate"><span class="pre">2a_Pipelines_GridSearch_Classification.ipynb</span></code></em>
+The same machinery for classification, seven models deep, with a tour of where the hyperparameters come from — the scikit-learn supervised-learning docs, read live. Note <code class="docutils literal notranslate"><span class="pre">max_features</span></code> for a random forest defaults to the <strong>square root</strong> of the column count (16 columns → 4 per tree). Score on accuracy or swap in weighted F1.</p>
+<p>The strategy advice is the takeaway: <strong>use interesting values or the grid is duplicative.</strong> Search by orders of magnitude or by doubling to cast a wide net, then run a <strong>second, tighter grid</strong> around the winner. It’s iterative, and it’s your judgment call, not the package’s.</p>
+<p><strong>Video 14 — Spotcheck Classification Models</strong> <em>(5:31) · drives <code class="docutils literal notranslate"><span class="pre">2_Classification_SpotCheck_and_Pipelines.ipynb</span></code></em>
+The classification counterpart to Video 9, on the <strong>Wisconsin Breast Cancer</strong> dataset (569 rows, 33 columns, benign vs. malignant — small enough to run fast). Two details in passing: the data is <strong>lightly imbalanced</strong>, which he chooses to accept here while pointing at the <code class="docutils literal notranslate"><span class="pre">imblearn</span></code> pipelines from block 1 as the fix, and the <code class="docutils literal notranslate"><span class="pre">LabelEncoder</span></code> makes <strong>benign = 0</strong> simply because <em>benign starts with B</em>.</p>
+<p>The spot-check lineup for classification: <strong>logistic regression, decision tree, KNN, and Gaussian naive Bayes</strong> — <em>simple estimators, they only have a few hyperparameters anyway</em> — with <code class="docutils literal notranslate"><span class="pre">max_iter</span></code> raised on logistic regression so it stops complaining. (Credit where due: he attributes the term “spot check” to <strong>Jason Brownlee</strong>.) Then the scaled/ensemble round: AdaBoost, KNN, GBM, random forest, extra trees.</p>
+<p>The reading of the results is the part worth copying. Logistic regression has the best mean accuracy, but <strong>scaled KNN is right behind it with a smaller standard deviation — <em>which means the results are more stable</em></strong>. And scaled AdaBoost <em>most of the time gets 98%, but two realizations you get really poor models</em> — exactly the instability a single accuracy number would have hidden. That’s the argument for box plots over point estimates, made with a real example.</p>
+<p>He then tunes AdaBoost: 8 <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> values × 3 learning rates = <strong>24 combinations × 10-fold = 240 fits</strong>, winner <code class="docutils literal notranslate"><span class="pre">learning_rate=0.01</span></code> with 400 estimators, scoring <strong>0.982 on test — slightly better than train</strong>. And rather than take the win, he questions it: <em>maybe it’s just a lucky split</em>, and suggests repeated k-fold with different test partitions to find out.</p>
+</section>
+<hr class="docutils" />
+<section id="block-3-explainable-ai">
+<h2>Block 3 · Explainable AI<a class="headerlink" href="#block-3-explainable-ai" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> model-agnostic explanation · permutation importance = shuffle a column and watch the model break · why every model has a different flavor of “important” · importance for <strong>variable selection</strong>, not just storytelling · PDP as the average of the ICE curves · reading the rug marks before you trust a wiggle.</p>
+<p><strong>Video 15 — Introduction to Permutation Importance</strong> <em>(6:50) · drives <code class="docutils literal notranslate"><span class="pre">0_PermutationImportance_Regression.ipynb</span></code></em>
+The cleanest definition of feature importance that works for <em>any</em> model: take your fitted model, and feed it a <strong>corrupted</strong> test set — one column shuffled, everything else intact. <em>If you shuffle a column and still get a great model, that column isn’t important; if you shuffle it and the model becomes horrible, that column is important.</em> Because there are a million ways to shuffle, you repeat it (<code class="docutils literal notranslate"><span class="pre">n_repeats=10</span></code>) and report a <strong>box plot</strong>, not a number. The x-axis is the <strong>decrease in R²</strong>.</p>
+<p>Cost is worth knowing: 13 predictors × 10 repeats = 130 evaluations, cheap for a linear regression, slow when every evaluation walks 100 trees. And Dave’s preference, with his reasoning: run it on the <strong>test</strong> partition — <em>it shows how the model would fail on unseen data versus learned patterns</em>, and it’s less leakage-prone.</p>
+<p><strong>Video 16 — Permutation importance as a tool for storytelling and variable selection</strong> <em>(5:16) · drives <code class="docutils literal notranslate"><span class="pre">0_PermutationImportance_Regression.ipynb</span></code></em>
+Shouldn’t every model agree on what’s important? <strong>No</strong> — <em>because each model treats the input data differently.</em> A linear regression asserts a linear relationship; a decision tree doesn’t. So the tree ranks rooms first, the linear model ranks LSTAT, DIS, RAD, rooms. Watch <code class="docutils literal notranslate"><span class="pre">RAD</span></code> on the tree: its distribution straddles <strong>zero</strong>, meaning shuffling it sometimes <em>improves</em> performance — a hint it doesn’t belong.</p>
+<p>Then the professional move, from his insurance-modeling years: with a thousand predictors, fit a boosted tree, read the importances, keep the <strong>top ten</strong>, and fit a simple interpretable model on those. <em>Use nonlinear models for variable selection, then linear models for prediction.</em> He lines up three models, keeps the four columns they agree on, refits, and loses very little.</p>
+<p>He also sets up the next video with the meeting you don’t want to be in: you’ve told the decision-maker which variables matter, and they ask <em>“okay, but how is your random forest treating the number of rooms?”</em> — and you’re sweating, because importance says <strong>what</strong> matters, not <strong>which way</strong>.</p>
+<p><strong>Video 17 — Intro to Partial Dependence Plots (PDPs)</strong> <em>(8:00) · drives <code class="docutils literal notranslate"><span class="pre">1_PartialDependence_Regression.ipynb</span></code></em>
+<em>One of my favorite aha moments for aspiring data scientists.</em> The mechanism, built up row by row: take one row, hold every column fixed, and replace LSTAT with each of its <strong>370 unique values</strong> in turn. Predict all 370. That single wiggly line is an <strong>ICE curve</strong> — individual conditional expectation. Do it for all 404 training rows, and <strong>average them at each step</strong>: the red line is the partial dependence plot, the gray lines are the ICE curves it came from. As LSTAT rises, predicted price falls.</p>
+<p>Dave runs PDPs on the <strong>train</strong> partition — <em>it answers “how did the model use the data that went into it?”</em> — and reads several curves out loud, including a lumpy one for crime, with a caution that the lumps may just be where the observations are.</p>
+<p><strong>Video 18 — ‘Clunk’ PDPs and linear vs. nonlinear responses</strong> <em>(5:36) · drives <code class="docutils literal notranslate"><span class="pre">1_PartialDependence_Regression.ipynb</span></code></em>
+Two practical things and one conceptual payoff.</p>
+<p>Practical: <strong><code class="docutils literal notranslate"><span class="pre">num_grid_points</span></code></strong>. Evaluating all 370 unique values is why student PDPs hang — the source of <em>frantic emails at 11:50 at night</em>. Set it to 10 or 20 and it samples evenly spaced values instead; he drops it to 5 to show the curve getting coarse while the trend survives. Also the <strong>rug marks</strong> along the bottom: each tick is a percentile of the data. Where the ticks are dense there’s signal; a dramatic wiggle over two data points means nothing.</p>
+<p>Conceptual: run the exact same PDP code against a <strong>linear regression</strong> and every curve comes back a straight line, because a coefficient is a straight line by construction. Run it against the <strong>random forest</strong> and it’s lumpy with a steep drop and a flat tail. That contrast <em>is</em> the difference between the two model families, drawn rather than asserted: <strong>flat means the model isn’t using that feature.</strong></p>
+<p>Put the two tools together and you have the whole story — permutation importance says which columns matter, partial dependence says which way they push.</p>
+<p><strong>Video 19 — TPOT and autoML</strong> <em>(5:12) · drives <code class="docutils literal notranslate"><span class="pre">3_autoML</span> <span class="pre">and</span> <span class="pre">TPOT_updated.ipynb</span></code></em>
+<strong>AutoML</strong>: hand a clean dataset to <code class="docutils literal notranslate"><span class="pre">TPOTClassifier</span></code> / <code class="docutils literal notranslate"><span class="pre">TPOTRegressor</span></code> and a <strong>genetic algorithm</strong> searches over whole pipelines — preprocessing, model, and hyperparameters together — then hands you the best one. Start with <code class="docutils literal notranslate"><span class="pre">generations=1</span></code> (still ~20 minutes), confirm it works, <em>then</em> turn it up. Save the winner with <strong>joblib</strong>, because the point is to reload the fitted pipeline later and apply it to new data without refitting. The regression run returns a pipeline of percentile selection → PCA → LightGBM with 74 estimators at depth 4 — <em>I never would have coded that.</em></p>
+</section>
+<hr class="docutils" />
+<section id="where-this-goes-next">
+<h2>Where this goes next<a class="headerlink" href="#where-this-goes-next" title="Link to this heading">#</a></h2>
+<p>Module 2 is the modeling toolkit; <strong>Module 3 puts it in production.</strong> The tuned model, the importance plot, and the PDP all reappear there as artifacts a scheduled cloud job regenerates every hour — and again in the A08 midterm, where you’ll be asked to trend your error metrics <em>and</em> your interpretability over time.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module2_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skills.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 2 Skills Sheet — What You Can Do Now</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-imbalanced-data-sampling-and-cross-validation">Block 1 · Imbalanced data, sampling, and cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-spot-checking-pipelines-and-hyperparameter-tuning">Block 2 · Spot-checking, pipelines, and hyperparameter tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-explainable-ai">Block 3 · Explainable AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

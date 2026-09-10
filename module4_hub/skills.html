@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 4 Skills Sheet — What You Can Do Now &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module4_hub/skills';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 5 Hub — Text Analytics Modeling (Fall 2026)" href="../module5_hub/index.html" />
+    <link rel="prev" title="Module 4 Video Guide — What Each Video Covers" href="videos.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module1_hub/index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/lab1.html">Lab 1 — First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module2_hub/index.html">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/videos.html">Module 2 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/skills.html">Module 2 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/lab2.html">Lab 2 — Explaining a Model (SHAP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3_hub/index.html">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/videos.html">Module 3 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/skills.html">Module 3 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 4 Hub — Time Series Modeling (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="videos.html">Module 4 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 4 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5_hub/index.html">Module 5 Hub — Text Analytics Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/videos.html">Module 5 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/skills.html">Module 5 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module4_hub/skills.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 4 Skills Sheet — What You Can Do Now</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-handling-and-feature-engineering">🕰️ Datetime handling and feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-time-properly">📊 Plotting time properly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-a-dirty-time-series">🧹 Cleaning a dirty time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-window-method">🪟 The window method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tsfresh-and-automated-feature-engineering">🧬 TSFresh and automated feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#honest-evaluation">⚖️ Honest evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-sentence-version">The one-sentence version</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-4-skills-sheet-what-you-can-do-now">
+<h1>Module 4 Skills Sheet — What You Can Do Now<a class="headerlink" href="#module-4-skills-sheet-what-you-can-do-now" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Time-series work has a reputation for needing special models. It mostly doesn’t — it needs <strong>special discipline</strong>. These are the moves and the guardrails.</p>
+<hr class="docutils" />
+<section id="datetime-handling-and-feature-engineering">
+<h2>🕰️ Datetime handling and feature engineering<a class="headerlink" href="#datetime-handling-and-feature-engineering" title="Link to this heading">#</a></h2>
+<p><em>Videos 1-3 · Notebooks: Apple stock EDA · Assignment A09</em></p>
+<ul class="simple">
+<li><p>☐ Spot a date column that pandas is storing as a <strong>string</strong> (<code class="docutils literal notranslate"><span class="pre">df.info()</span></code> says object) and convert it</p></li>
+<li><p>☐ <strong>Set the datetime as the index</strong> — and name the three things it unlocks (resampling, rolling windows, readable axes)</p></li>
+<li><p>☐ Use <code class="docutils literal notranslate"><span class="pre">set_index(...,</span> <span class="pre">inplace=True)</span></code> rather than assigning <code class="docutils literal notranslate"><span class="pre">df.index</span></code> and leaving a duplicate column behind</p></li>
+<li><p>☐ Decompose a date into groupable parts: <code class="docutils literal notranslate"><span class="pre">day_name()</span></code>, month, day, year</p></li>
+<li><p>☐ Justify why day-of-week is a real feature and not decoration</p></li>
+<li><p>☐ <strong>Sort by date before any temporal operation</strong></p></li>
+<li><p>☐ Use <code class="docutils literal notranslate"><span class="pre">diff()</span></code> and <code class="docutils literal notranslate"><span class="pre">pct_change()</span></code>, and explain why the first row is <code class="docutils literal notranslate"><span class="pre">NaN</span></code> and what to do about it</p></li>
+<li><p>☐ Apply <code class="docutils literal notranslate"><span class="pre">np.sign()</span></code> to turn a change into up/flat/down (pandas has no <code class="docutils literal notranslate"><span class="pre">sign</span></code>)</p></li>
+<li><p>☐ Compute <strong>rolling averages</strong> with <code class="docutils literal notranslate"><span class="pre">min_periods</span></code>, and explain why the head of the series is empty</p></li>
+<li><p>☐ Describe a <strong>moving-average crossover</strong> and what traders read into it</p></li>
+<li><p>☐ Frame rolling stats correctly for modeling: a polite way to <strong>lag the past into a model</strong> without leaking</p></li>
+</ul>
+</section>
+<section id="plotting-time-properly">
+<h2>📊 Plotting time properly<a class="headerlink" href="#plotting-time-properly" title="Link to this heading">#</a></h2>
+<p><em>Video 2</em></p>
+<ul class="simple">
+<li><p>☐ Never ship a time plot whose x-axis is the <strong>record ID</strong> — pass the actual date column</p></li>
+<li><p>☐ Read a percent-change plot as a <strong>volatility</strong> story distinct from the level plot</p></li>
+<li><p>☐ Build a grouped <strong>seaborn box plot</strong> by a time attribute (and set <code class="docutils literal notranslate"><span class="pre">hue</span></code> correctly)</p></li>
+<li><p>☐ Subset a date range with boolean masks, <strong>each condition in its own parentheses</strong></p></li>
+<li><p>☐ Lay out <strong>subplots</strong> with <code class="docutils literal notranslate"><span class="pre">tight_layout</span></code> instead of pasting charts one at a time</p></li>
+<li><p>☐ Explain a gap in a trading-day series (weekends and holidays) rather than “fixing” it</p></li>
+</ul>
+</section>
+<section id="cleaning-a-dirty-time-series">
+<h2>🧹 Cleaning a dirty time series<a class="headerlink" href="#cleaning-a-dirty-time-series" title="Link to this heading">#</a></h2>
+<p><em>Videos 4-6 · Notebooks: BDL weather EDA · Assignment A09</em></p>
+<ul class="simple">
+<li><p>☐ Recognize that <strong>one sentinel character</strong> (<code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>) forces an entire numeric column to string</p></li>
+<li><p>☐ Diagnose it the fast way: <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> → print <strong>unique values</strong> → find the sentinel</p></li>
+<li><p>☐ Clean it robustly with <code class="docutils literal notranslate"><span class="pre">pd.to_numeric</span></code> across columns instead of chasing sentinels one at a time</p></li>
+<li><p>☐ Quantify missingness per column and <strong>plot missingness over time</strong> before choosing a strategy</p></li>
+<li><p>☐ Explain why <strong>mean/median imputation destroys a time series</strong> (a flat line through a signal that is never flat)</p></li>
+<li><p>☐ Apply <strong>linear interpolation</strong> as the sane default, and name its failure mode (a whole missing day)</p></li>
+<li><p>☐ Use <strong>forward-fill and back-fill together</strong>, knowing <code class="docutils literal notranslate"><span class="pre">ffill</span></code> can’t fix a missing first row and <code class="docutils literal notranslate"><span class="pre">bfill</span></code> can’t fix a missing last one</p></li>
+<li><p>☐ Test whether your imputation choice even matters by plotting two strategies on top of each other</p></li>
+<li><p>☐ Recognize when <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> would delete essentially the whole dataset — and why that’s information, not an obstacle</p></li>
+<li><p>☐ <strong>Resample</strong> to a chosen resolution with any aggregation, and <strong>print the shape</strong> so you can see what you traded away</p></li>
+<li><p>☐ Use the modern bin aliases (<code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>)</p></li>
+</ul>
+</section>
+<section id="the-window-method">
+<h2>🪟 The window method<a class="headerlink" href="#the-window-method" title="Link to this heading">#</a></h2>
+<p><em>Videos 7-8 · Notebooks: NE energy + BDL weather</em></p>
+<ul class="simple">
+<li><p>☐ Explain the window method in one sentence: <strong>turn lags into columns</strong> so any tabular model works</p></li>
+<li><p>☐ Build lag features with <code class="docutils literal notranslate"><span class="pre">shift()</span></code> and predict how the column count multiplies (29 features + 3 lags = 116)</p></li>
+<li><p>☐ Decide <strong>which columns to shift and which not to</strong>, and defend it as a leakage argument</p></li>
+<li><p>☐ Set up the realistic framing: today’s <em>forecast</em> is knowable, today’s <em>outcome</em> is not</p></li>
+<li><p>☐ Run <strong>repeated permutation importance</strong> on a time-series model and interpret which <strong>lag</strong> matters</p></li>
+<li><p>☐ Run <strong>partial dependence</strong> on the top features of a time-series model</p></li>
+<li><p>☐ Cross-check a PDP against the <strong>raw physical relationship</strong> in the data and say whether the model learned the real thing</p></li>
+<li><p>☐ Treat a suspiciously good model as a <strong>leakage alarm</strong>, and go to permutation importance first to find it</p></li>
+</ul>
+</section>
+<section id="tsfresh-and-automated-feature-engineering">
+<h2>🧬 TSFresh and automated feature engineering<a class="headerlink" href="#tsfresh-and-automated-feature-engineering" title="Link to this heading">#</a></h2>
+<p><em>Videos 9-11 · Notebooks: robot failures · BDL five-year weather · Assignment A09</em></p>
+<ul class="simple">
+<li><p>☐ Shape data the way TSFresh needs it: a <strong>grouping ID</strong> plus a <strong>time column</strong>, one row per observation</p></li>
+<li><p>☐ Resample so each group has a consistent length, and <strong>assert it</strong> (a print statement that checks 24/day)</p></li>
+<li><p>☐ Interpolate gaps <em>before</em> extraction</p></li>
+<li><p>☐ Run <code class="docutils literal notranslate"><span class="pre">extract_features</span></code> and predict roughly how many features you’ll get (~200 per column)</p></li>
+<li><p>☐ Name what those features are: absolute energy, autocorrelation, Fourier coefficients, kurtosis, entropy, quantiles, location of the maximum</p></li>
+<li><p>☐ Recognize the <strong>curse of dimensionality</strong> when features outnumber rows, and say what overfitting looks like there</p></li>
+<li><p>☐ Cut features with <code class="docutils literal notranslate"><span class="pre">select_features</span></code> / <code class="docutils literal notranslate"><span class="pre">extract_relevant_features</span></code> — and judge honestly when it hasn’t cut enough</p></li>
+<li><p>☐ Sanity-check the output shape against the number of <strong>groups</strong>, not the number of raw observations</p></li>
+<li><p>☐ Budget the runtime (12-15 minutes here) and know Dask exists for scaling it</p></li>
+</ul>
+</section>
+<section id="honest-evaluation">
+<h2>⚖️ Honest evaluation<a class="headerlink" href="#honest-evaluation" title="Link to this heading">#</a></h2>
+<p><em>Videos 11-13</em></p>
+<ul class="simple">
+<li><p>☐ Explain why a <strong>random holdout</strong> on time-series data can leak the future into training</p></li>
+<li><p>☐ Build a <strong>last-20%-in-time</strong> holdout and expect it to score <strong>worse</strong></p></li>
+<li><p>☐ State plainly that the honest number is the worse one</p></li>
+<li><p>☐ Describe <strong>walk-forward validation</strong> as the next step up</p></li>
+<li><p>☐ Plot <strong>actual vs. predicted over time</strong>, not just as a scatter, and read <em>where</em> the model fails (missed extremes)</p></li>
+<li><p>☐ Fix the two things that break that plot: a DataFrame-vs-Series index mismatch, and unreadable tick density</p></li>
+<li><p>☐ Build an <strong>anomaly detector</strong> from residuals: predict → residual → threshold at a percentile (e.g. 99th) → flag</p></li>
+<li><p>☐ Defend your threshold as a <strong>product decision</strong> (too low annoys, too high misses)</p></li>
+<li><p>☐ Decide whether <strong>absolute</strong> error is right for your use case, or whether only one direction matters</p></li>
+<li><p>☐ Describe a <strong>human-in-the-loop</strong> design where the system escalates rather than acts</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="the-one-sentence-version">
+<h2>The one-sentence version<a class="headerlink" href="#the-one-sentence-version" title="Link to this heading">#</a></h2>
+<p><strong>You can take a filthy, irregular, partly-missing time series, clean it defensibly, turn time into columns, model it with tools you already know, evaluate it in a way that won’t flatter you, and flag the moments where it fails.</strong></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module4_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="videos.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 4 Video Guide — What Each Video Covers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module5_hub/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 5 Hub — Text Analytics Modeling (Fall 2026)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datetime-handling-and-feature-engineering">🕰️ Datetime handling and feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-time-properly">📊 Plotting time properly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-a-dirty-time-series">🧹 Cleaning a dirty time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-window-method">🪟 The window method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tsfresh-and-automated-feature-engineering">🧬 TSFresh and automated feature engineering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#honest-evaluation">⚖️ Honest evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-one-sentence-version">The one-sentence version</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

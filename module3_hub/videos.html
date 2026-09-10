@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 3 Video Guide — What Each Video Covers &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module3_hub/videos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 3 Skills Sheet — What You Can Do Now" href="skills.html" />
+    <link rel="prev" title="Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module1_hub/index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/lab1.html">Lab 1 — First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module2_hub/index.html">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/videos.html">Module 2 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/skills.html">Module 2 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/lab2.html">Lab 2 — Explaining a Model (SHAP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 3 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 3 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4_hub/index.html">Module 4 Hub — Time Series Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/videos.html">Module 4 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/skills.html">Module 4 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5_hub/index.html">Module 5 Hub — Text Analytics Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/videos.html">Module 5 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/skills.html">Module 5 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module3_hub/videos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 3 Video Guide — What Each Video Covers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-getting-deployed-on-gcp">Block 1 · Getting deployed on GCP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-old-school-etl-with-regular-expressions">Block 2 · Old-school ETL with regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-genai-for-etl">Block 3 · GenAI for ETL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-4-getting-your-results-out">Block 4 · Getting your results out</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-3-video-guide-what-each-video-covers">
+<h1>Module 3 Video Guide — What Each Video Covers<a class="headerlink" href="#module-3-video-guide-what-each-video-covers" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Twenty videos, about 2 hours 10 minutes total, in four blocks. This is <strong>the production module</strong> - the one where your code stops living on your laptop and starts running in the cloud on a schedule, whether you’re awake or not. You’ll deploy five cloud functions, scrape real Craigslist car ads every hour, turn that raw text into structured data <strong>twice</strong> (old-school RegEx and new-school Gemini), fit a model that retrains itself, and ship the results back to GitHub.</p>
+<p>Everything is anchored on one starter repo: <strong><code class="docutils literal notranslate"><span class="pre">myscrapers</span></code></strong>. You clone it, make it yours, and by the end of block 1 you’re looking at five green check marks.</p>
+<div class="tip admonition">
+<p class="admonition-title">Watch these with a second screen</p>
+<p>Blocks 1 and 3 are <em>do-as-I-do</em> videos. Dave says it outright: “I’ll do it live in case you want to follow along on another screen (which I hope you are).” Deploying alongside the video is the point.</p>
+</div>
+<hr class="docutils" />
+<section id="block-1-getting-deployed-on-gcp">
+<h2>Block 1 · Getting deployed on GCP<a class="headerlink" href="#block-1-getting-deployed-on-gcp" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> cloud functions as small deployable units · GitHub Actions as the deployment mechanism · <strong>the permissions are the hard part</strong> · cron schedules · buckets, and the raw → structured folder layout · the five-function pipeline.</p>
+<p><strong>Video 1 — GCP Pt. 1: Overview</strong> <em>(7:39)</em>
+The tour before the work, and the reasoning behind the whole module. Dave wanted an example with <strong>unstructured text, web scraping, and analytics at scale</strong> that students could actually run in the cloud — built over five weeks with research scholar <strong>Rohit Akole</strong> (MS BAPM alum, credited generously and repeatedly). Why GCP: <em>we were told it’s the one that changes the least</em>.</p>
+<p>You see where you’re headed: a bucket where <code class="docutils literal notranslate"><span class="pre">scrapes/</span></code> holds raw text files (find the 2016 Mercedes, then find it again in the cleaned JSON) and <code class="docutils literal notranslate"><span class="pre">structured/</span></code> holds the parsed output, with five functions running under Cloud Run. The pipeline in one breath — <strong>scrape Craigslist → extract with RegEx → extract again with an LLM → materialize into one CSV → train a model on the history and predict today’s cars.</strong> Practical tip up front: free credits are per-Google-account, so <em>if you’ve already used your free credits, just make a new Gmail address</em>.</p>
+<p><strong>Video 2 — GCP Pt 2: Setting up GCP for our project</strong> <em>(8:17)</em>
+The setup, live and unedited. <strong>Import</strong> (not fork) <code class="docutils literal notranslate"><span class="pre">drdave-teaching/myscrapers</span></code> into your own repo, name it after your NetID, create the matching GCP project, and attach billing (you get <span class="math notranslate nohighlight">\(300 to start; Vertex AI adds \)</span>1,000 — Dave had used $32 in a week). Then the Cloud Shell block from the guide, where <strong>you update exactly three things: project ID, bucket name, GitHub repo</strong>, and paste the rest.</p>
+<p>What’s actually happening while it scrolls by: enabling APIs (Eventarc, storage, service usage, compute, resource manager), creating three <strong>service accounts</strong> (a runtime, a deployer, a scheduler), and building the <strong>workload identity pool</strong> that lets GitHub and GCP mint tokens for each other. Dave’s honest framing: <em>there are so many permissions that need to be activated correctly; we’re trying to make it as plug-and-play as possible.</em> Watch him hit a hang and escape with <strong>Ctrl+C</strong>, then re-run — that’s the expected experience, not a failure.</p>
+<p><strong>Video 3 — GCP Pt 3: Green check marks!</strong> <em>(10:04)</em>
+The GitHub side. Settings → Secrets and variables → Actions → <strong>Variables</strong>, and add six: <code class="docutils literal notranslate"><span class="pre">WORKLOAD_IDENTITY_PROVIDER</span></code>, <code class="docutils literal notranslate"><span class="pre">DEPLOYER_SA</span></code>, <code class="docutils literal notranslate"><span class="pre">RUNTIME_SA</span></code>, <code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>, <code class="docutils literal notranslate"><span class="pre">REGION</span></code> (us-central, <em>I think because it’s the cheapest</em>), and <code class="docutils literal notranslate"><span class="pre">BUCKET</span></code>. Then run the five workflows.</p>
+<p><strong>And one comes back red.</strong> The scraper fails with <em>permission denied</em>, Dave clicks “show more,” finds the one line that must be run once as project owner, runs it, redeploys — <strong>green check mark</strong>. Do not skip this stretch. Watching someone read a deployment error and fix it calmly is most of what this module teaches; the five green checks are just the receipt.</p>
+<p><strong>Video 4 — GCP Pt. 4: Testing your functions</strong> <em>(9:16)</em>
+Now prove each function works, using <strong>Test in Cloud Shell</strong> on each Cloud Run service, and watch the bucket fill in real time. The scraper finds 286 listings and dumps raw text (<em>oh my gosh, they’re all coming in from Craigslist!</em>). The extractor turns 50 into 36 JSON files (14 already existed). Materialize collapses them into one CSV. The model trains.</p>
+<p>Two things to notice. First, the extractor is <strong>deliberately mediocre</strong> — it gets price and mileage but reports the make as “contact” and the model as “information.” <em>I left this crappy on purpose, because I want you to make it better.</em> That’s your Module 3.2 assignment in one sentence. Second, even with bad data, <strong>price versus mileage already slopes down</strong> — the signal survives the mess.</p>
+<p>His closing advice is worth taking literally: delete it all and do it again as v2, v3, until you can do it in 20 minutes.</p>
+</section>
+<hr class="docutils" />
+<section id="block-2-old-school-etl-with-regular-expressions">
+<h2>Block 2 · Old-school ETL with regular expressions<a class="headerlink" href="#block-2-old-school-etl-with-regular-expressions" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> bronze → silver → gold data · a regex is transparent, rules-based, and explainable · capture groups · why real-world text defeats clean patterns · fallback chains · the blast radius of adding a field to a pipeline.</p>
+<p><strong>Video 5 — Intro to ETL with RegEx</strong> <em>(4:43)</em>
+Where we are and what’s next. Open a raw scrape — a Jeep Wrangler ad — and try to read it as a human: 111,000 miles, gray, four-wheel drive, and a price you have to <strong>Ctrl+F for a dollar sign</strong> to find. That manual act <em>is</em> the algorithm you’re about to write. <strong>ETL = Extract, Transform, Load</strong>, and this week’s focus is the <code class="docutils literal notranslate"><span class="pre">extractor_per_listing</span></code> function, where the same listing already comes out as structured JSON — correct price and mileage, and make/model reading “contact information.”</p>
+<p><strong>Video 6 — RegEx for PRICE_RE</strong> <em>(5:23)</em>
+The first pattern, built piece by piece: a literal <code class="docutils literal notranslate"><span class="pre">$</span></code>, then optional whitespace (<em>depending on how someone typed their Craigslist ad, they might hit a space by accident, and we don’t want the code to fail just because of a space</em>), then a <strong>capture group</strong> of digits and commas, running until whitespace or a word. Then the post-processing that makes it modelable — strip the commas, cast to <code class="docutils literal notranslate"><span class="pre">int</span></code>, so <code class="docutils literal notranslate"><span class="pre">&quot;$12,995&quot;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">12995</span></code>.</p>
+<p>This is also where the <strong>medallion vocabulary</strong> lands: raw text is <strong>bronze</strong>, lightly-parsed output is <strong>silver</strong>. And the case for regex over a model: <em>it’s not the most elegant solution, but it’s very transparent and rules-based, so you can explain it to everybody.</em></p>
+<p><strong>Video 7 — YEAR_RE and MAKE_MODEL_RE</strong> <em>(6:35)</em>
+Two more patterns and an honest accounting of where they break. <strong>Year</strong>: a word boundary, <code class="docutils literal notranslate"><span class="pre">19</span></code> or <code class="docutils literal notranslate"><span class="pre">20</span></code>, two more digits, another boundary — which fails the moment someone writes <code class="docutils literal notranslate"><span class="pre">'18</span> <span class="pre">Jeep</span> <span class="pre">Wrangler</span></code>, and might grab the posting date instead. <strong>Make and model</strong>: the first two capitalized words side by side — <em>and I think this one is hysterical</em>, because ads that open with <code class="docutils literal notranslate"><span class="pre">CONTACT</span> <span class="pre">INFORMATION</span></code> or <code class="docutils literal notranslate"><span class="pre">GREAT</span> <span class="pre">DEAL</span></code> in caps hand you exactly that as the car’s make.</p>
+<p>Then he opens <code class="docutils literal notranslate"><span class="pre">listings_master.csv</span></code> and grades his own work: year is excellent (there’s a 1951 in there), price is decent, make/model is <em>about 50% data quality</em> — “buy here,” “West Haven,” “4350.” And the reward at the end: price versus mileage on a <strong>log axis</strong>, sloping cleanly down.</p>
+<p><strong>Video 8 — Three flavors of mileage</strong> <em>(4:54)</em>
+A fallback chain, which is the real lesson. Default to <code class="docutils literal notranslate"><span class="pre">None</span></code>, then try three patterns in increasing desperation: (1) a keyword search for <strong>“mileage”/”odometer”</strong> followed by an optional colon or dash, then digits; (2) the <strong>“80k miles”</strong> form — number, optional decimal, <code class="docutils literal notranslate"><span class="pre">k</span></code>, then <code class="docutils literal notranslate"><span class="pre">mi</span></code>/<code class="docutils literal notranslate"><span class="pre">mile</span></code>/<code class="docutils literal notranslate"><span class="pre">miles</span></code> — where you must <strong>multiply by 1,000</strong>; (3) plain <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">miles</span></code>, written to catch both <code class="docutils literal notranslate"><span class="pre">1,500</span></code> and <code class="docutils literal notranslate"><span class="pre">150,000</span></code>. Each later attempt overwrites an earlier failure. <em>When I was building this, I kept getting bugs, so I kept adding logic to make things better</em> — that’s how production parsers actually get written.</p>
+<p><strong>Video 9 — How to improve the ETL RegEx starter code from Dave</strong> <em>(8:16)</em>
+Your enhancement brief. What’s sitting in the ad and going unused: <strong>condition, cylinders, drivetrain, fuel, title status, dealer-vs-private, Carfax, even the VIN</strong> (fixed length, so easy to match). He walks through adding <code class="docutils literal notranslate"><span class="pre">condition</span></code> to the <code class="docutils literal notranslate"><span class="pre">D</span></code> dictionary and immediately hits the ambiguity — <em>“like new” is two words</em> — which is the honest state of this work.</p>
+<p>Then the systems lesson, and it’s the important one: <strong>the pipeline is a chain on a clock.</strong> Scrape at :00, RegEx extract at :10, LLM extract at :12, materialize at :15, model at :20 — all set by cron in the deploy YAMLs. So <em>if you start adding a bunch of fields to the regex extractor, it’s going to break</em>, because <code class="docutils literal notranslate"><span class="pre">materialize_master</span></code> joins files and expects consistent fields. The professional move he recommends: <strong>don’t edit in place.</strong> Clone the function to <code class="docutils literal notranslate"><span class="pre">extractor_per_listing_v2</span></code>, give it its own YAML at :11, deploy alongside, and keep the working version running while you noodle. Or clone the whole repo as a <code class="docutils literal notranslate"><span class="pre">-dev</span></code> project.</p>
+<p><strong>Video 10 — Push yourself… customize the outputs… review of the DT model</strong> <em>(7:07)</em>
+The part of the pipeline nobody’s looked at yet: the <strong>hourly model</strong>. It reads <code class="docutils literal notranslate"><span class="pre">listings_master</span></code>, converts <code class="docutils literal notranslate"><span class="pre">scraped_at</span></code> to a datetime, treats <strong>everything before today as training and today as the holdout</strong> — <em>as if your model were refreshed every day at midnight</em> — and runs a pipeline of imputer → one-hot encoder → decision tree to predict price from make, model, year, and mileage. Predictions land in <code class="docutils literal notranslate"><span class="pre">preds/</span></code> every hour.</p>
+<p>Which sets up the assignment worth doing: as data accumulates, <strong>trend your own model</strong> — error down, R² up, the actual-versus-predicted fan tightening week over week. He also floats the experiment that a good student will run: <strong>freeze a model on four days of data and race it against one retrained on everything</strong>, then decide which you’d actually put in production. And a teaser — the <code class="docutils literal notranslate"><span class="pre">json_llm</span></code> files already appearing in your bucket, where the make really is a Dodge Charger.</p>
+</section>
+<hr class="docutils" />
+<section id="block-3-genai-for-etl">
+<h2>Block 3 · GenAI for ETL<a class="headerlink" href="#block-3-genai-for-etl" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> schema-constrained extraction · prompt engineering as a <em>contract</em>, not a vibe · temperature 0 · required vs optional fields and the flattery problem · retries and provenance stamps · running old-school and new-school <strong>in parallel</strong> so you can compare them.</p>
+<p><strong>Video 11 — Intro to GenAI (Vertex) and GCP</strong> <em>(3:36)</em>
+Turn on <strong>Vertex AI</strong>: run the last permission block in the guide, raise the function timeout (<em>large language model calls can take a bit</em>), then search “credits” in the console for the <strong>$1,000 Gen AI App Builder credit</strong> — which <em>showed up like a birthday cake on my Google Cloud Console homepage one day</em>. The framing that separates this course from the deep learning course: here you use an LLM to <strong>structure unstructured data into a schema</strong>, then treat the result as ordinary tabular data.</p>
+<p><strong>Video 12 — Overview of the extractor-llm-poc</strong> <em>(5:27)</em>
+The head-to-head. Same listing, two outputs: the RegEx <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> says the make is “contact information”; the <code class="docutils literal notranslate"><span class="pre">json_llm</span></code> says <strong>Dodge Charger</strong>. Back to the raw ad to see why — the whole thing is in caps, so the two-proper-case-words pattern never had a chance. Then the code tour: <code class="docutils literal notranslate"><span class="pre">vertexai</span></code> in requirements, environment variables, and the prompt — <em>extract only the following fields; return a strict JSON object that conforms to the provided schema</em> — plus <code class="docutils literal notranslate"><span class="pre">temperature=0</span></code> and <code class="docutils literal notranslate"><span class="pre">max_attempts</span></code> for retries, <em>because LLM calls can be flaky</em>.</p>
+<p><strong>Video 13 — Interesting aspects of the extractor-llm-poc</strong> <em>(8:39)</em>
+The best video in the block, and the one to rewatch before the midterm. <strong>Text data really is the new oil</strong> — Dave’s own arc from <em>if it wasn’t a number, it wasn’t useful</em> to feeding raw ads to a model.</p>
+<p>What makes the code production-grade rather than a demo:</p>
+<ul class="simple">
+<li><p><strong>The schema is the contract.</strong> Give the model variable names <em>and data types</em> and output stays consistent enough to concatenate, store, and model. Formatting <em>is everything when you’re using an LLM as an accentuator in your business.</em></p></li>
+<li><p><strong>Required vs optional, and the flattery problem.</strong> Force too many fields and the model will invent one to please you — <em>“color must exist, so I’ll just say silver to make you happy.”</em> <code class="docutils literal notranslate"><span class="pre">nullable=true</span></code> lets absence be absence.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">temperature=0</span></code></strong> — <em>just the facts.</em></p></li>
+<li><p><strong>Robust retries</strong> on resource-exhausted / server / timeout errors, with sleep, so one flaky call doesn’t crash the hourly job.</p></li>
+<li><p><strong>Post-processing you own</strong>: strip commas, cast ints, tidy strings.</p></li>
+<li><p><strong>Provenance</strong>: every record stamps the <strong>LLM provider, the model, and the run time</strong>. Two months from now a better model ships, and you can re-run the archive and compare — a cost decision, but an available one.</p></li>
+<li><p><strong>The gold/silver line</strong>: gold means correct types <em>and</em> no missing data; since imputation happens later in modeling, this output is honest silver.</p></li>
+</ul>
+<p>He also flags his own design smell — the LLM function reads the old <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> path only to split a file name — and hands it to you as an exercise.</p>
+<p><strong>Video 14 — Three cool ways to enhance/update the extractor-LLM-POC</strong> <em>(4:05)</em>
+The roadmap: <strong>(1)</strong> add fields to the schema — <code class="docutils literal notranslate"><span class="pre">transmission</span></code>, fuel type, color, title status, location (and you can ask Gemini itself what data type to use), keeping new fields optional; <strong>(2)</strong> write a <strong><code class="docutils literal notranslate"><span class="pre">materialize_llm</span></code></strong> function, because right now nothing downstream consumes the LLM output at all; <strong>(3)</strong> drop the dependency on the legacy <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> path and name outputs after the source text file.</p>
+<p><strong>Video 15 — Trying to update the extractor-LLM-POC… got stuck!</strong> <em>(9:04)</em>
+An unedited debugging session, kept in on purpose. Add <code class="docutils literal notranslate"><span class="pre">transmission</span></code> to the schema, commit, watch Actions spin, get the green check — and then the test returns <strong>“50 processed, 50 skipped, written zero.”</strong> He asks Gemini, tries an overwrite flag, re-points the run at an older <code class="docutils literal notranslate"><span class="pre">run_id</span></code>, makes the field required, redeploys — and it’s <em>still</em> 50 skipped. The video ends <strong>unresolved</strong>.</p>
+<p>Watch it anyway. This is what the work looks like on a Tuesday, and the fix (next video) is not where anyone would look first.</p>
+<p><strong>Video 16 — Updating the extractor-llm-poc to predict the transmission + materialize the LLM JSONs into one CSV</strong> <em>(10:19)</em>
+The catch, and it’s a genuinely useful lesson about LLM plumbing: <strong>the schema alone wasn’t enough — the field has to be named in the prompt too.</strong> Dave had said “model” in the instructions but never “transmission,” so a field marked required still errored out. Copy the <code class="docutils literal notranslate"><span class="pre">model</span></code> line, change it to <code class="docutils literal notranslate"><span class="pre">transmission</span></code>, state that it’s automatic or manual, commit, redeploy — green.</p>
+<p>Second half: build <code class="docutils literal notranslate"><span class="pre">materialize_master_LLM</span></code> by copying <code class="docutils literal notranslate"><span class="pre">materialize_master</span></code> and swapping the folder paths to the <code class="docutils literal notranslate"><span class="pre">json_llm</span></code> prefix, plus a matching requirements file and a new YAML scheduled at <strong>:25 past the hour</strong> with its own deploy name. <em>A bit of a hacker’s way, but exactly the exercise I want for students.</em></p>
+<p><strong>Video 17 — Materialize the LLM jsonl data, add a column for jsonl</strong> <em>(5:23)</em>
+Two self-inflicted bugs, both instructive. <strong>One:</strong> the new YAML still named the cloud function <code class="docutils literal notranslate"><span class="pre">materialize_master</span></code>, so the LLM version <strong>overwrote the original deployment</strong> — a name collision that silently clobbers a working function. <strong>Two:</strong> the materialize script has an explicit column list, so a new field must be added <em>there too</em> or it never reaches the CSV.</p>
+<p>Then the payoff — open <code class="docutils literal notranslate"><span class="pre">listings_master_LLM.csv</span></code>: the <code class="docutils literal notranslate"><span class="pre">transmission</span></code> column exists but is mostly empty (the extractor hasn’t re-run over the old files), the <strong>makes are genuinely good</strong> rather than “contact information,” and price-versus-mileage on a log axis is visibly <strong>tighter</strong> than the RegEx version. That plot is the whole argument for the LLM in one picture.</p>
+<p><strong>Video 18 — Oops we forgot transmission at the end!</strong> <em>(2:27)</em>
+The last place the field was missing: the <strong>docstring and the final record-assembly step</strong> at the bottom of <code class="docutils literal notranslate"><span class="pre">main.py</span></code>. Schema, required list, instructions, <em>and</em> the return — <strong>four places</strong>, and forgetting the fourth is why the column stayed empty. Short, and worth the two minutes.</p>
+<p><strong>Video 19 — Diffs and wrapping up</strong> <em>(2:55)</em>
+The whole week reviewed as <strong>diffs</strong> on diffchecker.com, which is the cleanest possible summary. Extractor: docstring, schema, required, instructions, and the saved field. Materialize: add the column, read from <code class="docutils literal notranslate"><span class="pre">json_llm</span></code>, write <code class="docutils literal notranslate"><span class="pre">listings_master_LLM.csv</span></code>. YAML: the corrected function name, the deploy name, the path. <em>As you can see, it’s not that many changes</em> — the skill is knowing <strong>all</strong> the places one field has to appear.</p>
+</section>
+<hr class="docutils" />
+<section id="block-4-getting-your-results-out">
+<h2>Block 4 · Getting your results out<a class="headerlink" href="#block-4-getting-your-results-out" title="Link to this heading">#</a></h2>
+<p><strong>Video 20 — Sync-data with GitHub Actions</strong> <em>(6:06)</em>
+Your bucket is private, so nobody can see your results — including the person grading you. The fix is a <strong>GitHub-native</strong> workflow (<code class="docutils literal notranslate"><span class="pre">sync_data.yml</span></code>, no cloud function involved) that at <strong>:45 past the hour</strong> copies <code class="docutils literal notranslate"><span class="pre">preds.csv</span></code> out of Cloud Storage into a <code class="docutils literal notranslate"><span class="pre">results/</span></code> folder in your repo. Also required: a <strong><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> to keep credentials out</strong>.</p>
+<p>Once results are public you can trend everything — R² and error over time, <strong>which features are most important over time</strong>, even the raw partial-dependence values so you can watch the <em>shape</em> of a PDP change as data accumulates. That’s Module 2 coming back as a time series about your own model. Dave notes the job often fires late (<em>7:56 instead of 7:45</em>) and that this is fine: <em>we’re in academia… we’ll take the flexibility of GitHub Actions over the business requirement of serving something exactly on time.</em></p>
+<p>He closes by naming the flaw in the design — public predictions mean you could just copy a classmate’s — which is exactly the problem <strong>decentralized AI</strong> solves by separating miners from validators. That’s the thread the final project picks up.</p>
+<div class="warning admonition">
+<p class="admonition-title">Status note for Fall 2026</p>
+<p>The <strong>GCP → GitHub sync step is being revised</strong> for this term; the scraping, RegEx/LLM ETL, and modeling threads are unchanged. Check the current Module 3.4 page before building your midterm around <code class="docutils literal notranslate"><span class="pre">sync_data.yml</span></code>.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="where-this-goes-next">
+<h2>Where this goes next<a class="headerlink" href="#where-this-goes-next" title="Link to this heading">#</a></h2>
+<p>Everything here converges on the <strong>A08 midterm</strong>: keep the scraper fixed, extend the <strong>LLM</strong> ETL with new fields, retrain with tuning from Module 2, sync predictions plus <strong>permutation importance and your top-3 PDPs</strong> to GitHub, and build a <strong>model-trending notebook</strong> that shows how your error and your explanations move over time. Module 4 then takes the same instinct — <em>what changed, and when?</em> — and makes time itself the subject.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module3_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skills.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 3 Skills Sheet — What You Can Do Now</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-getting-deployed-on-gcp">Block 1 · Getting deployed on GCP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-old-school-etl-with-regular-expressions">Block 2 · Old-school ETL with regular expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-genai-for-etl">Block 3 · GenAI for ETL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-4-getting-your-results-out">Block 4 · Getting your results out</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
