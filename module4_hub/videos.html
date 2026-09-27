@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module 4 Video Guide — What Each Video Covers &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module4_hub/videos';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 4 Skills Sheet — What You Can Do Now" href="skills.html" />
+    <link rel="prev" title="Module 4 Hub — Time Series Modeling (Fall 2026)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module1_hub/index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/lab1.html">Lab 1 — First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module2_hub/index.html">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/videos.html">Module 2 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/skills.html">Module 2 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module2_hub/lab2.html">Lab 2 — Explaining a Model (SHAP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3_hub/index.html">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/videos.html">Module 3 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/skills.html">Module 3 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 4 Hub — Time Series Modeling (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module 4 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 4 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5_hub/index.html">Module 5 Hub — Text Analytics Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/videos.html">Module 5 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/skills.html">Module 5 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module4_hub/videos.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module 4 Video Guide — What Each Video Covers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-eda-and-feature-engineering-on-a-clean-time-series">Block 1 · EDA and feature engineering on a clean time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-cleaning-a-genuinely-dirty-time-series">Block 2 · Cleaning a genuinely dirty time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-modeling-time">Block 3 · Modeling time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-4-video-guide-what-each-video-covers">
+<h1>Module 4 Video Guide — What Each Video Covers<a class="headerlink" href="#module-4-video-guide-what-each-video-covers" title="Link to this heading">#</a></h1>
+<p><strong>OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut</strong></p>
+<p>Thirteen videos, about 1 hour 20 minutes total, in three blocks: learn the moves on a <strong>clean</strong> time series, then survive a genuinely <strong>dirty</strong> one, then model time with the tools you already have. The unifying trick of this module is that you never need a special “time series model” — you need to <strong>turn time into columns</strong> and hand the result to scikit-learn.</p>
+<p>Three datasets carry the module: <strong>Apple stock</strong> (clean, for feature engineering), <strong>Bradley Airport (BDL) weather</strong> (filthy, for cleaning), and <strong>New England daily energy production</strong> joined to that weather (for modeling).</p>
+<div class="important admonition">
+<p class="admonition-title">The rule underneath everything here</p>
+<p>In a time series you can always <em>accidentally</em> use the future to predict the past. Every technique in this module comes with a leakage warning attached, and the two evaluation videos (8 and 12) exist almost entirely to show you what cheating looks like when it’s working.</p>
+</div>
+<hr class="docutils" />
+<section id="block-1-eda-and-feature-engineering-on-a-clean-time-series">
+<h2>Block 1 · EDA and feature engineering on a clean time series<a class="headerlink" href="#block-1-eda-and-feature-engineering-on-a-clean-time-series" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> convert to <code class="docutils literal notranslate"><span class="pre">datetime</span></code>, then <strong>set it as the index</strong> — that one move unlocks resampling, rolling windows, and readable axes · decompose a date into groupable parts · <code class="docutils literal notranslate"><span class="pre">diff</span></code> and <code class="docutils literal notranslate"><span class="pre">pct_change</span></code> (and why row one is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>) · plot the thing · rolling averages as a way to <em>politely</em> lag the past into a model.</p>
+<p><strong>Video 1 — Introduction to EDA for Time Series Data</strong> <em>(7:15) · Apple stock</em>
+Why time series is <em>a cousin of a regular structured dataset</em>: time orders the rows, and that ordering unlocks analyses that are meaningless anywhere else. Apple from 1980 to ~2020, deliberately clean <em>so we can focus on feature engineering instead of cleaning</em>.</p>
+<p>The first bug is the one you’ll hit forever: <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> shows <code class="docutils literal notranslate"><span class="pre">date</span></code> as an <strong>object</strong>, not a datetime — it looks like a date and behaves like a string. Convert it, then start mining it: <code class="docutils literal notranslate"><span class="pre">day_name()</span></code>, month, day, year as their own columns, <em>so you can treat it almost like a database and do aggregations, groupbys, and slicing.</em> Why bother? Because day-of-week is real signal — <em>on Friday, people generally settle up their accounts.</em></p>
+<p>Then <code class="docutils literal notranslate"><span class="pre">diff</span></code> and <code class="docutils literal notranslate"><span class="pre">pct_change</span></code>, row-wise subtractions against the previous row, with two details worth keeping: <strong>sort by date first</strong> (in case anything got shuffled), and the first row is <code class="docutils literal notranslate"><span class="pre">NaN</span></code> because nothing precedes it — <em>you almost need a warm-up</em>. Drop or zero-fill those once prep is done.</p>
+<p><strong>Video 2 — Grouping Data and Subplots</strong> <em>(6:59) · Apple stock</em>
+Mostly about not embarrassing yourself with a chart. <em>It drives me bananas when people have time-series data and don’t actually visualize it.</em> Plot the adjusted close and the x-axis reads 0–10,000 — those are <strong>record IDs</strong>, and in a meeting your boss will ask what 8,000 means. Pass the actual date column and matplotlib formats it properly.</p>
+<p>The percent-change plot tells the volatility story that the price plot hides — <em>it makes you appreciate people saying the stock market is a random walk</em> — including what looks like a <strong>40% single-day drop</strong> in the dot-com bust.</p>
+<p>Then grouped analysis: a seaborn box plot by weekday (note the <code class="docutils literal notranslate"><span class="pre">hue</span></code> fix), and the finding that Wednesday is the strongest day — <em>so if I were building a trading bot, I’d consider settling up in the middle of the week.</em> Plus two mechanics you’ll reuse constantly: <strong>boolean masks need parentheses around each condition</strong> or the chain fails, and <strong>subplots</strong> (1 row × 2 columns, <code class="docutils literal notranslate"><span class="pre">tight_layout</span></code>) so you’re not pasting charts into PowerPoint one at a time.</p>
+<p><strong>Video 3 — Moving Averages and Momentum Trading</strong> <em>(7:03) · Apple stock</em>
+Opens with the line Dave calls top-line news: <strong>convert your date to datetime and set it as the index.</strong> <code class="docutils literal notranslate"><span class="pre">set_index(...,</span> <span class="pre">inplace=True)</span></code> removes the column for you; the hacker route (<code class="docutils literal notranslate"><span class="pre">df.index</span> <span class="pre">=</span> <span class="pre">col</span></code>) leaves you to delete it yourself.</p>
+<p>Then <strong><code class="docutils literal notranslate"><span class="pre">np.sign</span></code></strong> (pandas has no sign function) wrapped around <code class="docutils literal notranslate"><span class="pre">pct_change</span></code>, turning every day into +1/0/−1 — the seed of a trading rule. Aggregate the signs by month across 30 years and you get a real finding: <strong>June loses, August wins</strong>, and the “October surprise” isn’t much of one.</p>
+<p>Finally <strong>rolling averages</strong>, which he frames in the way that matters for modeling: <em>I use them to politely lag information from the past into my model.</em> A 5-day and a 100-day average (watch <code class="docutils literal notranslate"><span class="pre">min_periods</span></code> leave the head of the series empty), overlaid — the <strong>crossover</strong> is the classic momentum signal: cross above, people are buying; drop below, they’re selling.</p>
+</section>
+<hr class="docutils" />
+<section id="block-2-cleaning-a-genuinely-dirty-time-series">
+<h2>Block 2 · Cleaning a genuinely dirty time series<a class="headerlink" href="#block-2-cleaning-a-genuinely-dirty-time-series" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> a single sentinel character poisons a whole column’s dtype · missingness has <em>shape</em>, so look before you impute · <strong>mean imputation destroys a time series</strong> · interpolation, forward-fill, back-fill and when each fails · resampling to a resolution you choose.</p>
+<p><strong>Video 4 — Missing/Dirty Weather Data EDA Pt. 1</strong> <em>(5:17) · BDL weather</em>
+The real-data video. Bradley Airport hourly observations: temperature, dew point, humidity, wind direction and speed, precipitation — and <strong><code class="docutils literal notranslate"><span class="pre">M</span></code> wherever a value is missing</strong>. One letter in a numeric column and pandas stores the entire column as strings, <em>and you can’t do math on a string.</em></p>
+<p>The diagnosis workflow is the transferable part: <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> looks wrong → print the <strong>unique values</strong> → there’s the <code class="docutils literal notranslate"><span class="pre">M</span></code>. Fix it column-wise by replacing <code class="docutils literal notranslate"><span class="pre">M</span></code> with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code> and casting, and then discover precipitation hides a <strong>second</strong> sentinel, <code class="docutils literal notranslate"><span class="pre">T</span></code> for <em>trace</em>. Which motivates the better move: run <code class="docutils literal notranslate"><span class="pre">pd.to_numeric</span></code> across the numeric columns and let <strong>every</strong> junk sentinel become <code class="docutils literal notranslate"><span class="pre">NaN</span></code> at once, whether or not you knew about it.</p>
+<p>Then measure the damage — about <strong>90% of temperature and humidity readings missing</strong> — and <em>plot the missingness before choosing a strategy</em>, because the observations arrive in clumps. <em>Right off the bat, if you imputed with the mean, you’d destroy this time series.</em></p>
+<p><strong>Video 5 — Missing/Dirty Weather Data EDA Pt. 2 (imputation strategies)</strong> <em>(7:27) · BDL weather</em>
+The comparison, run as experiments on a copy. First the discovery that sinks the obvious approach: <strong>~8,000 of 9,000 rows are dirty somewhere</strong>, so <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> on rows leaves nothing, and dropping dirty <em>columns</em> leaves only metadata — the timestamp, lat/long, and the raw <strong>METAR</strong> string (<em>a coded message sent from the weather station to the airplane… it would actually be a fun deep-learning project to decode</em>).</p>
+<p>So, imputation, judged by eye:</p>
+<ul class="simple">
+<li><p><strong>Mean</strong> — a flat line through a signal that is never flat. <em>A lot of students do this… for a time-series problem it’s very dangerous.</em></p></li>
+<li><p><strong>Median</strong> — the same flat artifact, shifted.</p></li>
+<li><p><strong>Linear interpolation</strong> — the default recommendation. <em>If you showed me this as your boss, I’d say it makes perfect sense.</em> The failure mode: a whole missing day gets a straight line where real dynamics belong.</p></li>
+<li><p><strong>Forward-fill / back-fill</strong> — with the asymmetry spelled out: <code class="docutils literal notranslate"><span class="pre">ffill</span></code> can’t fix a missing <strong>first</strong> row, <code class="docutils literal notranslate"><span class="pre">bfill</span></code> can’t fix a missing <strong>last</strong> row, so use them <strong>in combination</strong>.</p></li>
+</ul>
+<p>The diagnostic to steal: forward-fill and back-fill plotted on top of each other land in nearly the same place, <em>which means the interpolation isn’t very sensitive in this problem</em> — i.e. the choice doesn’t matter much here, and you know that because you checked.</p>
+<p><strong>Video 6 — Resampling to different time horizons</strong> <em>(3:26) · BDL weather</em>
+Irregular sampling — sometimes every 5 minutes, sometimes hourly, sometimes a gap — fixed by <code class="docutils literal notranslate"><span class="pre">resample()</span></code> once the datetime is the index. Resample to 60 / 600 / 2,000 minutes with any aggregation you like, and <strong>print the shape each time</strong>: the curve still looks fine while the blue line quietly becomes 22 points. That’s the trade — smoothness for resolution — and you should be able to state which you chose and why. (Note the modern bin aliases: <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">hour</span></code>, not the old <code class="docutils literal notranslate"><span class="pre">T</span></code>.)</p>
+<p>Closing thought worth acting on: this is <em>one</em> of roughly 10,000 airport stations, and a clean script runs on all of them.</p>
+</section>
+<hr class="docutils" />
+<section id="block-3-modeling-time">
+<h2>Block 3 · Modeling time<a class="headerlink" href="#block-3-modeling-time" title="Link to this heading">#</a></h2>
+<p><strong>The big ideas:</strong> the <strong>window method</strong> — lags as columns, so any tabular model works · shifting carefully so today never sees today · xAI on a time-series model · <strong>TSFresh</strong> for automated feature engineering · the curse of dimensionality · random holdout vs. a held-out tail, and why the honest one scores worse.</p>
+<p><strong>Video 7 — Intro to the Window Method</strong> <em>(7:00) · NE energy + BDL weather</em>
+<em>A hacker’s way of using traditional machine learning models with a time-series dataset</em> — no tensors, no sequence models. If the series is 1, 2, 3, 4, 5 and you’re standing at 5, then lag 1 is 4, lag 2 is 3, and so on: <strong>make each lag its own column</strong> and predict with a decision tree.</p>
+<p>First a genuinely interesting look at the data — New England daily production by fuel type: gas dominates, nuclear is steady (with maintenance dips), <strong>oil appears only when it’s needed</strong> to fill a gap, hydro has a seasonal shape. Then the mechanics: <code class="docutils literal notranslate"><span class="pre">shift()</span></code> to build the lags, three lags by default, so 29 current features become <strong>116 columns</strong> (current + 3 lags). Train before 2025, test after.</p>
+<p>The design decision is the lesson: *<em>predict today’s energy from today’s <em>weather</em> and the <em>past</em> days’ energy.</em> You can’t know today’s energy before predicting it, but you can know today’s forecast — <em>today is December 10th; I have tomorrow’s weather forecast and know today’s usage, so I should be able to predict tomorrow’s usage.</em> Which columns you shift, and which you don’t, is exactly where leakage lives.</p>
+<p><strong>Video 8 — Interpretability xAI and the Window Method</strong> <em>(4:54) · NE energy + BDL weather</em>
+Module 2’s tools pointed at a time-series model, and it works beautifully. <strong>10-times-repeated permutation importance</strong> on the test partition ranks <strong>yesterday’s total energy</strong> first — unsurprising and reassuring — followed by today’s average feel, today’s minimum temperature, and (odd, and named as odd) <strong>solar radiation from two days ago</strong>.</p>
+<p>Then <strong>partial dependence</strong> on the top three, and the moment the module is built around: plot raw <code class="docutils literal notranslate"><span class="pre">average_feel</span></code> against actual energy, and the physical relationship has the <strong>same shape</strong> as the model’s PDP. <em>I always love seeing where the domain knowledge or physics ties to what your machine learning model did.</em></p>
+<p>And the warning to tape to your monitor:</p>
+<blockquote>
+<div><p>If you get a really good model, you probably did the window method wrong, or you’re leaking information, or your problem’s just really easy. Whenever I see a scatter plot that’s really tight on the line, the first thing I do is go to my permutation importance and ask, <em>am I leaking something I shouldn’t be?</em></p>
+</div></blockquote>
+<p><strong>Video 9 — Intro TSFresh and Robot Failures</strong> <em>(6:03)</em>
+<em>Something I’m completely obsessed with</em>: <strong>automated feature engineering for time-series data</strong>, rooted in physics and signal processing. The setup is <strong>grouped</strong> time series — many short sequences, each with an ID and a time column — illustrated with the classic robot-failures dataset, where a healthy robot traces smooth lines and a failing one is visibly jagged.</p>
+<p>You could hand-engineer rolling averages and variances… or use the features <em>people have been developing for 150 years</em>: absolute energy, autocorrelation, counts of slopes above a threshold, the value <strong>and the location</strong> of the maximum. <code class="docutils literal notranslate"><span class="pre">extract_features</span></code> with <code class="docutils literal notranslate"><span class="pre">column_id</span></code> and a time column produces <strong>~200 features per column</strong> — six columns of robot coordinates becomes ~1,200 features. Which immediately creates the problem: with 100 rows and 1,200 features you will overfit, so <code class="docutils literal notranslate"><span class="pre">select_features</span></code> / <code class="docutils literal notranslate"><span class="pre">extract_relevant_features</span></code> exist to cut it back. Cost warning up front: it’s slow, and Dask can parallelize it.</p>
+<p><strong>Video 10 — TSFresh in Action Pt. 1</strong> <em>(6:52) · BDL five-year weather</em>
+TSFresh on real data, with the data-shaping done carefully — this is the video to copy when you apply it yourself. Five years of BDL weather, predicting the <strong>daily maximum dew point</strong>. Resample to <strong>60 minutes</strong> so every day has exactly 24 observations (with a print statement that <em>checks</em> it), linearly interpolate the gaps first, group by date, and let time be the sort key.</p>
+<p>Why hourly: the station <em>chirps every hour to tell planes the weather</em>, and chirps more often when conditions change — so raw data has uneven sequence lengths. (TSFresh tolerates that; the demo standardizes for clarity.) The run takes <strong>12–15 minutes</strong> and returns <strong>6,304 features</strong> over ~1,900 daily rows — Fourier coefficients, kurtosis, entropy, quantiles, percentage of recurring values — <em>absolutely incredible automated feature engineering</em>, and an obvious dimensionality problem.</p>
+<p><strong>Video 11 — TSFresh in Action Pt 2: don’t leak!</strong> <em>(6:19) · BDL five-year weather</em>
+First the sanity check that every TSFresh user should run: 1,900 rows isn’t the original 40,000 hourly observations — it’s <strong>365 × 5 days</strong>, one row per day, matching <code class="docutils literal notranslate"><span class="pre">y</span></code> one-to-one. Then <code class="docutils literal notranslate"><span class="pre">select_features</span></code> cuts 6,304 columns to ~1,920 against 1,928 rows, and Dave says plainly that this is <em>still not great</em> — his real next step would be to fit a quick model and keep the top 100.</p>
+<p>Then the comparison that gives the video its name. <strong>Random 20% holdout:</strong> R² 0.99 train / 0.93 test, MAE 3.4 — and it will never throw an error. <strong>Last-20%-in-time holdout:</strong> the same model scores <strong>worse</strong>, MAE 3.7. That gap is the whole point: <em>a very penalizing way to evaluate a time-series model, and a time-series model demands that scrutiny so you’re not cheating.</em> The honest number is the higher one. Bonus: with a time-ordered holdout you can finally plot <strong>actual vs. predicted over time</strong>, not just as a scatter.</p>
+<p><strong>Video 12 — Time series plots for results</strong> <em>(3:59)</em>
+The chart that beats a scatter plot in a meeting. A scatter of actual vs. predicted <em>tells one version of the story</em>; plotting the same predictions <strong>against time</strong> shows you <em>where</em> the model is wrong — and here it’s wrong in a specific, describable way: <strong>it misses the extremes</strong>, top and bottom, shaving the peaks and troughs. You can see that in the scatter as points off the 45-degree line, but you can’t see <em>when</em>.</p>
+<p>The precondition matters: this plot only works if you held out a <strong>contiguous chunk at the end</strong> (video 11’s honest split). Shuffle the rows and <em>your time series is gonna look really funky</em>. He also names <strong>walk-forward validation</strong> as the next step up — train on the first 20%, predict the rest; then 30%, then 50%, and so on.</p>
+<p>Two practical fixes worth watching, because both will happen to you: a <code class="docutils literal notranslate"><span class="pre">split_point</span></code> error that turns out to be a <strong>DataFrame-vs-Series mismatch</strong> (he pulls the dates out into their own variable and reattaches them as the index), and unreadable x-axis labels fixed by setting <strong>weekly tick marks</strong> — because in a meeting <em>your boss is going to be like, well, what day is that?</em></p>
+<p><strong>Video 13 — Intro to Anomaly Detection</strong> <em>(3:58)</em>
+The best domain story in the module, and the reason the whole course keeps circling back to residuals. From Dave’s <strong>insurance and IoT</strong> days: sensors in homes and businesses — water, temperature, door, motion — and the goal of <em>being proactive… to delight our customers</em> by texting them when something’s wrong.</p>
+<p>The hard part isn’t the sensor, it’s that <strong>every building is different</strong>. A restaurant’s temperature drops at night because they prop the doors open after the deep fryer’s been running — normal, someone’s there. A church that’s been empty all week and starts cooling on a Wednesday is <em>someone forgot to set the heat, or maybe the furnace exploded.</em> Same signal, opposite meaning.</p>
+<p>So the method is the modeling you already know, pointed at its own errors: predict the next time step from history, take the <strong>residual</strong> (actual − predicted), and flag it as an anomaly when it exceeds a <strong>percentile threshold</strong> of the residual distribution — he uses the <strong>99th</strong>. The threshold is a product decision, not a statistical one: <em>if the threshold is too low, we’re going to annoy you with a lot of text messages; if the threshold is too high, we might not text you enough.</em> Flagged points get plotted — actuals in red, predictions as yellow ×’s — so you can look at a case where the model said 62 and reality was 48 and decide whether you’d have sent that text.</p>
+<p>One nuance he flags for your own use case: <strong>absolute error treats both directions the same</strong>, and often you only care about one (a freeze loss is not the same as an unexpected warm-up). Ends on where this actually lands in practice — <strong>human-in-the-loop</strong>: the system doesn’t act, it escalates to an operator who decides whether the model needs retraining.</p>
+</section>
+<hr class="docutils" />
+<section id="where-this-goes-next">
+<h2>Where this goes next<a class="headerlink" href="#where-this-goes-next" title="Link to this heading">#</a></h2>
+<p>Module 4 hands you two habits that outlive the course: <strong>make time into columns</strong>, and <strong>hold out the tail, not a random sample</strong>. Module 5 changes the raw material from timestamps to text, but the shape of the work is identical — turn something that isn’t a number into columns a model can use, then check honestly whether it learned anything.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module4_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 4 Hub — Time Series Modeling (Fall 2026)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="skills.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 4 Skills Sheet — What You Can Do Now</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-1-eda-and-feature-engineering-on-a-clean-time-series">Block 1 · EDA and feature engineering on a clean time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-2-cleaning-a-genuinely-dirty-time-series">Block 2 · Cleaning a genuinely dirty time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-3-modeling-time">Block 3 · Modeling time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-this-goes-next">Where this goes next</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

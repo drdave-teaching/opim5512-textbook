@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 2 — Explaining a Model (SHAP) &#8212; Applied Data Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module2_hub/lab2';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)" href="../module3_hub/index.html" />
+    <link rel="prev" title="Module 2 Skills Sheet — What You Can Do Now" href="skills.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Applied Data Science</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module1_hub/index.html">Module 1 Hub — Tool Time (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/working_in_course.html">Working in this Course — Colab, GitHub, VS Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/videos.html">Module 1 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/skills.html">Module 1 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/talking_points.html">Module 1 Talking Points — The Theory You Should Be Able to Explain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module1_hub/lab1.html">Lab 1 — First Commit</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Module 2 Hub — Tuning Models &amp; Explainable AI (Fall 2026)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="videos.html">Module 2 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skills.html">Module 2 Skills Sheet — What You Can Do Now</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 2 — Explaining a Model (SHAP)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module3_hub/index.html">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/videos.html">Module 3 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module3_hub/skills.html">Module 3 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module4_hub/index.html">Module 4 Hub — Time Series Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/videos.html">Module 4 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module4_hub/skills.html">Module 4 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module5_hub/index.html">Module 5 Hub — Text Analytics Modeling (Fall 2026)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/videos.html">Module 5 Video Guide — What Each Video Covers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module5_hub/skills.html">Module 5 Skills Sheet — What You Can Do Now</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../m1_tooltime/index.html">Chapter 1 — Tool Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m2_tuning_xai/index.html">Chapter 2 — Tuning Models &amp; Explainable AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m3_operational_ml/index.html">Chapter 3 — Webscraping &amp; Operational ML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m4_timeseries/index.html">Chapter 4 — Time Series Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../m5_text/index.html">Chapter 5 — Text Analytics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/drdave-teaching/opim5512-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module2_hub/lab2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 2 — Explaining a Model (SHAP)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-in-five-sentences-the-lecture-short">SHAP in five sentences (the lecture, short)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-owns-what">Who owns what</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-re-doing">What we’re doing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-model-looks-at">What the model looks at</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-done">Definition of done</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-explaining-a-model-shap">
+<h1>Lab 2 — Explaining a Model (SHAP)<a class="headerlink" href="#lab-2-explaining-a-model-shap" title="Link to this heading">#</a></h1>
+<p><strong>Module 2 · Explainable AI — the in-person lab.</strong> Half lecture, half hands-on <strong>with GitHub</strong>, on the same branch → pull request → review → merge loop from Lab 1.</p>
+<div class="important admonition">
+<p class="admonition-title">The one-sentence version</p>
+<p>A good score is not the finish line. Tonight you take a model that already predicts New England electricity demand well (<strong>R² ≈ 0.90</strong>) and make it <strong>explain itself</strong> — two partners explain the <em>same</em> model two ways, then merge the views into one report.</p>
+</div>
+<p>The model — a random forest on the Lab 1 energy data — is <strong>already trained for you</strong> in the template. You don’t tune it tonight; you make it talk. Your only code is <strong>one line of SHAP.</strong></p>
+<hr class="docutils" />
+<section id="shap-in-five-sentences-the-lecture-short">
+<h2>SHAP in five sentences (the lecture, short)<a class="headerlink" href="#shap-in-five-sentences-the-lecture-short" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>A good model isn’t the finish line — you have to be able to say <strong>how it decided</strong>.</p></li>
+<li><p><strong>SHAP</strong> gives every feature, for every prediction, a number: how many <strong>MW</strong> it pushed the prediction <strong>up (+)</strong> or <strong>down (−)</strong> from the average prediction.</p></li>
+<li><p>Add a row’s SHAP values to the average and you get that exact prediction — it’s <strong>additive and honest</strong> (<code class="docutils literal notranslate"><span class="pre">14,952</span> <span class="pre">MW</span> <span class="pre">base</span> <span class="pre">+</span> <span class="pre">the</span> <span class="pre">feature</span> <span class="pre">pushes</span> <span class="pre">=</span> <span class="pre">23,082</span> <span class="pre">MW</span></code>).</p></li>
+<li><p><strong>Global</strong> = stack all rows to see which features matter overall, and in which direction (a <strong>beeswarm</strong>).</p></li>
+<li><p><strong>Local</strong> = one row, one prediction, one story (a <strong>waterfall</strong>) — the answer you give a stakeholder.</p></li>
+</ol>
+<p>The full walk-through is in the <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-labs/blob/master/Module2/Week3_xAI/Lab2_SHAP/SHAP_LECTURE.md">SHAP lecture</a>; the by-hand version is in <a class="reference internal" href="../m2_tuning_xai/index.html"><span class="std std-doc">Chapter 2 §2.4</span></a>.</p>
+</section>
+<section id="who-owns-what">
+<h2>Who owns what<a class="headerlink" href="#who-owns-what" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Partner A — <strong>global</strong></p></th>
+<th class="head"><p>Partner B — <strong>local</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>question</p></td>
+<td><p><em>Which features matter, overall?</em></p></td>
+<td><p><em>Why THIS one prediction?</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>notebook</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Lab2_A_Global_SHAP</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Lab2_B_Local_SHAP</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>branch</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dev-global</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dev-local</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>given</p></td>
+<td><p>the model’s built-in importances bar</p></td>
+<td><p>a predicted-vs-actual scatter</p></td>
+</tr>
+<tr class="row-even"><td><p>you write</p></td>
+<td><p>one line → a SHAP <strong>beeswarm</strong></p></td>
+<td><p>one line → a SHAP <strong>waterfall</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="what-we-re-doing">
+<h2>What we’re doing<a class="headerlink" href="#what-we-re-doing" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Set up the repo</strong> — Partner A: <a class="reference external" href="https://github.com/drdave-teaching/opim5512-lab2-template">Lab 2 template</a> → <strong>Use this template</strong> → add Partner B → branch protection on <code class="docutils literal notranslate"><span class="pre">main</span></code> (PR + 1 approval). Both clone once; each makes a <code class="docutils literal notranslate"><span class="pre">dev-</span></code> branch.</p></li>
+<li><p><strong>Run the setup (given)</strong> — <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">→</span> <span class="pre">Run</span> <span class="pre">all</span></code> installs SHAP, loads the data, fits the random forest (note the <strong>R²</strong>), and builds <code class="docutils literal notranslate"><span class="pre">shap_values</span></code> — one push in MW per feature, per row. You didn’t write any of it; you’re about to <em>use</em> it.</p></li>
+<li><p><strong>Write your one SHAP line</strong> in the TODO cell:</p>
+<ul class="simple">
+<li><p><strong>A:</strong> <code class="docutils literal notranslate"><span class="pre">shap.plots.beeswarm(shap_values,</span> <span class="pre">show=False)</span></code> → save <code class="docutils literal notranslate"><span class="pre">shap_global.png</span></code></p></li>
+<li><p><strong>B:</strong> <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">int(np.argmax(model.predict(X)))</span></code> then <code class="docutils literal notranslate"><span class="pre">shap.plots.waterfall(shap_values[i],</span> <span class="pre">show=False)</span></code> → save <code class="docutils literal notranslate"><span class="pre">shap_local.png</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>Look at your plot, then ship it</strong> — download the PNGs, <strong>File → Save</strong> the notebook to your <code class="docutils literal notranslate"><span class="pre">dev-</span></code> branch, drag the PNGs into <code class="docutils literal notranslate"><span class="pre">images/</span></code>, commit, push.</p></li>
+<li><p><strong>Review &amp; merge</strong> — open a PR, your partner reads your SHAP cell and approves; merge both; <code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">→</span> <span class="pre">Pull</span></code>.</p></li>
+<li><p><strong>The report</strong> — fill <code class="docutils literal notranslate"><span class="pre">REPORT.md</span></code> (image links are pre-wired). The finding to nail: <strong>do the global view and the local hour tell the <em>same</em> story about what drives demand?</strong></p></li>
+</ol>
+<div class="warning admonition">
+<p class="admonition-title">The one honest caveat</p>
+<p>SHAP explains <strong>the model</strong>, not physical cause. “The forest leans on <code class="docutils literal notranslate"><span class="pre">hour_of_day</span></code> and <code class="docutils literal notranslate"><span class="pre">dewpoint_f</span></code>” is a statement about the model’s behavior — not a claim that muggy 6 PMs <em>cause</em> demand. Say so in your report.</p>
+</div>
+</section>
+<section id="what-the-model-looks-at">
+<h2>What the model looks at<a class="headerlink" href="#what-the-model-looks-at" title="Link to this heading">#</a></h2>
+<p>The data is the Lab 1 energy join — one row per hour. Target = <code class="docutils literal notranslate"><span class="pre">load_mw</span></code> (New England demand).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>feature</p></th>
+<th class="head"><p>meaning</p></th>
+<th class="head"><p>units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">temp_f</span></code></p></td>
+<td><p>air temperature</p></td>
+<td><p>°F</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hour_of_day</span></code></p></td>
+<td><p>0–23</p></td>
+<td><p>hour</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dewpoint_f</span></code></p></td>
+<td><p>dew point</p></td>
+<td><p>°F</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">humidity_pct</span></code></p></td>
+<td><p>relative humidity</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">wind_kt</span></code></p></td>
+<td><p>wind speed</p></td>
+<td><p>knots</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weekend</span></code></p></td>
+<td><p>1 = Sat/Sun</p></td>
+<td><p>0/1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Ahead of schedule?</strong> Run the joint notebook for a <strong>dependence plot</strong> (<code class="docutils literal notranslate"><span class="pre">shap.plots.scatter</span></code>) — how one feature’s push changes across its range, colored by a second feature — and chase the interaction it exposes.</p>
+</section>
+<section id="definition-of-done">
+<h2>Definition of done<a class="headerlink" href="#definition-of-done" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] Branch protection on <code class="docutils literal notranslate"><span class="pre">main</span></code>; both partners are collaborators</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">images/</span></code> has four PNGs (the given plot + your SHAP plot, per partner)</p></li>
+<li><p>[ ] Both notebooks saved back with one SHAP line each (beeswarm / waterfall)</p></li>
+<li><p>[ ] <code class="docutils literal notranslate"><span class="pre">REPORT.md</span></code> — one sentence per plot, plus the “what SHAP can’t tell us” line</p></li>
+<li><p>[ ] ≥3 merged pull requests, branches deleted, both authoring <strong>and</strong> reviewing</p></li>
+</ul>
+<p>The full kit — instructions, the 20-step map, printable handouts, run-of-show slides, and the Colab starters — is in <a class="reference external" href="https://github.com/drdave-teaching/OPIM5512-labs/tree/master/Module2/Week3_xAI/Lab2_SHAP">Module2/Week3_xAI/Lab2_SHAP</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">New to the workflow?</p>
+<p>It’s the same branch → PR → review → merge loop as <a class="reference internal" href="../module1_hub/lab1.html"><span class="std std-doc">Lab 1</span></a>. If that felt shaky, skim the Lab 1 kit first — Lab 2 assumes it.</p>
+</div>
+<hr class="docutils" />
+<p><em>Global says what the model leans on; local tells the story of one hour. Tonight you shipped both — and the report only closes when you can say whether they agree.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module2_hub"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="skills.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Module 2 Skills Sheet — What You Can Do Now</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../module3_hub/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module 3 Hub — Webscraping &amp; Operational ML (Fall 2026)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-in-five-sentences-the-lecture-short">SHAP in five sentences (the lecture, short)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-owns-what">Who owns what</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-re-doing">What we’re doing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-model-looks-at">What the model looks at</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-done">Definition of done</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Dave Wanik · University of Connecticut (OPIM 5512)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p style="font-size:0.9em;opacity:0.85"><strong>⚠️ Work in progress.</strong> These are living draft materials — actively being written and revised. Expect rough edges, gaps, and changes; this is a teaching companion, not a final or official reference.</p>
+<p><em>OPIM 5512 — Applied Data Science. Built from Dr. Wanik's lecture transcripts and course notebooks.</em></p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
