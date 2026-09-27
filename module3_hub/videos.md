@@ -2,7 +2,7 @@
 
 **OPIM 5512 - Applied Data Science · Dr. Dave Wanik · University of Connecticut**
 
-Twenty videos, about 2 hours 10 minutes total, in four blocks. This is **the production module** - the one where your code stops living on your laptop and starts running in the cloud on a schedule, whether you're awake or not. You'll deploy five cloud functions, scrape real Craigslist car ads every hour, turn that raw text into structured data **twice** (old-school RegEx and new-school Gemini), fit a model that retrains itself, and ship the results back to GitHub.
+Nineteen videos, about 2 hours 4 minutes total, in three blocks. This is **the production module** - the one where your code stops living on your laptop and starts running in the cloud on a schedule, whether you're awake or not. You'll deploy five cloud functions, scrape real Craigslist car ads every hour, turn that raw text into structured data **twice** (old-school RegEx and new-school Gemini), and fit a model that retrains itself, with every result landing in your Cloud Storage bucket.
 
 Everything is anchored on one starter repo: **`myscrapers`**. You clone it, make it yours, and by the end of block 1 you're looking at five green check marks.
 
@@ -120,21 +120,6 @@ The whole week reviewed as **diffs** on diffchecker.com, which is the cleanest p
 
 ---
 
-## Block 4 · Getting your results out
-**Video 20 — Sync-data with GitHub Actions** *(6:06)*
-Your bucket is private, so nobody can see your results — including the person grading you. The fix is a **GitHub-native** workflow (`sync_data.yml`, no cloud function involved) that at **:45 past the hour** copies `preds.csv` out of Cloud Storage into a `results/` folder in your repo. Also required: a **`.gitignore` to keep credentials out**.
-
-Once results are public you can trend everything — R² and error over time, **which features are most important over time**, even the raw partial-dependence values so you can watch the *shape* of a PDP change as data accumulates. That's Module 2 coming back as a time series about your own model. Dave notes the job often fires late (*7:56 instead of 7:45*) and that this is fine: *we're in academia... we'll take the flexibility of GitHub Actions over the business requirement of serving something exactly on time.*
-
-He closes by naming the flaw in the design — public predictions mean you could just copy a classmate's — which is exactly the problem **decentralized AI** solves by separating miners from validators. That's the thread the final project picks up.
-
-```{admonition} Status note for Fall 2026
-:class: warning
-The **GCP → GitHub sync step is being revised** for this term; the scraping, RegEx/LLM ETL, and modeling threads are unchanged. Check the current Module 3.4 page before building your midterm around `sync_data.yml`.
-```
-
----
-
 ## Where this goes next
 
-Everything here converges on the **A08 midterm**: keep the scraper fixed, extend the **LLM** ETL with new fields, retrain with tuning from Module 2, sync predictions plus **permutation importance and your top-3 PDPs** to GitHub, and build a **model-trending notebook** that shows how your error and your explanations move over time. Module 4 then takes the same instinct — *what changed, and when?* — and makes time itself the subject.
+Everything here converges on the **A08 midterm**: keep the scraper fixed, extend the **LLM** ETL with new fields, retrain with tuning from Module 2, save predictions plus **permutation importance and your top-3 PDPs** to your bucket, and build a **model-trending notebook** that shows how your error and your explanations move over time. Module 4 then takes the same instinct — *what changed, and when?* — and makes time itself the subject.

@@ -13,7 +13,7 @@ Open in Colab and **Runtime → Run all** — data loads from a stable link, not
 :::
 
 
-This is the chapter that turns "a model in a notebook" into something that **looks and behaves like a production system** — automated, cloud-based, and continuously updating. You'll collect data at scale, transform messy raw text into clean features (two ways — old-school and AI), train a model that **runs on a schedule in the cloud**, and sync its outputs back to GitHub. By the end you'll have built an end-to-end pipeline, not a proof-of-concept.
+This is the chapter that turns "a model in a notebook" into something that **looks and behaves like a production system** — automated, cloud-based, and continuously updating. You'll collect data at scale, transform messy raw text into clean features (two ways — old-school and AI), train a model that **runs on a schedule in the cloud**, and save its outputs to your Cloud Storage bucket. By the end you'll have built an end-to-end pipeline, not a proof-of-concept.
 
 The running project: scrape used-car listings, extract structured fields (make, model, year, mileage, price), and predict price — a deliberately "numeric-ish boring" dataset, because boring is what production usually looks like.
 
@@ -58,11 +58,11 @@ The professional move is a **hybrid**: regex the easy fields, LLM the hard ones.
 
 ## 3.4 Closing the loop
 
-Finally, the model fits on a schedule in the cloud and its outputs — predictions, plots, a growing CSV — get **synced back to GitHub** so the results are visible to the world. The capstone is a **model-trending** notebook: clone the repo, read the accumulated results, and chart how the model's **error and interpretability change over time** as new data arrives. Companies want to know you can *productionize and trend* a model — and now you can.
+Finally, the model fits on a schedule in the cloud and its outputs — predictions, plots, a growing CSV — land in your **Cloud Storage bucket**. The capstone is a **model-trending** notebook: read the accumulated results from your bucket and chart how the model's **error and interpretability change over time** as new data arrives. Companies want to know you can *productionize and trend* a model — and now you can.
 
 ```{admonition} A note on what's current
 :class: note
-Cloud platforms, scraping targets, and the GCP→GitHub sync step evolve fast — and some get blocked or deprecated. The **architecture** in this chapter is the durable lesson (scrape → ETL → schedule → sync → trend); expect to swap individual components (the scraper, the sync mechanism) as the tooling changes.
+Cloud platforms and scraping targets evolve fast — and some get blocked or deprecated. The **architecture** in this chapter is the durable lesson (scrape → ETL → schedule → trend); expect to swap individual components (like the scraper) as the tooling changes.
 ```
 
 ## Wrap-up
@@ -72,7 +72,7 @@ Cloud platforms, scraping targets, and the GCP→GitHub sync step evolve fast �
 - **GitHub Actions** deploys code to **GCP** automatically; **Cloud Scheduler** runs it on a cron so the pipeline self-updates.
 - **ETL** turns scraped raw text into structured rows; **regex** is fast/deterministic for clean fields.
 - **GenAI (Gemini) ETL** with a tight **schema + prompt engineering** handles messy, description-heavy fields — use a **hybrid** of both.
-- Close the loop: **schedule** the model, **sync** outputs to GitHub, and **trend** error/interpretability over time — that's a production system.
+- Close the loop: **schedule** the model, keep its outputs in your bucket, and **trend** error/interpretability over time — that's a production system.
 ```
 
 
@@ -227,11 +227,3 @@ Cloud platforms, scraping targets, and the GCP→GitHub sync step evolve fast �
 - Honest look at iterative pipeline development.
 :::
 
-:::{admonition} Sync-data with GitHub Actions
-:class: note dropdown
-- Push private **GCP/Cloud Storage outputs** to GitHub via a **GitHub Actions cron** (no GCP needed).
-- Fires ~45+ min past the hour (2–15 min late) — "good enough" academically.
-- Makes results shareable with the world.
-- Feeds the **A08 model-trending** notebook.
-- *(Status: this sync step is no longer taught — architecture is the durable lesson.)*
-:::

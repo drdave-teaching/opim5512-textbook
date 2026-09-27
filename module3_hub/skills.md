@@ -58,15 +58,14 @@ This is the module that changes what you can claim on a résumé. Before it, you
 - ☐ Review your own change as a **diff** before deploying
 
 ## 📈 Operational modeling and delivery
-*Videos 10, 20 · Assignment A08 (midterm)*
+*Video 10 · Assignment A08 (midterm)*
 
 - ☐ Read the hourly training function: `scraped_at` → datetime, **everything before today trains, today is the holdout**
 - ☐ Explain the pipeline inside it: imputer → one-hot encoder → decision tree
 - ☐ Design the experiment worth running: **a model frozen on four days vs. one retrained on everything**, scored on tomorrow
 - ☐ Trend your own model over weeks — error down, R² up, the actual-vs-predicted fan tightening
-- ☐ Sync results from a private bucket to a **public GitHub repo** with a GitHub-native Action
 - ☐ Keep credentials out with a **`.gitignore`**, and know why that isn't optional
-- ☐ Sync more than a CSV — PNGs, and the **numeric partial-dependence values** so you can trend the *shape* of a PDP
+- ☐ Save more than a CSV — PNGs, and the **numeric partial-dependence values** so you can trend the *shape* of a PDP
 - ☐ Accept that a cron job fires late and judge whether that's acceptable for your use case
 - ☐ Explain why publicly posted predictions are gameable, and how **miners vs. validators** in decentralized AI addresses it
 
@@ -74,6 +73,6 @@ This is the module that changes what you can claim on a résumé. Before it, you
 
 ## The one-sentence version
 
-**You can take a starter repo, deploy it as five scheduled cloud functions, turn scraped raw text into structured data two different ways, retrain a model every hour, and publish the results where anyone can check them.**
+**You can take a starter repo, deploy it as five scheduled cloud functions, turn scraped raw text into structured data two different ways, retrain a model every hour, and keep every result in the cloud where you can trend it.**
 
 Most people with a data science degree have never done this. You will have done it in three weeks.
